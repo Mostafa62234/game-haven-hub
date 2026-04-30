@@ -1,12 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { supabase } from "@/integrations/supabase/client";
 
 const ADSENSE_CLIENT = import.meta.env.VITE_ADSENSE_CLIENT as string | undefined;
 
 interface AdSlotProps {
-  /** AdSense data-ad-slot id (used when AdSense is configured) */
   slot?: string;
-  /** Ad shape */
   format?: "banner" | "leaderboard" | "rectangle" | "interstitial";
   className?: string;
   label?: string;
@@ -19,23 +18,53 @@ const FORMAT_CLASSES: Record<NonNullable<AdSlotProps["format"]>, string> = {
   interstitial: "h-[280px]",
 };
 
-/**
- * Renders a Google AdSense unit when VITE_ADSENSE_CLIENT is set,
- * otherwise renders a clearly-labeled placeholder so layout & UX
- * are designed around real ad dimensions from day one.
- */
+// Module-level cache so we hit the DB once per session.
+let cache: Record<string, boolean> | null = null;
+let pending: Promise<Record<string, boolean>> | null = null;
+
+async function loadPlacements(): Promise<Record<string, boolean>> {
+  if (cache) return cache;
+  if (pending) return pending;
+  pending = (async () => {
+    const { data } = await supabase.from("ad_placements").select("slot, enabled");
+    const map: Record<string, boolean> = {};
+    (data ?? []).forEach((r) => {
+      map[r.slot] = r.enabled;
+    });
+    cache = map;
+    return map;
+  })();
+  return pending;
+}
+
 export function AdSlot({ slot, format = "banner", className, label = "Advertisement" }: AdSlotProps) {
   const hasAdsense = Boolean(ADSENSE_CLIENT);
+  const [enabled, setEnabled] = useState(true);
 
   useEffect(() => {
-    if (!hasAdsense) return;
+    if (!slot) return;
+    let alive = true;
+    loadPlacements().then((map) => {
+      if (!alive) return;
+      // Default to enabled when slot isn't tracked
+      setEnabled(map[slot] !== false);
+    });
+    return () => {
+      alive = false;
+    };
+  }, [slot]);
+
+  useEffect(() => {
+    if (!hasAdsense || !enabled) return;
     try {
       // @ts-expect-error - adsbygoogle is injected by the AdSense script
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch {
       /* ignore */
     }
-  }, [hasAdsense]);
+  }, [hasAdsense, enabled]);
+
+  if (!enabled) return null;
 
   if (hasAdsense && slot) {
     return (

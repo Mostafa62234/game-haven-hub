@@ -4,6 +4,8 @@ import appCss from "../styles.css?url";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { AuthProvider } from "@/components/auth-provider";
+import { Toaster } from "@/components/ui/sonner";
 
 const ADSENSE_CLIENT = import.meta.env.VITE_ADSENSE_CLIENT as string | undefined;
 
@@ -88,13 +90,16 @@ function RootShell({ children }: { children: React.ReactNode }) {
 function RootComponent() {
   return (
     <ThemeProvider>
-      <div className="flex min-h-screen flex-col">
-        <SiteHeader />
-        <main className="flex-1">
-          <Outlet />
-        </main>
-        <SiteFooter />
-      </div>
+      <AuthProvider>
+        <div className="flex min-h-screen flex-col">
+          <SiteHeader />
+          <main className="flex-1">
+            <Outlet />
+          </main>
+          <SiteFooter />
+        </div>
+        <Toaster />
+      </AuthProvider>
     </ThemeProvider>
   );
 }

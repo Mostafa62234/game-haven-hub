@@ -1,15 +1,25 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Gamepad2, Search } from "lucide-react";
+import { Gamepad2, Search, User, Shield, LogOut } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState, type FormEvent } from "react";
 import { useNavigate } from "@tanstack/react-router";
+import { useAuth } from "@/components/auth-provider";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function SiteHeader() {
   const path = useRouterState({ select: (s) => s.location.pathname });
   const navigate = useNavigate();
   const [q, setQ] = useState("");
+  const { user, isAdmin, signOut } = useAuth();
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -31,6 +41,11 @@ export function SiteHeader() {
       </Link>
     );
   };
+
+  const initials =
+    (user?.user_metadata?.display_name as string)?.[0]?.toUpperCase() ??
+    user?.email?.[0]?.toUpperCase() ??
+    "U";
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -64,9 +79,43 @@ export function SiteHeader() {
 
         <div className="ml-auto flex items-center gap-1 md:ml-0">
           <ThemeToggle />
-          <Button asChild size="sm" className="rounded-full">
-            <Link to="/games">Play now</Link>
-          </Button>
+          {user ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="rounded-full">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-primary text-sm font-bold text-primary-foreground">
+                    {initials}
+                  </span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuLabel className="truncate">
+                  {(user.user_metadata?.display_name as string) ?? user.email}
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link to="/profile">
+                    <User className="mr-2 h-4 w-4" /> Profile
+                  </Link>
+                </DropdownMenuItem>
+                {isAdmin && (
+                  <DropdownMenuItem asChild>
+                    <Link to="/admin">
+                      <Shield className="mr-2 h-4 w-4" /> Admin
+                    </Link>
+                  </DropdownMenuItem>
+                )}
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={signOut}>
+                  <LogOut className="mr-2 h-4 w-4" /> Sign out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <Button asChild size="sm" className="rounded-full">
+              <Link to="/auth">Sign in</Link>
+            </Button>
+          )}
         </div>
       </div>
 
