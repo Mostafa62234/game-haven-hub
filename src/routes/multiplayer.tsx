@@ -46,7 +46,15 @@ function MultiplayerPage() {
 
       <AdSlot format="leaderboard" slot="multi-top" className="my-8" />
 
-      <h2 className="mb-4 text-2xl font-bold">Multiplayer games</h2>
+      <section className="mb-12">
+        <h2 className="mb-4 text-2xl font-bold">🎮 Online Tic Tac Toe</h2>
+        <p className="mb-6 text-sm text-muted-foreground">
+          Create a room and share the code, or join with a friend's code. Moves sync in real time.
+        </p>
+        <OnlineTicTacToe />
+      </section>
+
+      <h2 className="mb-4 text-2xl font-bold">More multiplayer games</h2>
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
         {games.map((g) => (
           <GameCard key={g.slug} game={g} />
