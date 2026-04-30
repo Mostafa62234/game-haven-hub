@@ -99,7 +99,7 @@ function PlayPage() {
             <h2 className="mb-2 text-lg font-semibold">About {game.title}</h2>
             <p className="text-sm leading-relaxed text-muted-foreground">{game.description}</p>
             <div className="mt-3 flex flex-wrap gap-2">
-              {game.tags.map((t) => (
+              {game.tags.map((t: string) => (
                 <span
                   key={t}
                   className="rounded-full bg-muted px-2.5 py-1 text-xs text-muted-foreground"
