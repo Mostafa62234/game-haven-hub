@@ -66,7 +66,7 @@ function HomePage() {
       {/* Categories */}
       <section className="mt-12">
         <SectionHeader title="Browse categories" />
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
           {CATEGORIES.map((cat) => (
             <Link
               key={cat}
