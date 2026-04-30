@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { Star, Users, ArrowLeft, Heart, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -6,6 +7,9 @@ import { GameFrame } from "@/components/games/game-frame";
 import { GameCard } from "@/components/game-card";
 import { AdSlot } from "@/components/ad-slot";
 import { getGame, getRelatedGames } from "@/lib/games";
+import { useAuth } from "@/components/auth-provider";
+import { useFavorites, recordPlay } from "@/hooks/use-favorites";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/play/$slug")({
   loader: ({ params }) => {
@@ -41,6 +45,23 @@ export const Route = createFileRoute("/play/$slug")({
 function PlayPage() {
   const { game } = Route.useLoaderData();
   const related = getRelatedGames(game, 4);
+  const { user } = useAuth();
+  const { isFavorite, toggle } = useFavorites();
+  const fav = isFavorite(game.slug);
+
+  // Record play history when game opens
+  useEffect(() => {
+    if (user) recordPlay(user.id, game.slug);
+  }, [user, game.slug]);
+
+  const onFavorite = async () => {
+    if (!user) {
+      toast.info("Sign in to save favorites");
+      return;
+    }
+    const added = await toggle(game.slug);
+    toast.success(added ? "Added to favorites" : "Removed from favorites");
+  };
 
   const share = async () => {
     try {
@@ -51,6 +72,7 @@ function PlayPage() {
       });
     } catch {
       navigator.clipboard?.writeText(window.location.href);
+      toast.success("Link copied!");
     }
   };
 
@@ -65,7 +87,6 @@ function PlayPage() {
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
-        {/* Player */}
         <div>
           <GameFrame embed={game.embed} title={game.title} />
 
@@ -86,8 +107,14 @@ function PlayPage() {
               </div>
             </div>
             <div className="flex gap-2">
-              <Button variant="secondary" size="sm" className="rounded-full">
-                <Heart className="mr-1 h-4 w-4" /> Favorite
+              <Button
+                variant={fav ? "default" : "secondary"}
+                size="sm"
+                className="rounded-full"
+                onClick={onFavorite}
+              >
+                <Heart className={`mr-1 h-4 w-4 ${fav ? "fill-current" : ""}`} />
+                {fav ? "Favorited" : "Favorite"}
               </Button>
               <Button onClick={share} variant="secondary" size="sm" className="rounded-full">
                 <Share2 className="mr-1 h-4 w-4" /> Share
@@ -108,10 +135,14 @@ function PlayPage() {
                 </span>
               ))}
             </div>
+            {game.source && (
+              <p className="mt-4 text-xs text-muted-foreground">
+                Source: {game.source}
+              </p>
+            )}
           </div>
         </div>
 
-        {/* Sidebar */}
         <aside className="space-y-6">
           <AdSlot format="rectangle" slot="play-sidebar" />
           <div>
