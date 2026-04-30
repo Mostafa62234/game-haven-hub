@@ -3,6 +3,7 @@ import { GameCard } from "@/components/game-card";
 import { AdSlot } from "@/components/ad-slot";
 import { GAMES } from "@/lib/games";
 import { Users, Wifi, Sparkles } from "lucide-react";
+import { OnlineTicTacToe } from "@/components/games/online-tic-tac-toe";
 
 export const Route = createFileRoute("/multiplayer")({
   head: () => ({
