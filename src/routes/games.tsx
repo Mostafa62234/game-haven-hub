@@ -6,13 +6,13 @@ import { GameCard } from "@/components/game-card";
 import { AdSlot } from "@/components/ad-slot";
 import { CATEGORIES, GAMES, type GameCategory } from "@/lib/games";
 
-interface Search {
+interface SearchParams {
   q?: string;
   category?: GameCategory;
 }
 
 export const Route = createFileRoute("/games")({
-  validateSearch: (s: Record<string, unknown>): Search => ({
+  validateSearch: (s: Record<string, unknown>): SearchParams => ({
     q: typeof s.q === "string" && s.q.length ? s.q : undefined,
     category:
       typeof s.category === "string" && (CATEGORIES as string[]).includes(s.category)
