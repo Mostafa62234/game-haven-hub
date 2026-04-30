@@ -70,7 +70,7 @@ function GamesPage() {
             value={q ?? ""}
             onChange={(e) =>
               navigate({
-                search: (prev) => ({ ...prev, q: e.target.value || undefined }),
+                search: (prev: { q?: string; category?: string }) => ({ ...prev, q: e.target.value || undefined }),
                 replace: true,
               })
             }
@@ -82,7 +82,7 @@ function GamesPage() {
           <FilterPill
             active={!category}
             onClick={() =>
-              navigate({ search: (p) => ({ ...p, category: undefined }), replace: true })
+              navigate({ search: (p: { q?: string; category?: string }) => ({ ...p, category: undefined }), replace: true })
             }
           >
             All
@@ -92,7 +92,7 @@ function GamesPage() {
               key={c}
               active={category === c}
               onClick={() =>
-                navigate({ search: (p) => ({ ...p, category: c }), replace: true })
+                navigate({ search: (p: { q?: string; category?: string }) => ({ ...p, category: c }), replace: true })
               }
             >
               {c}
