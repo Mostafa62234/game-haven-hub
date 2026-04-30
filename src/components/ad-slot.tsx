@@ -25,17 +25,15 @@ let pending: Promise<Record<string, boolean>> | null = null;
 async function loadPlacements(): Promise<Record<string, boolean>> {
   if (cache) return cache;
   if (pending) return pending;
-  pending = supabase
-    .from("ad_placements")
-    .select("slot, enabled")
-    .then(({ data }) => {
-      const map: Record<string, boolean> = {};
-      (data ?? []).forEach((r) => {
-        map[r.slot] = r.enabled;
-      });
-      cache = map;
-      return map;
+  pending = (async () => {
+    const { data } = await supabase.from("ad_placements").select("slot, enabled");
+    const map: Record<string, boolean> = {};
+    (data ?? []).forEach((r) => {
+      map[r.slot] = r.enabled;
     });
+    cache = map;
+    return map;
+  })();
   return pending;
 }
 
