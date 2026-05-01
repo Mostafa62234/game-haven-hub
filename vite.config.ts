@@ -1,12 +1,46 @@
-// @lovable.dev/vite-tanstack-config already includes the following — do NOT add them manually
-// or the app will break with duplicate plugins:
-//   - tanstackStart, viteReact, tailwindcss, tsConfigPaths, cloudflare (build-only),
-//     componentTagger (dev-only), VITE_* env injection, @ path alias, React/TanStack dedupe,
-//     error logger plugins, and sandbox detection (port/host/strictPort).
-// You can pass additional config via defineConfig({ vite: { ... } }) if needed.
-import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import { defineConfig } from "vite";
+import viteReact from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+import tsConfigPaths from "vite-tsconfig-paths";
+import { componentTagger } from "lovable-tagger";
+import path from "path";
+import { fileURLToPath } from "url";
 
-// cloudflare: false → use Node.js adapter (required for Railway hosting)
-export default defineConfig({
-  cloudflare: false,
-});
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default defineConfig(({ command, mode }) => ({
+  plugins: [
+    tanstackStart({
+      importProtection: {
+        behavior: "error",
+        client: {
+          files: ["**/server/**"],
+          specifiers: ["server-only"],
+        },
+      },
+    }),
+    viteReact(),
+    tailwindcss(),
+    tsConfigPaths(),
+    command === "serve" && mode === "development" && componentTagger(),
+  ].filter(Boolean),
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+    dedupe: [
+      "react",
+      "react-dom",
+      "react/jsx-runtime",
+      "react/jsx-dev-runtime",
+      "@tanstack/react-query",
+      "@tanstack/query-core",
+    ],
+  },
+  server: {
+    host: "::",
+    port: 8080,
+  },
+}));
