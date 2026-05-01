@@ -7,7 +7,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { AuthProvider } from "@/components/auth-provider";
 import { Toaster } from "@/components/ui/sonner";
 
-const ADSENSE_CLIENT = import.meta.env.VITE_ADSENSE_CLIENT as string | undefined;
+const ADSENSE_CLIENT = "ca-pub-8050143995823010";
 
 function NotFoundComponent() {
   return (

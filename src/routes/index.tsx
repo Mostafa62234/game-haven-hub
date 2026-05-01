@@ -22,6 +22,7 @@ export const Route = createFileRoute("/")({
 function HomePage() {
   const featured = GAMES.slice(0, 8);
   const trending = GAMES.slice(2, 6);
+  const flashLegends = GAMES.filter((g) => g.category === "Flash").slice(0, 8);
 
   return (
     <div className="mx-auto max-w-7xl px-4">
@@ -84,6 +85,16 @@ function HomePage() {
         <SectionHeader title="🔥 Trending now" actionLabel="See all" actionTo="/games" />
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {trending.map((g) => (
+            <GameCard key={g.slug} game={g} />
+          ))}
+        </div>
+      </section>
+
+      {/* Flash Legends */}
+      <section className="mt-14">
+        <SectionHeader title="🔥 Flash Legends" actionLabel="See all" actionTo="/games?category=Flash" />
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+          {flashLegends.map((g) => (
             <GameCard key={g.slug} game={g} />
           ))}
         </div>
