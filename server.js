@@ -67,7 +67,7 @@ const server = http.createServer(async (req, res) => {
     const request = new Request(url, requestOptions);
     
     // 3. Call the TanStack Start handler
-    const response = await appServer.default.fetch(request);
+    const response = await appServer.fetch(request);
     
     // 4. Adapt Web Response back to Node.js http.ServerResponse
     res.statusCode = response.status;
