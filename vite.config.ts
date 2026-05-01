@@ -6,4 +6,7 @@
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-export default defineConfig();
+// cloudflare: false → use Node.js adapter (required for Railway hosting)
+export default defineConfig({
+  cloudflare: false,
+});
