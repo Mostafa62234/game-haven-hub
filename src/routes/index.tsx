@@ -22,6 +22,9 @@ export const Route = createFileRoute("/")({
 function HomePage() {
   const featured = GAMES.slice(0, 8);
   const trending = GAMES.slice(2, 6);
+  
+  const totalPlays = GAMES.reduce((sum, g) => sum + g.plays, 0);
+  const formattedPlays = Intl.NumberFormat("en-US", { notation: "compact", maximumFractionDigits: 1 }).format(totalPlays);
 
   return (
     <div className="mx-auto max-w-7xl px-4">
@@ -52,7 +55,7 @@ function HomePage() {
 
           <div className="mt-10 grid grid-cols-3 gap-4 text-left">
             <Stat icon={<Zap className="h-4 w-4" />} value="0s" label="Install time" />
-            <Stat icon={<Users className="h-4 w-4" />} value="2M+" label="Players monthly" />
+            <Stat icon={<Users className="h-4 w-4" />} value={`${formattedPlays}+`} label="Players monthly" />
             <Stat icon={<Trophy className="h-4 w-4" />} value="200+" label="Free games" />
           </div>
         </div>

@@ -14,7 +14,8 @@ export interface Game {
   thumbnail: string;
   embed: string; // iframe URL or `internal:slug`
   rating: number;
-  plays: string;
+  plays: number;
+  screenshot?: string;
   tags: string[];
   /** Source/credit shown on the play page (legal attribution) */
   source?: string;
@@ -34,9 +35,10 @@ export const GAMES: Game[] = [
     category: "Multiplayer",
     thumbnail:
       "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=800&q=80&auto=format&fit=crop",
+    screenshot: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop",
     embed: "internal:tic-tac-toe",
     rating: 4.6,
-    plays: "1.2M",
+    plays: 1200000,
     tags: ["classic", "2-player", "quick"],
   },
   {
@@ -47,9 +49,10 @@ export const GAMES: Game[] = [
     category: "Puzzle",
     thumbnail:
       "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=800&q=80&auto=format&fit=crop&sat=-30",
+    screenshot: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop&sat=-30",
     embed: "https://play2048.co/",
     rating: 4.8,
-    plays: "8.4M",
+    plays: 8400000,
     tags: ["numbers", "puzzle", "addictive"],
     source: "play2048.co (open-source, MIT)",
   },
@@ -61,9 +64,10 @@ export const GAMES: Game[] = [
     category: "Arcade",
     thumbnail:
       "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=800&q=80&auto=format&fit=crop",
+    screenshot: "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop",
     embed: "https://hextris.io/",
     rating: 4.7,
-    plays: "3.1M",
+    plays: 3100000,
     tags: ["arcade", "tetris-like", "fast"],
     source: "hextris.io (open-source)",
   },
@@ -75,9 +79,10 @@ export const GAMES: Game[] = [
     category: "Casual",
     thumbnail:
       "https://images.unsplash.com/photo-1606503153255-59d8b8b6a02e?w=800&q=80&auto=format&fit=crop",
+    screenshot: "https://images.unsplash.com/photo-1606503153255-59d8b8b6a02e?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop",
     embed: "internal:memory-match",
     rating: 4.5,
-    plays: "650K",
+    plays: 650000,
     tags: ["memory", "casual", "single-player"],
   },
   {
@@ -88,9 +93,10 @@ export const GAMES: Game[] = [
     category: "Strategy",
     thumbnail:
       "https://images.unsplash.com/photo-1528819622765-d6bcf132f793?w=800&q=80&auto=format&fit=crop",
+    screenshot: "https://images.unsplash.com/photo-1528819622765-d6bcf132f793?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop",
     embed: "https://lichess.org/",
     rating: 4.9,
-    plays: "20M",
+    plays: 20000000,
     tags: ["strategy", "classic", "deep"],
     source: "lichess.org (free & open-source)",
   },
@@ -102,9 +108,10 @@ export const GAMES: Game[] = [
     category: "Puzzle",
     thumbnail:
       "https://images.unsplash.com/photo-1556438064-2d7646166914?w=800&q=80&auto=format&fit=crop&hue=120",
+    screenshot: "https://images.unsplash.com/photo-1556438064-2d7646166914?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop&hue=120",
     embed: "https://minesweeper.online/",
     rating: 4.6,
-    plays: "9.2M",
+    plays: 9200000,
     tags: ["logic", "classic", "single-player"],
   },
   {
@@ -115,9 +122,10 @@ export const GAMES: Game[] = [
     category: "Puzzle",
     thumbnail:
       "https://images.unsplash.com/photo-1632501641765-e568d28b0015?w=800&q=80&auto=format&fit=crop",
+    screenshot: "https://images.unsplash.com/photo-1632501641765-e568d28b0015?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop",
     embed: "https://sudoku.com/",
     rating: 4.7,
-    plays: "11M",
+    plays: 11000000,
     tags: ["numbers", "logic", "daily"],
   },
 
@@ -130,9 +138,10 @@ export const GAMES: Game[] = [
     category: "Retro",
     thumbnail:
       "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80&auto=format&fit=crop",
+    screenshot: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop",
     embed: "https://elgoog.im/pacman/",
     rating: 4.9,
-    plays: "30M",
+    plays: 30000000,
     tags: ["arcade", "80s", "official"],
     source: "elgoog.im (Google Doodle archive)",
   },
@@ -144,9 +153,10 @@ export const GAMES: Game[] = [
     category: "Retro",
     thumbnail:
       "https://images.unsplash.com/photo-1633218388467-539651dcf81a?w=800&q=80&auto=format&fit=crop",
+    screenshot: "https://images.unsplash.com/photo-1633218388467-539651dcf81a?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop",
     embed: "https://tetris.com/play-tetris",
     rating: 4.8,
-    plays: "15M",
+    plays: 15000000,
     tags: ["arcade", "classic", "score"],
     source: "tetris.com (official)",
   },
@@ -158,9 +168,10 @@ export const GAMES: Game[] = [
     category: "Retro",
     thumbnail:
       "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=800&q=80&auto=format&fit=crop",
-    embed: "https://patorjk.com/games/snake/",
+    screenshot: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop",
+    embed: "https://playsnake.org/",
     rating: 4.3,
-    plays: "5.6M",
+    plays: 5600000,
     tags: ["retro", "arcade", "single-player"],
   },
   {
@@ -171,9 +182,10 @@ export const GAMES: Game[] = [
     category: "Retro",
     thumbnail:
       "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80&auto=format&fit=crop",
+    screenshot: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop",
     embed: "https://www.ponggame.org/",
     rating: 4.2,
-    plays: "1.8M",
+    plays: 1800000,
     tags: ["retro", "70s", "2-player"],
   },
   {
@@ -184,9 +196,10 @@ export const GAMES: Game[] = [
     category: "Retro",
     thumbnail:
       "https://images.unsplash.com/photo-1612392061787-2d078b3e573a?w=800&q=80&auto=format&fit=crop",
+    screenshot: "https://images.unsplash.com/photo-1612392061787-2d078b3e573a?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop",
     embed: "https://princejs.com/",
     rating: 4.7,
-    plays: "2.4M",
+    plays: 2400000,
     tags: ["platformer", "80s", "adventure"],
     source: "princejs.com (open-source port by Oliver Klemenz)",
   },
@@ -198,10 +211,11 @@ export const GAMES: Game[] = [
     category: "Retro",
     thumbnail:
       "https://images.unsplash.com/photo-1542751110-97427bbecf20?w=800&q=80&auto=format&fit=crop",
+    screenshot: "https://images.unsplash.com/photo-1542751110-97427bbecf20?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop",
     embed:
       "https://silentspacemarine.com/",
     rating: 4.8,
-    plays: "9.1M",
+    plays: 9100000,
     tags: ["fps", "90s", "classic"],
     source: "silentspacemarine.com (HTML5 Port)",
   },
@@ -213,9 +227,10 @@ export const GAMES: Game[] = [
     category: "Retro",
     thumbnail:
       "https://images.unsplash.com/photo-1607513746994-51f730a44832?w=800&q=80&auto=format&fit=crop",
+    screenshot: "https://images.unsplash.com/photo-1607513746994-51f730a44832?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop",
     embed: "https://classic.minecraft.net/",
     rating: 4.6,
-    plays: "3.3M",
+    plays: 3300000,
     tags: ["classic", "building", "sandbox"],
     source: "classic.minecraft.net",
   },
@@ -227,9 +242,10 @@ export const GAMES: Game[] = [
     category: "Arcade",
     thumbnail:
       "https://images.unsplash.com/photo-1518715303843-586e350765b2?w=800&q=80&auto=format&fit=crop",
+    screenshot: "https://images.unsplash.com/photo-1518715303843-586e350765b2?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop",
     embed: "https://dino-chrome.com/",
     rating: 4.4,
-    plays: "4.2M",
+    plays: 4200000,
     tags: ["runner", "arcade", "casual"],
     source: "dino-chrome.com",
   },
@@ -241,9 +257,10 @@ export const GAMES: Game[] = [
     category: "Casual",
     thumbnail:
       "https://images.unsplash.com/photo-1542360663-8f4023704c56?w=800&q=80&auto=format&fit=crop",
+    screenshot: "https://images.unsplash.com/photo-1542360663-8f4023704c56?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop",
     embed: "https://sandspiel.club/",
     rating: 4.6,
-    plays: "5.7M",
+    plays: 5700000,
     tags: ["sandbox", "simulation", "physics"],
     source: "sandspiel.club",
   },
@@ -255,9 +272,10 @@ export const GAMES: Game[] = [
     category: "Casual",
     thumbnail:
       "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&q=80&auto=format&fit=crop",
+    screenshot: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop",
     embed: "https://slowroads.io/",
     rating: 4.7,
-    plays: "2.9M",
+    plays: 2900000,
     tags: ["driving", "relaxing", "simulation"],
     source: "slowroads.io",
   },
@@ -269,9 +287,10 @@ export const GAMES: Game[] = [
     category: "Retro",
     thumbnail:
       "https://images.unsplash.com/photo-1606503153255-59d8b8b6a02e?w=800&q=80&auto=format&fit=crop&hue=30",
+    screenshot: "https://images.unsplash.com/photo-1606503153255-59d8b8b6a02e?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop&hue=30",
     embed: "https://www.mariohtml5.com/",
     rating: 4.5,
-    plays: "8.8M",
+    plays: 8800000,
     tags: ["platformer", "snes-era", "retro"],
     source: "Notch's Infinite Mario (open-source HTML5 port)",
   },
@@ -283,9 +302,10 @@ export const GAMES: Game[] = [
     category: "Multiplayer",
     thumbnail:
       "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=800&q=80&auto=format&fit=crop&hue=200",
+    screenshot: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop&hue=200",
     embed: "https://agar.io/",
     rating: 4.4,
-    plays: "50M",
+    plays: 50000000,
     tags: ["io", "multiplayer", "casual"],
   },
   {
@@ -296,9 +316,10 @@ export const GAMES: Game[] = [
     category: "Arcade",
     thumbnail:
       "https://images.unsplash.com/photo-1556438064-2d7646166914?w=800&q=80&auto=format&fit=crop",
+    screenshot: "https://images.unsplash.com/photo-1556438064-2d7646166914?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop",
     embed: "https://flappybird.io/",
     rating: 4.4,
-    plays: "12M",
+    plays: 12000000,
     tags: ["arcade", "casual", "one-tap"],
   },
   {
@@ -309,9 +330,10 @@ export const GAMES: Game[] = [
     category: "Strategy",
     thumbnail:
       "https://images.unsplash.com/photo-1611195974226-a6a9be9dd763?w=800&q=80&auto=format&fit=crop",
+    screenshot: "https://images.unsplash.com/photo-1611195974226-a6a9be9dd763?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop",
     embed: "https://www.247checkers.com/",
     rating: 4.2,
-    plays: "2.1M",
+    plays: 2100000,
     tags: ["strategy", "2-player", "classic"],
   },
   {
@@ -322,9 +344,10 @@ export const GAMES: Game[] = [
     category: "Retro",
     thumbnail:
       "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=800&q=80&auto=format&fit=crop",
+    screenshot: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop",
     embed: "https://archive.org/embed/msdos_Wolfenstein_3D_1992",
     rating: 4.6,
-    plays: "3.3M",
+    plays: 3300000,
     tags: ["fps", "90s", "id-software"],
     source: "Internet Archive MS-DOS collection",
   },
@@ -336,9 +359,10 @@ export const GAMES: Game[] = [
     category: "Retro",
     thumbnail:
       "https://images.unsplash.com/photo-1594135356442-6b6b9e9c1b1e?w=800&q=80&auto=format&fit=crop",
+    screenshot: "https://images.unsplash.com/photo-1594135356442-6b6b9e9c1b1e?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop",
     embed: "https://archive.org/embed/msdos_Oregon_Trail_The_1990",
     rating: 4.4,
-    plays: "4.2M",
+    plays: 4200000,
     tags: ["classic", "educational", "90s"],
     source: "Internet Archive",
   },
@@ -350,9 +374,10 @@ export const GAMES: Game[] = [
     category: "Puzzle",
     thumbnail:
       "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&auto=format&fit=crop",
+    screenshot: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop",
     embed: "https://archive.org/embed/msdos_Lemmings_1991",
     rating: 4.7,
-    plays: "2.9M",
+    plays: 2900000,
     tags: ["puzzle", "platformer", "90s"],
     source: "Internet Archive",
   },
@@ -364,9 +389,10 @@ export const GAMES: Game[] = [
     category: "Retro",
     thumbnail:
       "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80&auto=format&fit=crop",
+    screenshot: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop",
     embed: "https://archive.org/embed/msdos_Donkey_Kong_1983",
     rating: 4.8,
-    plays: "1.5M",
+    plays: 1500000,
     tags: ["arcade", "80s", "platformer"],
     source: "Internet Archive",
   },
@@ -378,12 +404,77 @@ export const GAMES: Game[] = [
     category: "Retro",
     thumbnail:
       "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80&auto=format&fit=crop",
+    screenshot: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&sat=-100&tint=blue&q=80&auto=format&fit=crop",
     embed: "https://archive.org/embed/msdos_Zork_I_-_The_Great_Underground_Empire_1980",
     rating: 4.5,
-    plays: "800K",
+    plays: 800000,
     tags: ["text-adventure", "rpg", "80s"],
-    source: "Internet Archive",
+    source: "Internet Archive",  },
+  {
+    slug: "daggerfall",
+    title: "The Elder Scrolls II: Daggerfall",
+    description: "The massive 1996 fantasy open-world RPG by Bethesda.",
+    category: "Retro",
+    thumbnail: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80",
+    screenshot: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80&sat=-50",
+    embed: "https://archive.org/embed/msdos_Elder_Scrolls_The_-_Daggerfall_1996",
+    rating: 4.8,
+    plays: 1400000,
+    tags: ["rpg", "open-world", "90s"],
+    source: "Internet Archive"
   },
+  {
+    slug: "fallout-1",
+    title: "Fallout (1997)",
+    description: "A Post Nuclear Role Playing Game. The classic that started it all.",
+    category: "Retro",
+    thumbnail: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=800&q=80",
+    screenshot: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80&sat=-50",
+    embed: "https://archive.org/embed/msdos_Fallout_1997",
+    rating: 4.9,
+    plays: 2800000,
+    tags: ["rpg", "post-apocalyptic", "classic"],
+    source: "Internet Archive"
+  },
+  {
+    slug: "diablo-web",
+    title: "Diablo (Shareware)",
+    description: "Descend into the darkness of Tristram in this legendary action RPG.",
+    category: "Retro",
+    thumbnail: "https://images.unsplash.com/photo-1506452819137-0422416856b8?w=800&q=80",
+    screenshot: "https://images.unsplash.com/photo-1518715303843-586e350765b2?w=800&q=80&sat=-50",
+    embed: "https://d07riv.github.io/diabloweb/",
+    rating: 4.7,
+    plays: 3500000,
+    tags: ["rpg", "action", "dungeon-crawler"],
+    source: "DiabloWeb (Open Source Port)"
+  },
+  {
+    slug: "ultima-4",
+    title: "Ultima IV: Quest of the Avatar",
+    description: "The pioneering 1985 RPG that defined moral choices in gaming.",
+    category: "Retro",
+    thumbnail: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
+    screenshot: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&sat=-50",
+    embed: "https://archive.org/embed/msdos_Ultima_IV_-_Quest_of_the_Avatar_1985",
+    rating: 4.6,
+    plays: 850000,
+    tags: ["rpg", "80s", "classic"],
+    source: "Internet Archive"
+  },
+  {
+    slug: "openttd",
+    title: "OpenTTD",
+    description: "Open-source transport simulation game based on Transport Tycoon Deluxe.",
+    category: "Strategy",
+    thumbnail: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=800&q=80",
+    screenshot: "https://images.unsplash.com/photo-1606503153255-59d8b8b6a02e?w=800&q=80&sat=-50",
+    embed: "https://epicport.com/en/ttd",
+    rating: 4.8,
+    plays: 1100000,
+    tags: ["simulation", "strategy", "open-source"],
+    source: "EpicPort (OpenTTD Web)"
+  }
 ];
 
 export const CATEGORIES: GameCategory[] = [
