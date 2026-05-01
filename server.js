@@ -36,6 +36,7 @@ const server = http.createServer(async (req, res) => {
       '.woff': 'font/woff',
       '.woff2': 'font/woff2',
       '.ttf': 'font/ttf',
+      '.txt': 'text/plain',
     };
     
     const contentType = mimeTypes[ext] || 'application/octet-stream';
