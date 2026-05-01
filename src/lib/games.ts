@@ -4,7 +4,9 @@ export type GameCategory =
   | "Multiplayer"
   | "Strategy"
   | "Casual"
-  | "Retro";
+  | "Casual"
+  | "Retro"
+  | "Flash";
 
 export interface Game {
   slug: string;
@@ -474,6 +476,71 @@ export const GAMES: Game[] = [
     plays: 1100000,
     tags: ["simulation", "strategy", "open-source"],
     source: "EpicPort (OpenTTD Web)"
+  },
+  {
+    slug: "gunblood",
+    title: "Gunblood",
+    description: "The classic Western shootout Flash game. Draw your weapon and test your reflexes.",
+    category: "Flash",
+    thumbnail: "https://images.unsplash.com/photo-1584852959828-09199321e10d?w=800&q=80",
+    screenshot: "https://images.unsplash.com/photo-1584852959828-09199321e10d?w=800&q=80&sat=-100&tint=red",
+    embed: "https://www.crazygames.com/embed/gunblood",
+    rating: 4.5,
+    plays: 5200000,
+    tags: ["flash", "shooter", "action"],
+    source: "CrazyGames (Ruffle Emulation)"
+  },
+  {
+    slug: "fireboy-watergirl",
+    title: "Fireboy and Watergirl",
+    description: "The famous cooperative puzzle platformer. Control both elements to reach the exit.",
+    category: "Flash",
+    thumbnail: "https://images.unsplash.com/photo-1548503020-f42f534438fa?w=800&q=80",
+    screenshot: "https://images.unsplash.com/photo-1548503020-f42f534438fa?w=800&q=80&sat=-100&tint=orange",
+    embed: "https://www.crazygames.com/embed/fireboy-and-watergirl-the-forest-temple",
+    rating: 4.8,
+    plays: 45000000,
+    tags: ["flash", "puzzle", "co-op"],
+    source: "CrazyGames"
+  },
+  {
+    slug: "run-3",
+    title: "Run 3",
+    description: "Run, jump, and defy gravity in this endlessly addictive Flash tunnel runner.",
+    category: "Flash",
+    thumbnail: "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=800&q=80&hue=180",
+    screenshot: "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=800&q=80&hue=180&sat=-100",
+    embed: "https://www.crazygames.com/embed/run-3",
+    rating: 4.7,
+    plays: 38000000,
+    tags: ["flash", "runner", "space"],
+    source: "CrazyGames"
+  },
+  {
+    slug: "happy-wheels",
+    title: "Happy Wheels",
+    description: "The notoriously gory and hilarious physics-based ragdoll Flash game.",
+    category: "Flash",
+    thumbnail: "https://images.unsplash.com/photo-1628126235206-5260b9ea6441?w=800&q=80",
+    screenshot: "https://images.unsplash.com/photo-1628126235206-5260b9ea6441?w=800&q=80&sat=-100&tint=red",
+    embed: "https://www.crazygames.com/embed/happy-wheels",
+    rating: 4.9,
+    plays: 85000000,
+    tags: ["flash", "physics", "funny"],
+    source: "CrazyGames"
+  },
+  {
+    slug: "papas-pizzeria",
+    title: "Papa's Pizzeria",
+    description: "Bake pies and manage the shop in the Flash game that launched a cooking empire.",
+    category: "Flash",
+    thumbnail: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&q=80",
+    screenshot: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&q=80&sat=-100",
+    embed: "https://www.crazygames.com/embed/papas-pizzeria",
+    rating: 4.8,
+    plays: 22000000,
+    tags: ["flash", "cooking", "simulation"],
+    source: "CrazyGames (Ruffle Emulation)"
   }
 ];
 
@@ -484,6 +551,7 @@ export const CATEGORIES: GameCategory[] = [
   "Strategy",
   "Casual",
   "Retro",
+  "Flash",
 ];
 
 export function getGame(slug: string): Game | undefined {

@@ -15,16 +15,8 @@ export function GameCard({ game }: { game: Game }) {
           src={game.thumbnail}
           alt={game.title}
           loading="lazy"
-          className="h-full w-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:opacity-0"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
-        {game.screenshot && (
-          <img
-            src={game.screenshot}
-            alt={`${game.title} screenshot`}
-            loading="lazy"
-            className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-          />
-        )}
         <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/0 to-transparent" />
         <Badge className="absolute left-3 top-3 rounded-full border-0 bg-background/80 text-foreground backdrop-blur">
           {game.category}

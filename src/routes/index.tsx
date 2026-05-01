@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Sparkles, Trophy, Users, Zap } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GameCard } from "@/components/game-card";
 import { AdSlot } from "@/components/ad-slot";
@@ -22,9 +22,6 @@ export const Route = createFileRoute("/")({
 function HomePage() {
   const featured = GAMES.slice(0, 8);
   const trending = GAMES.slice(2, 6);
-  
-  const totalPlays = GAMES.reduce((sum, g) => sum + g.plays, 0);
-  const formattedPlays = Intl.NumberFormat("en-US", { notation: "compact", maximumFractionDigits: 1 }).format(totalPlays);
 
   return (
     <div className="mx-auto max-w-7xl px-4">
@@ -53,11 +50,6 @@ function HomePage() {
             </Button>
           </div>
 
-          <div className="mt-10 grid grid-cols-3 gap-4 text-left">
-            <Stat icon={<Zap className="h-4 w-4" />} value="0s" label="Install time" />
-            <Stat icon={<Users className="h-4 w-4" />} value={`${formattedPlays}+`} label="Players monthly" />
-            <Stat icon={<Trophy className="h-4 w-4" />} value="200+" label="Free games" />
-          </div>
         </div>
       </section>
 
@@ -111,18 +103,6 @@ function HomePage() {
       <div className="my-10">
         <AdSlot format="banner" slot="home-bottom" />
       </div>
-    </div>
-  );
-}
-
-function Stat({ icon, value, label }: { icon: React.ReactNode; value: string; label: string }) {
-  return (
-    <div className="rounded-2xl border border-border bg-background/60 p-4 backdrop-blur">
-      <div className="flex items-center gap-2 text-xs text-muted-foreground">
-        <span className="text-primary">{icon}</span>
-        {label}
-      </div>
-      <div className="mt-1 text-2xl font-bold">{value}</div>
     </div>
   );
 }
