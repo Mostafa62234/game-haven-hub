@@ -90,18 +90,26 @@ export function RufflePlayer({ swfUrl, thumbnail, title }: RufflePlayerProps) {
 
       player.config = {
         autoplay: "on",
-        unmuteOverlay: "visible",
+        unmuteOverlay: "hidden",
         forceScale: true,
         scale: "exactFit",
-        letterbox: "off",
+        letterbox: "on",
         splashScreen: false,
+        quality: "high", // High quality vector rendering
+        preferredRenderer: "webgpu", // Try WebGPU first for max FPS, falls back to WebGL
+        wmode: "direct", // Better performance for many games
       };
 
       container.appendChild(player);
       player.style.width = "100%";
       player.style.height = "100%";
 
-      await player.load(localSwfUrl);
+      // Optimized load call
+      await player.load({
+        url: localSwfUrl,
+        allowScriptAccess: true,
+      });
+
     } catch (err: any) {
       console.error(err);
       setError(err.message || "Failed to launch game.");

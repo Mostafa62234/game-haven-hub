@@ -58,6 +58,9 @@ export function DosPlayer({ bundleUrl, thumbnail, title }: DosPlayerProps) {
 
         const newCi = await window.Dos(containerRef.current, {
           url: bundleUrl,
+          worker: true,
+          cycles: "auto",
+          memsiz: 32, // Reasonable memory for most DOS games
         });
 
         if (!isMounted) {

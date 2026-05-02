@@ -12,7 +12,7 @@ export function GameCard({ game }: { game: Game }) {
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-muted">
         <img
-          src={game.thumbnail}
+          src={game.thumbnail.includes('archive.org') ? `${game.thumbnail}?width=400` : game.thumbnail}
           alt={game.title}
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
