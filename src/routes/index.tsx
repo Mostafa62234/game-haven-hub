@@ -42,7 +42,7 @@ function HomePage() {
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Button asChild size="lg" className="rounded-full bg-gradient-primary shadow-glow hover:opacity-95">
-              <Link to="/games">
+              <Link to="/games" search={{ category: "Flash" }}>
                 Browse all games <ArrowRight className="ml-1 h-4 w-4" />
               </Link>
             </Button>
@@ -80,6 +80,16 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Flash Legends */}
+      <section className="mt-14">
+        <SectionHeader title="🔥 Flash Legends" actionLabel="See all" actionTo="/games?category=Flash" />
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+          {flashLegends.map((g) => (
+            <GameCard key={g.slug} game={g} />
+          ))}
+        </div>
+      </section>
+
       {/* Trending */}
       <section className="mt-14">
         <SectionHeader title="🔥 Trending now" actionLabel="See all" actionTo="/games" />
@@ -90,15 +100,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Flash Legends */}
-      <section className="mt-14">
-        <SectionHeader title="🔥 Flash Legends" actionLabel="See all" actionTo="/games?category=Flash" />
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          {flashLegends.map((g) => (
-            <GameCard key={g.slug} game={g} />
-          ))}
-        </div>
-      </section>
 
       {/* Featured grid */}
       <section className="mt-14">

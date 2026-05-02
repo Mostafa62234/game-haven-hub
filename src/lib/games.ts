@@ -325,7 +325,7 @@ export const GAMES: Game[] = [
     category: "Retro",
     thumbnail:
       "https://tse2.mm.bing.net/th?q=Wolfenstein%203D%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/msdos_Wolfenstein_3D_1992",
+    embed: "https://archive.org/embed/msdos_Wolfenstein_3D_1992?autoplay=1",
     rating: 4.6,
     plays: 3300000,
     tags: ["fps", "90s", "id-software"],
@@ -339,7 +339,7 @@ export const GAMES: Game[] = [
     category: "Retro",
     thumbnail:
       "https://tse2.mm.bing.net/th?q=The%20Oregon%20Trail%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/msdos_Oregon_Trail_The_1990",
+    embed: "https://archive.org/embed/msdos_Oregon_Trail_The_1990?autoplay=1",
     rating: 4.4,
     plays: 4200000,
     tags: ["classic", "educational", "90s"],
@@ -353,7 +353,7 @@ export const GAMES: Game[] = [
     category: "Puzzle",
     thumbnail:
       "https://tse2.mm.bing.net/th?q=Lemmings%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/msdos_Lemmings_1991",
+    embed: "https://archive.org/embed/msdos_Lemmings_1991?autoplay=1",
     rating: 4.7,
     plays: 2900000,
     tags: ["puzzle", "platformer", "90s"],
@@ -367,7 +367,7 @@ export const GAMES: Game[] = [
     category: "Retro",
     thumbnail:
       "https://tse2.mm.bing.net/th?q=Donkey%20Kong%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/msdos_Donkey_Kong_1983",
+    embed: "https://archive.org/embed/msdos_Donkey_Kong_1983?autoplay=1",
     rating: 4.8,
     plays: 1500000,
     tags: ["arcade", "80s", "platformer"],
@@ -415,7 +415,7 @@ export const GAMES: Game[] = [
     description: "The pioneering 1985 RPG that defined moral choices in gaming.",
     category: "Retro",
     thumbnail: "https://tse2.mm.bing.net/th?q=Ultima%20IV%3A%20Quest%20of%20the%20Avatar%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/msdos_Ultima_IV_-_Quest_of_the_Avatar_1985",
+    embed: "https://archive.org/embed/msdos_Ultima_IV_-_Quest_of_the_Avatar_1985?autoplay=1",
     rating: 4.6,
     plays: 850000,
     tags: ["rpg", "80s", "classic"],
@@ -440,7 +440,7 @@ export const GAMES: Game[] = [
     description: "The classic Western shootout Flash game. Draw your weapon and test your reflexes.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Gunblood%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/gunblood_flash",
+    embed: "https://archive.org/embed/gunblood_flash?autoplay=1",
     rating: 4.5,
     plays: 5200000,
     tags: ["flash", "shooter", "action"],
@@ -452,7 +452,7 @@ export const GAMES: Game[] = [
     description: "The notoriously gory and hilarious physics-based ragdoll Flash game.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Happy%20Wheels%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/happy-wheels-flash",
+    embed: "https://archive.org/embed/happy-wheels-flash?autoplay=1",
     rating: 4.9,
     plays: 85000000,
     tags: ["flash", "physics", "funny"],
@@ -464,7 +464,7 @@ export const GAMES: Game[] = [
     description: "Bake pies and manage the shop in the Flash game that launched a cooking empire.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Papa's%20Pizzeria%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/papas-pizzeria_flash",
+    embed: "https://archive.org/embed/papas-pizzeria_flash?autoplay=1",
     rating: 4.8,
     plays: 22000000,
     tags: ["flash", "cooking", "simulation"],
@@ -477,10 +477,10 @@ export const GAMES: Game[] = [
     description: "Grill burgers and build them high.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Papa's%20Burgeria%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/PapasBurgeriav1.0.3",
+    embed: "https://archive.org/embed/PapasBurgeriav1.0.3?autoplay=1",
     rating: 4.6,
     plays: 22000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -489,10 +489,10 @@ export const GAMES: Game[] = [
     description: "Mix up frozen treats on the island.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Papa's%20Freezeria%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/papasfreezeria_202011",
+    embed: "https://archive.org/embed/papasfreezeria_202011?autoplay=1",
     rating: 4.4,
     plays: 30000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -501,10 +501,10 @@ export const GAMES: Game[] = [
     description: "Build tacos for crazy customers.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Papa's%20Taco%20Mia%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/papastacomia_202008",
+    embed: "https://archive.org/embed/papastacomia_202008?autoplay=1",
     rating: 4.1,
     plays: 18000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -513,10 +513,10 @@ export const GAMES: Game[] = [
     description: "Bake and frost cupcakes.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Papa's%20Cupcakeria%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/papascupcakeria_v2",
+    embed: "https://archive.org/embed/papascupcakeria_v2?autoplay=1",
     rating: 4.6,
     plays: 19000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -525,10 +525,10 @@ export const GAMES: Game[] = [
     description: "Help Wheely the little red car reach the exit.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Wheely%201%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/wheely-1",
+    embed: "https://archive.org/embed/wheely-1?autoplay=1",
     rating: 4.3,
     plays: 12000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -537,10 +537,10 @@ export const GAMES: Game[] = [
     description: "Wheely goes on an adventure to find his love.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Wheely%202%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/wheely-2",
+    embed: "https://archive.org/embed/wheely-2?autoplay=1",
     rating: 4.9,
     plays: 11000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -549,10 +549,10 @@ export const GAMES: Game[] = [
     description: "Guide Snail Bob to his new home.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Snail%20Bob%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/snail-bob-1_202403",
+    embed: "https://archive.org/embed/snail-bob-1_202403?autoplay=1",
     rating: 4.1,
     plays: 15000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -561,10 +561,10 @@ export const GAMES: Game[] = [
     description: "High octane arena shooter with customizable guns.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Gun%20Mayhem%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/gunmayhem",
+    embed: "https://archive.org/embed/gunmayhem?autoplay=1",
     rating: 4.7,
     plays: 45000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -573,10 +573,10 @@ export const GAMES: Game[] = [
     description: "More guns, more maps, more mayhem.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Gun%20Mayhem%202%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/gun-mayhem-two",
+    embed: "https://archive.org/embed/gun-mayhem-two?autoplay=1",
     rating: 4.8,
     plays: 40000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -585,10 +585,10 @@ export const GAMES: Game[] = [
     description: "Fight aliens and robots in this futuristic arena shooter.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Raze%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/raze-2",
+    embed: "https://archive.org/embed/raze-2?autoplay=1",
     rating: 4.4,
     plays: 35000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
 
@@ -598,10 +598,10 @@ export const GAMES: Game[] = [
     description: "Level up 4 unique classes in this arena shooter.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Strike%20Force%20Heroes%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/strikeforceheroes_202310",
+    embed: "https://archive.org/embed/strikeforceheroes_202310?autoplay=1",
     rating: 4.4,
     plays: 50000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -610,10 +610,10 @@ export const GAMES: Game[] = [
     description: "More classes and a deeper campaign.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Strike%20Force%20Heroes%202%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/strikeforceheroes2_202310",
+    embed: "https://archive.org/embed/strikeforceheroes2_202310?autoplay=1",
     rating: 4.3,
     plays: 45000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -622,10 +622,10 @@ export const GAMES: Game[] = [
     description: "Classic side-scrolling madness combat.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Madness%20Interactive%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/madness_202303",
+    embed: "https://archive.org/embed/madness_202303?autoplay=1",
     rating: 4.4,
     plays: 25000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -634,10 +634,10 @@ export const GAMES: Game[] = [
     description: "Command your army and conquer Inamorta.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Stick%20War%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/stick-war-2.5-user-control",
+    embed: "https://archive.org/embed/stick-war-2.5-user-control?autoplay=1",
     rating: 4.2,
     plays: 55000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -646,10 +646,10 @@ export const GAMES: Game[] = [
     description: "Evolve your base from the stone age to the future.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Age%20of%20War%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/age-of-war-3",
+    embed: "https://archive.org/embed/age-of-war-3?autoplay=1",
     rating: 4.4,
     plays: 48000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -658,10 +658,10 @@ export const GAMES: Game[] = [
     description: "Move the red square to the green zone. It is harder than it looks.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=World's%20Hardest%20Game%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/flash_theworldshardestgame2",
+    embed: "https://archive.org/embed/flash_theworldshardestgame2?autoplay=1",
     rating: 4.5,
     plays: 35000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -670,10 +670,10 @@ export const GAMES: Game[] = [
     description: "Train your duck to become the ultimate racer.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Duck%20Life%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/duck-life",
+    embed: "https://archive.org/embed/duck-life?autoplay=1",
     rating: 4.4,
     plays: 20000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -682,10 +682,10 @@ export const GAMES: Game[] = [
     description: "Draw a track and watch Bosh ride the sled.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Line%20Rider%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/flash_Line_Rider_2",
+    embed: "https://archive.org/embed/flash_Line_Rider_2?autoplay=1",
     rating: 4.3,
     plays: 33000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -694,10 +694,10 @@ export const GAMES: Game[] = [
     description: "Penguins can fly if you strap rockets to them.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Learn%20to%20Fly%202%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/learn-to-fly-2_202210",
+    embed: "https://archive.org/embed/learn-to-fly-2_202210?autoplay=1",
     rating: 4.3,
     plays: 25000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -706,10 +706,10 @@ export const GAMES: Game[] = [
     description: "Drive your car through a zombie apocalypse.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Earn%20to%20Die%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/earn-to-die-2016",
+    embed: "https://archive.org/embed/earn-to-die-2016?autoplay=1",
     rating: 4.9,
     plays: 30000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -718,10 +718,10 @@ export const GAMES: Game[] = [
     description: "Gladiator combat RPG.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Swords%20and%20Sandals%202%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/swords-and-sandals-2-demo_flash",
+    embed: "https://archive.org/embed/swords-and-sandals-2-demo_flash?autoplay=1",
     rating: 4.3,
     plays: 22000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -730,10 +730,10 @@ export const GAMES: Game[] = [
     description: "Insane arena brawler with wacky weapons.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Chaos%20Faction%202%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/chaos-faction-2-5645",
+    embed: "https://archive.org/embed/chaos-faction-2-5645?autoplay=1",
     rating: 4.8,
     plays: 16000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -742,10 +742,10 @@ export const GAMES: Game[] = [
     description: "Clear planets of mutants and zombies.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Zombotron%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/575535-zombotron_202504",
+    embed: "https://archive.org/embed/575535-zombotron_202504?autoplay=1",
     rating: 4.9,
     plays: 17000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -754,10 +754,10 @@ export const GAMES: Game[] = [
     description: "Escape from school in this classic point and click adventure.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Riddle%20School%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/riddleschool5_202011",
+    embed: "https://archive.org/embed/riddleschool5_202011?autoplay=1",
     rating: 4.2,
     plays: 11000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -766,10 +766,10 @@ export const GAMES: Game[] = [
     description: "Dig deep into Mars for rare minerals.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Motherload%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/motherload_202209",
+    embed: "https://archive.org/embed/motherload_202209?autoplay=1",
     rating: 4.4,
     plays: 27000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -778,10 +778,10 @@ export const GAMES: Game[] = [
     description: "Fry up chicken wings in Starlight City.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Papa's%20Wingeria%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/papaswingeria_v2",
+    embed: "https://archive.org/embed/papaswingeria_v2?autoplay=1",
     rating: 4.3,
     plays: 18000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
   {
@@ -790,10 +790,10 @@ export const GAMES: Game[] = [
     description: "Stack pancakes and waffles for the locals.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Papa's%20Pancakeria%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/papas-pancakeria-game",
+    embed: "https://archive.org/embed/papas-pancakeria-game?autoplay=1",
     rating: 4.6,
     plays: 16000000,
-    tags: ["flash", "classic", "retro"],
+    tags: ["flash", "classic"],
     source: "Internet Archive"
   },
 ];

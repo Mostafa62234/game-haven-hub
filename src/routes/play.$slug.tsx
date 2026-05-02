@@ -114,9 +114,7 @@ function PlayPage() {
                   <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
                   {game.rating.toFixed(1)}
                 </span>
-                <span className="flex items-center gap-1">
-                  <Users className="h-4 w-4" /> {game.plays} plays
-                </span>
+
               </div>
             </div>
             <div className="flex gap-2">

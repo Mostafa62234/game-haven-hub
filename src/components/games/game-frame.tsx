@@ -52,7 +52,7 @@ export function GameFrame({ embed, title }: GameFrameProps) {
         <iframe
           src={embed}
           title={title}
-          loading="lazy"
+
           allow="autoplay; fullscreen; gamepad; cross-origin-isolated"
           allowFullScreen
           referrerPolicy="no-referrer"
