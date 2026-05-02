@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { Loader2, Play, AlertCircle } from "lucide-react";
+import { Loader2, Play, AlertCircle, Download } from "lucide-react";
+import { Progress } from "@/components/ui/progress";
 
 interface DosPlayerProps {
   bundleUrl: string;
@@ -19,83 +20,134 @@ export function DosPlayer({ bundleUrl, thumbnail, title }: DosPlayerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [downloadProgress, setDownloadProgress] = useState(0);
+  const [loadingStatus, setLoadingStatus] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const ciRef = useRef<any>(null);
+  const blobUrlRef = useRef<string | null>(null);
+
+  const fetchBundleWithCache = async (url: string): Promise<string> => {
+    const cacheName = "game-haven-assets-v1";
+    try {
+      const cache = await caches.open(cacheName);
+      const cachedResponse = await cache.match(url);
+      if (cachedResponse) {
+        setDownloadProgress(100);
+        setLoadingStatus("Loading from local cache...");
+        const blob = await cachedResponse.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        blobUrlRef.current = blobUrl;
+        return blobUrl;
+      }
+    } catch (e) {
+      console.warn("Cache API not available:", e);
+    }
+
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", url, true);
+      xhr.responseType = "blob";
+
+      xhr.onprogress = (event) => {
+        if (event.lengthComputable) {
+          const percent = Math.round((event.loaded / event.total) * 100);
+          setDownloadProgress(percent);
+          setLoadingStatus(`Downloading game data... ${percent}%`);
+        } else {
+          setLoadingStatus("Downloading game data...");
+        }
+      };
+
+      xhr.onload = async () => {
+        if (xhr.status === 200) {
+          const blob = xhr.response;
+          try {
+            const cache = await caches.open(cacheName);
+            await cache.put(url, new Response(blob));
+          } catch (e) {
+            console.warn("Failed to save to cache:", e);
+          }
+          const blobUrl = URL.createObjectURL(blob);
+          blobUrlRef.current = blobUrl;
+          resolve(blobUrl);
+        } else {
+          reject(new Error(`Failed to download game (HTTP ${xhr.status})`));
+        }
+      };
+
+      xhr.onerror = () => reject(new Error("Network error during game download."));
+      xhr.send();
+    });
+  };
+
+  const handlePlay = async () => {
+    setIsPlaying(true);
+    setIsLoading(true);
+    setDownloadProgress(0);
+    setError(null);
+    setLoadingStatus("Preparing emulator...");
+
+    try {
+      // 1. Load JS-DOS dependencies
+      if (!document.querySelector('link[href*="js-dos.css"]')) {
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = "https://v8.js-dos.com/latest/js-dos.css";
+        document.head.appendChild(link);
+      }
+
+      if (!window.Dos) {
+        setLoadingStatus("Loading JS-DOS core...");
+        await new Promise<void>((resolve, reject) => {
+          const script = document.createElement("script");
+          script.src = "https://v8.js-dos.com/latest/js-dos.js";
+          script.onload = () => resolve();
+          script.onerror = () => reject(new Error("Failed to load JS-DOS library."));
+          document.head.appendChild(script);
+        });
+      }
+
+      // 2. Fetch game bundle with cache
+      const localBundleUrl = await fetchBundleWithCache(bundleUrl);
+
+      if (!containerRef.current) return;
+
+      // 3. Initialize DOS
+      setLoadingStatus("Booting system...");
+      const newCi = await window.Dos(containerRef.current, {
+        url: localBundleUrl,
+        worker: true,
+        cycles: "auto",
+        memsiz: 32,
+      });
+
+      ciRef.current = newCi;
+    } catch (err: any) {
+      console.error("JS-DOS Error:", err);
+      setError(err?.message || "Failed to launch game.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    if (!isPlaying) return;
-    if (!containerRef.current) return;
-
-    let ci: any = null;
-    let isMounted = true;
-
-    const initDos = async () => {
-      setIsLoading(true);
-      setError(null);
-
-      try {
-        // Load CSS
-        if (!document.querySelector('link[href*="js-dos.css"]')) {
-          const link = document.createElement("link");
-          link.rel = "stylesheet";
-          link.href = "https://v8.js-dos.com/latest/js-dos.css";
-          document.head.appendChild(link);
-        }
-
-        // Load JS
-        if (!window.Dos) {
-          await new Promise<void>((resolve, reject) => {
-            const script = document.createElement("script");
-            script.src = "https://v8.js-dos.com/latest/js-dos.js";
-            script.onload = () => resolve();
-            script.onerror = () => reject(new Error("Failed to load js-dos"));
-            document.head.appendChild(script);
-          });
-        }
-
-        if (!isMounted || !containerRef.current) return;
-
-        // window.emulators.pathPrefix = "https://v8.js-dos.com/latest/emulators/";
-
-        const newCi = await window.Dos(containerRef.current, {
-          url: bundleUrl,
-          worker: true,
-          cycles: "auto",
-          memsiz: 32, // Reasonable memory for most DOS games
-        });
-
-        if (!isMounted) {
-          newCi.exit();
-        } else {
-          ci = newCi;
-        }
-      } catch (err: any) {
-        console.error("JS-DOS Error:", err);
-        setError(err?.message || "Failed to load game.");
-      } finally {
-        if (isMounted) setIsLoading(false);
-      }
-    };
-
-    initDos();
-
     return () => {
-      isMounted = false;
-      if (ci) {
-        try { ci.exit(); } catch (e) { console.error("Error exiting js-dos", e); }
+      if (ciRef.current) {
+        try { ciRef.current.exit(); } catch (e) {}
       }
+      if (blobUrlRef.current) URL.revokeObjectURL(blobUrlRef.current);
     };
-  }, [isPlaying, bundleUrl]);
+  }, []);
 
   return (
     <div className="relative h-full w-full bg-black overflow-hidden rounded-2xl">
-      {/* Click-to-Play overlay */}
       {!isPlaying && (
         <div className="absolute inset-0 flex flex-col items-center justify-center z-20">
           {thumbnail && (
             <>
               <img
-                src={thumbnail}
-                alt={title || "Game Thumbnail"}
+                src={thumbnail.includes('archive.org') ? `${thumbnail}?width=600` : thumbnail}
+                alt={title}
                 className="absolute inset-0 h-full w-full object-cover opacity-50 blur-sm scale-110"
               />
               <div className="absolute inset-0 bg-black/50" />
@@ -103,40 +155,44 @@ export function DosPlayer({ bundleUrl, thumbnail, title }: DosPlayerProps) {
           )}
           <div className="relative z-10 flex flex-col items-center">
             <button
-              onClick={() => setIsPlaying(true)}
-              className="flex h-20 w-20 items-center justify-center rounded-full bg-primary/90 text-primary-foreground shadow-glow transition-transform hover:scale-110 hover:bg-primary"
-              aria-label={`Play ${title || 'Game'}`}
+              onClick={handlePlay}
+              className="flex h-20 w-20 items-center justify-center rounded-full bg-primary/90 text-primary-foreground shadow-glow transition-all hover:scale-110 active:scale-95"
             >
               <Play className="ml-2 h-10 w-10 fill-current" />
             </button>
-            <span className="mt-4 text-sm font-medium text-white/90 tracking-wide drop-shadow-md">
+            <span className="mt-4 text-sm font-bold text-white tracking-widest drop-shadow-lg">
               CLICK TO PLAY
-            </span>
-            <span className="mt-2 text-xs text-white/50 max-w-xs text-center">
-              First load may take 1–3 min. Will be cached for instant future plays.
             </span>
           </div>
         </div>
       )}
 
-      {/* Loading spinner */}
-      {isPlaying && isLoading && (
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-background/80 backdrop-blur-sm">
-          <Loader2 className="h-10 w-10 animate-spin text-primary" />
-          <p className="mt-4 font-medium text-foreground animate-pulse">Launching Emulator...</p>
-          <p className="mt-2 text-xs text-muted-foreground">Downloading game bundle, please wait...</p>
+      {isLoading && (
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-background/95 backdrop-blur-md p-8 text-center">
+          <div className="mb-8 relative">
+            <Loader2 className="h-16 w-16 animate-spin text-primary opacity-20" />
+            <Download className="absolute inset-0 m-auto h-8 w-8 text-primary animate-bounce" />
+          </div>
+          <h3 className="text-xl font-bold mb-2">Preparing {title}</h3>
+          <p className="text-muted-foreground text-sm mb-6 max-w-xs">{loadingStatus}</p>
+          <div className="w-full max-w-xs space-y-2">
+            <Progress value={downloadProgress} className="h-2" />
+            <div className="flex justify-between text-[10px] uppercase tracking-tighter text-muted-foreground font-bold">
+              <span>Establishing Connection</span>
+              <span>{downloadProgress}%</span>
+            </div>
+          </div>
         </div>
       )}
 
-      {/* Error state */}
       {error && (
         <div className="absolute inset-0 z-30 flex flex-col items-center justify-center bg-background/95 p-6 text-center">
           <AlertCircle className="mb-4 h-12 w-12 text-destructive" />
-          <h3 className="text-xl font-bold">Game Failed to Load</h3>
-          <p className="mt-2 text-muted-foreground max-w-sm">{error}</p>
+          <h3 className="text-xl font-bold">System Error</h3>
+          <p className="mt-2 text-muted-foreground text-sm max-w-sm">{error}</p>
           <button
             onClick={() => { setIsPlaying(false); setError(null); }}
-            className="mt-6 rounded-md bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground hover:bg-secondary/80"
+            className="mt-8 rounded-full bg-secondary px-8 py-2 text-sm font-bold text-secondary-foreground hover:bg-secondary/80"
           >
             Try Again
           </button>
@@ -147,3 +203,4 @@ export function DosPlayer({ bundleUrl, thumbnail, title }: DosPlayerProps) {
     </div>
   );
 }
+

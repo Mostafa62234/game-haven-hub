@@ -34,7 +34,25 @@ export function RufflePlayer({ swfUrl, thumbnail, title }: RufflePlayerProps) {
     });
   };
 
-  const fetchSwfWithProgress = (url: string): Promise<string> => {
+  const fetchSwfWithProgress = async (url: string): Promise<string> => {
+    // 1. Try to get from Cache API first
+    const cacheName = "game-haven-assets-v1";
+    try {
+      const cache = await caches.open(cacheName);
+      const cachedResponse = await cache.match(url);
+      if (cachedResponse) {
+        setDownloadProgress(100);
+        setLoadingStatus("Loading from local cache...");
+        const blob = await cachedResponse.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        blobUrlRef.current = blobUrl;
+        return blobUrl;
+      }
+    } catch (e) {
+      console.warn("Cache API not available:", e);
+    }
+
+    // 2. Not in cache, download with progress
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.open("GET", url, true);
@@ -50,9 +68,19 @@ export function RufflePlayer({ swfUrl, thumbnail, title }: RufflePlayerProps) {
         }
       };
 
-      xhr.onload = () => {
+      xhr.onload = async () => {
         if (xhr.status === 200) {
-          const blobUrl = URL.createObjectURL(xhr.response);
+          const blob = xhr.response;
+          
+          // Save to cache for next time
+          try {
+            const cache = await caches.open(cacheName);
+            await cache.put(url, new Response(blob));
+          } catch (e) {
+            console.warn("Failed to save to cache:", e);
+          }
+
+          const blobUrl = URL.createObjectURL(blob);
           blobUrlRef.current = blobUrl;
           resolve(blobUrl);
         } else {
@@ -64,6 +92,7 @@ export function RufflePlayer({ swfUrl, thumbnail, title }: RufflePlayerProps) {
       xhr.send();
     });
   };
+
 
   const handlePlay = async () => {
     setIsPlaying(true);
