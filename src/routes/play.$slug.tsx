@@ -16,25 +16,25 @@ export const Route = createFileRoute("/play/$slug")({
   loader: async ({ params }) => {
     const slug = params.slug.toLowerCase();
     
-    // 1. Try static library
-    let game = getGame(slug);
-    
-    // 2. Try database (for custom games)
-    if (!game) {
-      const { data } = await supabase
-        .from("admin_games")
-        .select("*")
-        .eq("slug", slug)
-        .maybeSingle();
-      
-      if (data) {
-        game = {
-          ...data,
-          rating: 4.5,
-          plays: 0,
-          tags: [],
-        } as Game;
-      }
+    // 1. Try database first (allows admin to override built-in games)
+    const { data: dbGame } = await supabase
+      .from("admin_games")
+      .select("*")
+      .eq("slug", slug)
+      .maybeSingle();
+
+    let game: Game | undefined;
+
+    if (dbGame) {
+      game = {
+        ...dbGame,
+        rating: 4.5,
+        plays: 0,
+        tags: [],
+      } as Game;
+    } else {
+      // 2. Fallback to static library
+      game = getGame(slug);
     }
 
     if (!game) throw notFound();

@@ -634,21 +634,7 @@ export const GAMES: Game[] = [
     ],
     source: "Internet Archive"
   },
-  {
-    slug: "age-of-war",
-    title: "Age of War",
-    description: "Evolve your base from the stone age to the future.",
-    category: "Flash",
-    thumbnail: "https://tse2.mm.bing.net/th?q=Age%20of%20War%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/age-of-war-3/Age_Of_War_3.swf",
-    rating: 4.4,
-    plays: 48000000,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
+
   {
     slug: "worlds-hardest-game",
     title: "World's Hardest Game",
@@ -1729,21 +1715,7 @@ export const GAMES: Game[] = [
     ],
     source: "Internet Archive"
   },
-  {
-    slug: "age-of-war-2",
-    title: "Age of War",
-    description: "Created by Louissi. Take control of 16 different units and 15 different turrets to defend your base and destroy your ennemy. In this game, you star...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/flash_age_of_war",
-    embed: "ruffle:https://archive.org/cors/flash_age_of_war/age_of_war.swf",
-    rating: 4.7,
-    plays: 72743,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
+
   {
     slug: "talking-tom-cat-2-flash-version",
     title: "Talking Tom Cat 2 (Flash Version)",
