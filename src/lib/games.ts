@@ -2422,6 +2422,74 @@ export const GAMES: Game[] = [
       "classic"
     ],
     source: "Internet Archive"
+  },
+  {
+    slug: "sushi-cat",
+    title: "Sushi Cat",
+    description: "Feed the blue cat as much sushi as possible to help him reach his true love!",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/sushi-cat-flash-game-series",
+    embed: "ruffle:https://archive.org/cors/sushi-cat-flash-game-series/sushi-cat.swf",
+    rating: 4.8,
+    plays: 2500000,
+    tags: [
+      "flash",
+      "physics",
+      "puzzle",
+      "classic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "sushi-cat-honeymoon",
+    title: "Sushi Cat: Honeymoon",
+    description: "Feed the blue cat as much sushi as possible to help him reach his true love!",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/sushi-cat-flash-game-series",
+    embed: "ruffle:https://archive.org/cors/sushi-cat-flash-game-series/sushicatthehoneymoon.swf",
+    rating: 4.8,
+    plays: 2500000,
+    tags: [
+      "flash",
+      "physics",
+      "puzzle",
+      "classic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "sushi-cat-2",
+    title: "Sushi Cat 2",
+    description: "Feed the blue cat as much sushi as possible to help him reach his true love!",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/sushi-cat-flash-game-series",
+    embed: "ruffle:https://archive.org/cors/sushi-cat-flash-game-series/sushicat2ag.swf",
+    rating: 4.8,
+    plays: 2500000,
+    tags: [
+      "flash",
+      "physics",
+      "puzzle",
+      "classic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "sushi-cat-2-purrade",
+    title: "Sushi Cat 2: The Great Purrade",
+    description: "Feed the blue cat as much sushi as possible to help him reach his true love!",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/sushi-cat-flash-game-series",
+    embed: "ruffle:https://archive.org/cors/sushi-cat-flash-game-series/sushicat2thegreatpurrade.swf",
+    rating: 4.8,
+    plays: 2500000,
+    tags: [
+      "flash",
+      "physics",
+      "puzzle",
+      "classic"
+    ],
+    source: "Internet Archive"
   }
 ];
 
