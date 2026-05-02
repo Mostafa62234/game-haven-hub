@@ -2553,7 +2553,8 @@ export const CATEGORIES: GameCategory[] = [
 ];
 
 export function getGame(slug: string): Game | undefined {
-  return GAMES.find((g) => g.slug === slug);
+  const lowerSlug = slug.toLowerCase();
+  return GAMES.find((g) => g.slug.toLowerCase() === lowerSlug);
 }
 
 export function getRelatedGames(game: Game, count = 4): Game[] {
@@ -2562,3 +2563,4 @@ export function getRelatedGames(game: Game, count = 4): Game[] {
     .concat(GAMES.filter((g) => g.slug !== game.slug && g.category !== game.category))
     .slice(0, count);
 }
+
