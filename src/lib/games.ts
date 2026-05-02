@@ -3207,24 +3207,3 @@ export const CATEGORIES: GameCategory[] = [
     source: "Internet Archive"
   }
 ];
-
-export function getGame(slug: string): Game | undefined {
-  return GAMES.find((g) => g.slug === slug);
-}
-
-export function getRelatedGames(game: Game, count = 4): Game[] {
-  return GAMES.filter((g) => g.slug !== game.slug && g.category === game.category)
-    .slice(0, count)
-    .concat(GAMES.filter((g) => g.slug !== game.slug && g.category !== game.category))
-    .slice(0, count);
-}
-if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.DEV) {
-  const seenUrls = new Set();
-  const seenTitles = new Set();
-  GAMES.forEach((game) => {
-    if (seenUrls.has(game.embed)) console.warn("[Validation] Duplicate game URL: " + game.embed);
-    if (seenTitles.has(game.title)) console.warn("[Validation] Duplicate game title: " + game.title);
-    seenUrls.add(game.embed);
-    seenTitles.add(game.title);
-  });
-}

@@ -51,7 +51,7 @@ export function GameFrame({ embed, title, thumbnail }: GameFrameProps) {
           </div>
         )
       ) : isJsdos && jsdosBundle ? (
-        <DosPlayer bundleUrl={jsdosBundle} />
+        <DosPlayer bundleUrl={jsdosBundle} thumbnail={thumbnail} title={title} />
       ) : isRuffle && ruffleSwf ? (
         <RufflePlayer swfUrl={ruffleSwf} thumbnail={thumbnail} title={title} />
       ) : (
