@@ -233,21 +233,27 @@ function AdminDashboard() {
                   <thead className="bg-muted/50 text-[10px] uppercase tracking-widest font-bold text-muted-foreground border-b">
                     <tr>
                       <th className="px-6 py-4">Game</th>
+                      <th className="px-6 py-4">Slug</th>
                       <th className="px-6 py-4">Status</th>
                       <th className="px-6 py-4 text-right">Actions</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y">
-                    {/* Filtered view of combined library */}
-                    {[...GAMES, ...dbStatus.filter(dg => !GAMES.find(sg => sg.slug === dg.slug))]
-                      .filter(g => g.title.toLowerCase().includes(searchTerm.toLowerCase()))
-                      .map(game => {
-                        const dbEntry = dbStatus.find(d => d.slug === game.slug);
+                    {/* Combined view: show everything in DB + everything in static GAMES */}
+                    {Array.from(new Set([...GAMES.map(g => g.slug), ...dbStatus.map(g => g.slug)]))
+                      .map(slug => {
+                        const staticGame = GAMES.find(g => g.slug === slug);
+                        const dbEntry = dbStatus.find(d => d.slug === slug);
+                        const isCustom = !staticGame;
+                        const game = dbEntry || staticGame;
+
+                        if (!game) return null;
+                        if (searchTerm && !game.title.toLowerCase().includes(searchTerm.toLowerCase()) && !slug.includes(searchTerm.toLowerCase())) return null;
+
                         const isHidden = dbEntry?.hidden || false;
-                        const isCustom = !GAMES.find(sg => sg.slug === game.slug);
 
                         return (
-                          <tr key={game.slug} className="hover:bg-muted/30 transition-colors">
+                          <tr key={slug} className="hover:bg-muted/30 transition-colors">
                             <td className="px-6 py-4">
                               <div className="flex items-center gap-3">
                                 <img src={game.thumbnail} className="h-10 w-10 rounded-lg object-cover bg-muted" />
@@ -256,6 +262,9 @@ function AdminDashboard() {
                                   <div className="text-[10px] text-muted-foreground uppercase tracking-tight">{game.category}</div>
                                 </div>
                               </div>
+                            </td>
+                            <td className="px-6 py-4">
+                              <code className="text-[10px] bg-muted px-1.5 py-0.5 rounded">{slug}</code>
                             </td>
                             <td className="px-6 py-4">
                               <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest ${
@@ -272,7 +281,7 @@ function AdminDashboard() {
                                   className="rounded-full"
                                   asChild
                                 >
-                                  <Link to="/play/$slug" params={{ slug: game.slug }}>
+                                  <Link to="/play/$slug" params={{ slug: slug }}>
                                     <ExternalLink className="h-4 w-4 text-primary" />
                                   </Link>
                                 </Button>
@@ -286,12 +295,13 @@ function AdminDashboard() {
                                 </Button>
 
 
-                                {isCustom && (
+                                {dbEntry && (
                                   <Button 
                                     variant="ghost" 
                                     size="sm" 
+                                    title={isCustom ? "Delete Game" : "Reset to Default"}
                                     className="rounded-full text-destructive hover:bg-destructive/10"
-                                    onClick={() => deleteCustomGame(game.slug)}
+                                    onClick={() => deleteCustomGame(slug)}
                                   >
                                     <Trash2 className="h-4 w-4" />
                                   </Button>
@@ -301,6 +311,7 @@ function AdminDashboard() {
                           </tr>
                         );
                       })}
+
                   </tbody>
                 </table>
               </div>
