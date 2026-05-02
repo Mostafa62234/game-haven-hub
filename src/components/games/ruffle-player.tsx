@@ -37,14 +37,13 @@ export function RufflePlayer({ swfUrl, thumbnail, title }: RufflePlayerProps) {
   const fetchSwfWithProgress = async (url: string): Promise<string> => {
     const cacheName = "game-haven-assets-v1";
     
-    // 1. Check if we have it in the permanent cache (Instant load, 0 data)
+    // 1. Try Cache API for instant load
     try {
       const cache = await caches.open(cacheName);
       const cachedResponse = await cache.match(url);
       if (cachedResponse) {
-        console.log("Loading from permanent cache...");
         setDownloadProgress(100);
-        setLoadingStatus("Launching from local storage...");
+        setLoadingStatus("Launching from local cache...");
         const blob = await cachedResponse.blob();
         const blobUrl = URL.createObjectURL(blob);
         blobUrlRef.current = blobUrl;
@@ -54,21 +53,47 @@ export function RufflePlayer({ swfUrl, thumbnail, title }: RufflePlayerProps) {
       console.warn("Cache check failed:", e);
     }
 
-    // 2. Not in cache? Return the direct URL immediately for "Streaming" start.
-    // This allows Ruffle to start playing the first few frames while downloading the rest.
-    console.log("Starting instant stream...");
-    setLoadingStatus("Streaming game data...");
-    
-    // Trigger background caching so it's ready for the next time
-    fetch(url).then(async (response) => {
-      if (response.ok) {
-        const cache = await caches.open(cacheName);
-        cache.put(url, response);
-      }
-    }).catch(e => console.warn("Background caching failed:", e));
+    // 2. Not in cache, download with manual progress bar
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", url, true);
+      xhr.responseType = "blob";
 
-    return url; // Return the direct URL for streaming
+      xhr.onprogress = (event) => {
+        if (event.lengthComputable) {
+          const percent = Math.round((event.loaded / event.total) * 100);
+          setDownloadProgress(percent);
+          setLoadingStatus(`Downloading game data... ${percent}%`);
+        } else {
+          setLoadingStatus("Downloading game data...");
+        }
+      };
+
+      xhr.onload = async () => {
+        if (xhr.status === 200) {
+          const blob = xhr.response;
+          
+          // Save to permanent cache for next time
+          try {
+            const cache = await caches.open(cacheName);
+            await cache.put(url, new Response(blob));
+          } catch (e) {
+            console.warn("Failed to save to cache:", e);
+          }
+
+          const blobUrl = URL.createObjectURL(blob);
+          blobUrlRef.current = blobUrl;
+          resolve(blobUrl);
+        } else {
+          reject(new Error(`Failed to download (HTTP ${xhr.status})`));
+        }
+      };
+
+      xhr.onerror = () => reject(new Error("Network error during download."));
+      xhr.send();
+    });
   };
+
 
 
 
