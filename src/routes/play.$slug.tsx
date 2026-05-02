@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { Star, Users, ArrowLeft, Heart, Share2 } from "lucide-react";
+import { Star, Users, ArrowLeft, Heart, Share2, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { GameFrame } from "@/components/games/game-frame";
@@ -89,6 +89,19 @@ function PlayPage() {
       <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
         <div>
           <GameFrame embed={game.embed} title={game.title} />
+
+          {game.embed.startsWith("jsdos:") && (
+            <div className="mt-4 flex items-start gap-3 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-amber-200/90">
+              <Info className="mt-0.5 h-5 w-5 shrink-0 text-amber-500" />
+              <div className="text-sm">
+                <p className="font-semibold text-amber-500">Native Emulator Enabled</p>
+                <p className="mt-1">
+                  Because this is a massive CD-ROM era game, the <strong>very first download may take 1 to 3 minutes</strong> depending on your connection. 
+                  However, the game will be securely cached on your PC, meaning it will launch <strong>instantly</strong> the next time you play!
+                </p>
+              </div>
+            </div>
+          )}
 
           <div className="mt-5 flex flex-wrap items-start justify-between gap-3">
             <div>

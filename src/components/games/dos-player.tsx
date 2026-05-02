@@ -47,10 +47,16 @@ export function DosPlayer({ bundleUrl }: DosPlayerProps) {
       window.emulators.pathPrefix = "https://v8.js-dos.com/latest/emulators/";
 
       try {
-        // JS-DOS v8 API expects options object
-        ci = window.Dos(containerRef.current, {
+        // JS-DOS v8 API expects options object and returns a Promise
+        const newCi = await window.Dos(containerRef.current, {
           url: bundleUrl,
         });
+        
+        if (!isMounted) {
+          newCi.exit();
+        } else {
+          ci = newCi;
+        }
       } catch (err) {
         console.error("JS-DOS Error:", err);
       }

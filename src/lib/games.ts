@@ -492,18 +492,7 @@ export function getRelatedGames(game: Game, count = 4): Game[] {
     tags: ["flash", "cooking", "simulation"],
     source: "Internet Archive"
   },
-  {
-    slug: "papas-pizzeria",
-    title: "Papa's Pizzeria",
-    description: "Bake and serve pizzas to hungry customers.",
-    category: "Flash",
-    thumbnail: "https://tse2.mm.bing.net/th?q=Papa's%20Pizzeria%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/papas-pizzeria_flash",
-    rating: 4.4,
-    plays: 25000000,
-    tags: ["flash", "classic", "retro"],
-    source: "Internet Archive"
-  },
+
   {
     slug: "papas-burgeria",
     title: "Papa's Burgeria",
@@ -624,18 +613,7 @@ export function getRelatedGames(game: Game, count = 4): Game[] {
     tags: ["flash", "classic", "retro"],
     source: "Internet Archive"
   },
-  {
-    slug: "raze-2",
-    title: "Raze 2",
-    description: "The epic sequel to the hit sci-fi shooter.",
-    category: "Flash",
-    thumbnail: "https://tse2.mm.bing.net/th?q=Raze%202%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/raze-2",
-    rating: 4.3,
-    plays: 32000000,
-    tags: ["flash", "classic", "retro"],
-    source: "Internet Archive"
-  },
+
   {
     slug: "strike-force-heroes",
     title: "Strike Force Heroes",
@@ -654,7 +632,7 @@ export function getRelatedGames(game: Game, count = 4): Game[] {
     description: "More classes and a deeper campaign.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Strike%20Force%20Heroes%202%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/ruffle-nightly-2021_05_19-web-selfhosted",
+    embed: "https://archive.org/embed/strikeforceheroes2_202310",
     rating: 4.3,
     plays: 45000000,
     tags: ["flash", "classic", "retro"],

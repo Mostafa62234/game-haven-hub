@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Star, Users } from "lucide-react";
+import { Star } from "lucide-react";
 import type { Game } from "@/lib/games";
 import { Badge } from "@/components/ui/badge";
 
@@ -22,13 +22,9 @@ export function GameCard({ game }: { game: Game }) {
           {game.category}
         </Badge>
         <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-foreground">
-          <span className="flex items-center gap-1 rounded-full bg-background/70 px-2 py-1 backdrop-blur">
-            <Star className="h-3 w-3 fill-current text-amber-400" />
+          <span className="flex items-center gap-1 text-amber-400">
+            <Star className="h-3 w-3 fill-current" />
             {game.rating.toFixed(1)}
-          </span>
-          <span className="flex items-center gap-1 rounded-full bg-background/70 px-2 py-1 backdrop-blur">
-            <Users className="h-3 w-3" />
-            {Intl.NumberFormat("en-US", { notation: "compact", maximumFractionDigits: 1 }).format(game.plays)}
           </span>
         </div>
       </div>
