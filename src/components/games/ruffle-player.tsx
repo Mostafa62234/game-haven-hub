@@ -110,7 +110,14 @@ export function RufflePlayer({ swfUrl, thumbnail, title }: RufflePlayerProps) {
       if (!RufflePlayer) throw new Error("RufflePlayer initialization failed.");
 
       setLoadingStatus("Streaming game data...");
-      const localSwfUrl = await fetchSwfWithProgress(swfUrl);
+      
+      // Normalize Archive.org URLs to use the CORS-friendly endpoint
+      let finalSwfUrl = swfUrl;
+      if (finalSwfUrl.includes("archive.org/download/")) {
+        finalSwfUrl = finalSwfUrl.replace("archive.org/download/", "archive.org/cors/");
+      }
+      
+      const localSwfUrl = await fetchSwfWithProgress(finalSwfUrl);
 
       const container = containerRef.current;
       if (!container) return;
