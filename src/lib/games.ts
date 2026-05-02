@@ -451,13 +451,12 @@ export const GAMES: Game[] = [
     ],
     source: "Internet Archive"
   },
-  {
     slug: "openttd",
     title: "OpenTTD",
-    description: "Open-source transport simulation game based on Transport Tycoon Deluxe.",
+    description: "Open-source transport simulation game based on Transport Tycoon Deluxe. Build a massive transport empire!",
     category: "Strategy",
     thumbnail: "https://tse2.mm.bing.net/th?q=OpenTTD%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://epicport.com/en/ttd",
+    embed: "https://openttdonline.com/play",
     rating: 4.8,
     plays: 1100000,
     tags: [
@@ -465,8 +464,9 @@ export const GAMES: Game[] = [
       "strategy",
       "open-source"
     ],
-    source: "EpicPort (OpenTTD Web)"
+    source: "OpenTTD Online (official)"
   },
+
   {
     slug: "gunblood",
     title: "Gunblood",
