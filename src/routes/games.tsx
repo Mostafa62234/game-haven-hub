@@ -32,12 +32,15 @@ export const Route = createFileRoute("/games")({
   component: GamesPage,
 });
 
+import { useGames } from "@/components/games-provider";
+
 function GamesPage() {
   const { q, category } = Route.useSearch();
   const navigate = Route.useNavigate();
+  const { games } = useGames();
 
   const filtered = useMemo(() => {
-    return GAMES.filter((g) => {
+    return games.filter((g) => {
       if (category && g.category !== category) return false;
       if (q) {
         const needle = q.toLowerCase();
@@ -49,7 +52,8 @@ function GamesPage() {
       }
       return true;
     });
-  }, [q, category]);
+  }, [q, category, games]);
+
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8">

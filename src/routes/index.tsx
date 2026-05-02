@@ -19,10 +19,15 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
+import { useGames } from "@/components/games-provider";
+
 function HomePage() {
-  const featured = GAMES.slice(0, 8);
-  const trending = GAMES.slice(2, 6);
-  const flashLegends = GAMES.filter((g) => g.category === "Flash").slice(0, 8);
+  const { games } = useGames();
+  
+  const featured = games.slice(0, 8);
+  const trending = games.slice(2, 6);
+  const flashLegends = games.filter((g) => g.category === "Flash").slice(0, 8);
+
 
   return (
     <div className="mx-auto max-w-7xl px-4">

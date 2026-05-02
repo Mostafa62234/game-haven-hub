@@ -89,19 +89,24 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
+import { GamesProvider } from "@/components/games-provider";
+
 function RootComponent() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <div className="flex min-h-screen flex-col">
-          <SiteHeader />
-          <main className="flex-1">
-            <Outlet />
-          </main>
-          <SiteFooter />
-        </div>
-        <Toaster />
+        <GamesProvider>
+          <div className="flex min-h-screen flex-col">
+            <SiteHeader />
+            <main className="flex-1">
+              <Outlet />
+            </main>
+            <SiteFooter />
+          </div>
+          <Toaster />
+        </GamesProvider>
       </AuthProvider>
     </ThemeProvider>
   );
 }
+
