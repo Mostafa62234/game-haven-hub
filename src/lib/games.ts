@@ -2286,6 +2286,142 @@ export const GAMES: Game[] = [
       "classic"
     ],
     source: "Internet Archive"
+  },
+  {
+    slug: "papas-pizzeria",
+    title: "Papa's Pizzeria",
+    description: "Manage your own restaurant in Papa's Pizzeria. Cook, serve, and keep your customers happy!",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/papas-pizzeria_flash",
+    embed: "ruffle:https://archive.org/cors/papas-pizzeria_flash/papas-pizzeria_flash.swf",
+    rating: 4.7,
+    plays: 5000000,
+    tags: [
+      "flash",
+      "cooking",
+      "management",
+      "classic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "papas-burgeria",
+    title: "Papa's Burgeria",
+    description: "Manage your own restaurant in Papa's Burgeria. Cook, serve, and keep your customers happy!",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/PapasBurgeriav1.0.3",
+    embed: "ruffle:https://archive.org/cors/PapasBurgeriav1.0.3/PapasBurgeriav1.0.3.swf",
+    rating: 4.7,
+    plays: 5000000,
+    tags: [
+      "flash",
+      "cooking",
+      "management",
+      "classic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "papas-hot-doggeria",
+    title: "Papa's Hot Doggeria",
+    description: "Manage your own restaurant in Papa's Hot Doggeria. Cook, serve, and keep your customers happy!",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/papas-hot-doggeria-game",
+    embed: "ruffle:https://archive.org/cors/papas-hot-doggeria-game/papashotdoggeria_v1.swf",
+    rating: 4.7,
+    plays: 5000000,
+    tags: [
+      "flash",
+      "cooking",
+      "management",
+      "classic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "papas-pastaria",
+    title: "Papa's Pastaria",
+    description: "Manage your own restaurant in Papa's Pastaria. Cook, serve, and keep your customers happy!",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/papas-pastaria-game",
+    embed: "ruffle:https://archive.org/cors/papas-pastaria-game/papaspastaria_v1.swf",
+    rating: 4.7,
+    plays: 5000000,
+    tags: [
+      "flash",
+      "cooking",
+      "management",
+      "classic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "papas-donuteria",
+    title: "Papa's Donuteria",
+    description: "Manage your own restaurant in Papa's Donuteria. Cook, serve, and keep your customers happy!",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/papas-donuteria-game",
+    embed: "ruffle:https://archive.org/cors/papas-donuteria-game/papasdonuteria_v1.swf",
+    rating: 4.7,
+    plays: 5000000,
+    tags: [
+      "flash",
+      "cooking",
+      "management",
+      "classic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "papas-cheeseria",
+    title: "Papa's Cheeseria",
+    description: "Manage your own restaurant in Papa's Cheeseria. Cook, serve, and keep your customers happy!",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/papas-cheeseria-game",
+    embed: "ruffle:https://archive.org/cors/papas-cheeseria-game/papascheeseria_v1.swf",
+    rating: 4.7,
+    plays: 5000000,
+    tags: [
+      "flash",
+      "cooking",
+      "management",
+      "classic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "papas-bakeria",
+    title: "Papa's Bakeria",
+    description: "Manage your own restaurant in Papa's Bakeria. Cook, serve, and keep your customers happy!",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/papas-bakeria-game",
+    embed: "ruffle:https://archive.org/cors/papas-bakeria-game/papasbakeria_v1.swf",
+    rating: 4.7,
+    plays: 5000000,
+    tags: [
+      "flash",
+      "cooking",
+      "management",
+      "classic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "papas-sushiria",
+    title: "Papa's Sushiria",
+    description: "Manage your own restaurant in Papa's Sushiria. Cook, serve, and keep your customers happy!",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/papas-sushiria-game",
+    embed: "ruffle:https://archive.org/cors/papas-sushiria-game/papassushiria_v1.swf",
+    rating: 4.7,
+    plays: 5000000,
+    tags: [
+      "flash",
+      "cooking",
+      "management",
+      "classic"
+    ],
+    source: "Internet Archive"
   }
 ];
 
