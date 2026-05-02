@@ -1,4 +1,4 @@
-export type GameCategory =
+﻿export type GameCategory =
   | "Arcade"
   | "Puzzle"
   | "Multiplayer"
@@ -25,7 +25,7 @@ export interface Game {
 
 // All embeds are open-source, official browser ports, or sites that
 // explicitly publish embeddable HTML5 builds. We do NOT host copyrighted
-// console ROMs (Mario, Zelda, etc.) — instead we offer faithful
+// console ROMs (Mario, Zelda, etc.) ΓÇö instead we offer faithful
 // open-source clones and the same retro arcade vibe.
 export const GAMES: Game[] = [
   // === Originals & classics ===
@@ -129,7 +129,7 @@ export const GAMES: Game[] = [
     slug: "pacman-doodle",
     title: "Pac-Man (Google Doodle)",
     description:
-      "The official Google 30th-anniversary Pac-Man doodle — the original arcade legend, playable in your browser.",
+      "The official Google 30th-anniversary Pac-Man doodle ΓÇö the original arcade legend, playable in your browser.",
     category: "Retro",
     thumbnail:
       "https://tse2.mm.bing.net/th?q=Pac-Man%20(Google%20Doodle)%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
@@ -440,7 +440,7 @@ export const GAMES: Game[] = [
     description: "The classic Western shootout Flash game. Draw your weapon and test your reflexes.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Gunblood%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/gunblood_flash/gunblood.swf",
+    embed: "https://archive.org/embed/gunblood_flash?autoplay=1",
     rating: 4.5,
     plays: 5200000,
     tags: ["flash", "shooter", "action"],
@@ -452,7 +452,7 @@ export const GAMES: Game[] = [
     description: "The notoriously gory and hilarious physics-based ragdoll Flash game.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Happy%20Wheels%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/happy-wheels-flash/happyWheels.swf",
+    embed: "https://archive.org/embed/happy-wheels-flash?autoplay=1",
     rating: 4.9,
     plays: 85000000,
     tags: ["flash", "physics", "funny"],
@@ -489,7 +489,7 @@ export const GAMES: Game[] = [
     description: "Mix up frozen treats on the island.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Papa's%20Freezeria%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/papasfreezeria_202011/papasfreezeria.swf",
+    embed: "https://archive.org/embed/papasfreezeria_202011?autoplay=1",
     rating: 4.4,
     plays: 30000000,
     tags: ["flash", "classic"],
@@ -501,7 +501,7 @@ export const GAMES: Game[] = [
     description: "Build tacos for crazy customers.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Papa's%20Taco%20Mia%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/papastacomia_202008/papastacomia_v2.swf",
+    embed: "https://archive.org/embed/papastacomia_202008?autoplay=1",
     rating: 4.1,
     plays: 18000000,
     tags: ["flash", "classic"],
@@ -513,7 +513,7 @@ export const GAMES: Game[] = [
     description: "Bake and frost cupcakes.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Papa's%20Cupcakeria%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/papascupcakeria_v2/papascupcakeria_v2.swf",
+    embed: "https://archive.org/embed/papascupcakeria_v2?autoplay=1",
     rating: 4.6,
     plays: 19000000,
     tags: ["flash", "classic"],
@@ -549,7 +549,7 @@ export const GAMES: Game[] = [
     description: "Guide Snail Bob to his new home.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Snail%20Bob%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/snail-bob-1_202403/Snail Bob 1.swf",
+    embed: "https://archive.org/embed/snail-bob-1_202403?autoplay=1",
     rating: 4.1,
     plays: 15000000,
     tags: ["flash", "classic"],
@@ -561,7 +561,7 @@ export const GAMES: Game[] = [
     description: "High octane arena shooter with customizable guns.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Gun%20Mayhem%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/gunmayhem/gunmayhem.swf",
+    embed: "https://archive.org/embed/gunmayhem?autoplay=1",
     rating: 4.7,
     plays: 45000000,
     tags: ["flash", "classic"],
@@ -573,7 +573,7 @@ export const GAMES: Game[] = [
     description: "More guns, more maps, more mayhem.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Gun%20Mayhem%202%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/gun-mayhem-two/Gun Mayhem 2 More Mayhem.swf",
+    embed: "https://archive.org/embed/gun-mayhem-two?autoplay=1",
     rating: 4.8,
     plays: 40000000,
     tags: ["flash", "classic"],
@@ -585,7 +585,7 @@ export const GAMES: Game[] = [
     description: "Fight aliens and robots in this futuristic arena shooter.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Raze%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/raze-2/Raze 2.swf",
+    embed: "https://archive.org/embed/raze-2?autoplay=1",
     rating: 4.4,
     plays: 35000000,
     tags: ["flash", "classic"],
@@ -598,7 +598,7 @@ export const GAMES: Game[] = [
     description: "Level up 4 unique classes in this arena shooter.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Strike%20Force%20Heroes%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/strikeforceheroes_202310/strikeforceheroes.swf",
+    embed: "https://archive.org/embed/strikeforceheroes_202310?autoplay=1",
     rating: 4.4,
     plays: 50000000,
     tags: ["flash", "classic"],
@@ -622,7 +622,7 @@ export const GAMES: Game[] = [
     description: "Classic side-scrolling madness combat.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Madness%20Interactive%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/madness_202303/Madness.swf",
+    embed: "https://archive.org/embed/madness_202303?autoplay=1",
     rating: 4.4,
     plays: 25000000,
     tags: ["flash", "classic"],
@@ -634,7 +634,7 @@ export const GAMES: Game[] = [
     description: "Command your army and conquer Inamorta.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Stick%20War%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/stick-war-2.5-user-control/Stick_War_2.5_User_Control.swf",
+    embed: "https://archive.org/embed/stick-war-2.5-user-control?autoplay=1",
     rating: 4.2,
     plays: 55000000,
     tags: ["flash", "classic"],
@@ -646,7 +646,7 @@ export const GAMES: Game[] = [
     description: "Evolve your base from the stone age to the future.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Age%20of%20War%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/age-of-war-3/Age_Of_War_3.swf",
+    embed: "https://archive.org/embed/age-of-war-3?autoplay=1",
     rating: 4.4,
     plays: 48000000,
     tags: ["flash", "classic"],
@@ -658,7 +658,7 @@ export const GAMES: Game[] = [
     description: "Move the red square to the green zone. It is harder than it looks.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=World's%20Hardest%20Game%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/flash_theworldshardestgame2/theworldshardestgame2.swf",
+    embed: "https://archive.org/embed/flash_theworldshardestgame2?autoplay=1",
     rating: 4.5,
     plays: 35000000,
     tags: ["flash", "classic"],
@@ -670,7 +670,7 @@ export const GAMES: Game[] = [
     description: "Train your duck to become the ultimate racer.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Duck%20Life%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/duck-life/duck-life.swf",
+    embed: "https://archive.org/embed/duck-life?autoplay=1",
     rating: 4.4,
     plays: 20000000,
     tags: ["flash", "classic"],
@@ -682,7 +682,7 @@ export const GAMES: Game[] = [
     description: "Draw a track and watch Bosh ride the sled.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Line%20Rider%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/flash_Line_Rider_2/Line_Rider_2.swf",
+    embed: "https://archive.org/embed/flash_Line_Rider_2?autoplay=1",
     rating: 4.3,
     plays: 33000000,
     tags: ["flash", "classic"],
@@ -694,7 +694,7 @@ export const GAMES: Game[] = [
     description: "Penguins can fly if you strap rockets to them.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Learn%20to%20Fly%202%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/learn-to-fly-2_202210/learn to fly 2.swf",
+    embed: "https://archive.org/embed/learn-to-fly-2_202210?autoplay=1",
     rating: 4.3,
     plays: 25000000,
     tags: ["flash", "classic"],
@@ -706,7 +706,7 @@ export const GAMES: Game[] = [
     description: "Drive your car through a zombie apocalypse.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Earn%20to%20Die%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/earn-to-die-2016/Earn to Die 2016.swf",
+    embed: "https://archive.org/embed/earn-to-die-2016?autoplay=1",
     rating: 4.9,
     plays: 30000000,
     tags: ["flash", "classic"],
@@ -718,7 +718,7 @@ export const GAMES: Game[] = [
     description: "Gladiator combat RPG.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Swords%20and%20Sandals%202%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/swords-and-sandals-2-demo_flash/358324_swords_sandals2_promo.swf",
+    embed: "https://archive.org/embed/swords-and-sandals-2-demo_flash?autoplay=1",
     rating: 4.3,
     plays: 22000000,
     tags: ["flash", "classic"],
@@ -730,7 +730,7 @@ export const GAMES: Game[] = [
     description: "Insane arena brawler with wacky weapons.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Chaos%20Faction%202%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/chaos-faction-2-5645/chaos-faction-2-5645.swf",
+    embed: "https://archive.org/embed/chaos-faction-2-5645?autoplay=1",
     rating: 4.8,
     plays: 16000000,
     tags: ["flash", "classic"],
@@ -742,7 +742,7 @@ export const GAMES: Game[] = [
     description: "Clear planets of mutants and zombies.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Zombotron%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/575535-zombotron_202504/575535_Zombotron.swf",
+    embed: "https://archive.org/embed/575535-zombotron_202504?autoplay=1",
     rating: 4.9,
     plays: 17000000,
     tags: ["flash", "classic"],
@@ -754,7 +754,7 @@ export const GAMES: Game[] = [
     description: "Escape from school in this classic point and click adventure.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Riddle%20School%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/riddleschool5_202011/RiddleSchool5.swf",
+    embed: "https://archive.org/embed/riddleschool5_202011?autoplay=1",
     rating: 4.2,
     plays: 11000000,
     tags: ["flash", "classic"],
@@ -766,7 +766,7 @@ export const GAMES: Game[] = [
     description: "Dig deep into Mars for rare minerals.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Motherload%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/motherload_202209/motherload.swf",
+    embed: "https://archive.org/embed/motherload_202209?autoplay=1",
     rating: 4.4,
     plays: 27000000,
     tags: ["flash", "classic"],
@@ -778,7 +778,7 @@ export const GAMES: Game[] = [
     description: "Fry up chicken wings in Starlight City.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Papa's%20Wingeria%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/papaswingeria_v2/papaswingeria_v2.swf",
+    embed: "https://archive.org/embed/papaswingeria_v2?autoplay=1",
     rating: 4.3,
     plays: 18000000,
     tags: ["flash", "classic"],
@@ -790,7 +790,7 @@ export const GAMES: Game[] = [
     description: "Stack pancakes and waffles for the locals.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Papa's%20Pancakeria%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/papas-pancakeria-game/papaspancakeria_v2.swf",
+    embed: "https://archive.org/embed/papas-pancakeria-game?autoplay=1",
     rating: 4.6,
     plays: 16000000,
     tags: ["flash", "classic"],
@@ -1037,18 +1037,6 @@ export const GAMES: Game[] = [
     source: "Internet Archive"
   },
   {
-    slug: "don-t-shoot-the-puppy",
-    title: "Don't Shoot the Puppy",
-    description: "Viewed over 40,000,000 times, this game asked the question \"how hard is it to do nothing?\". When so many other Flash games needed lightning-quick...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/noshootpuppy_flash",
-    embed: "ruffle:https://archive.org/cors/noshootpuppy_flash/dont-shoot-the-puppy.swf",
-    rating: 4.5,
-    plays: 664010,
-    tags: ["flash", "classic"],
-    source: "Internet Archive"
-  },
-  {
     slug: "the-big-adventure-of-owata-s-life",
     title: "The Big Adventure of Owata's Life | 人生オワタの大冒険",
     description: "How to play/操作説明: ←↑↓→ | movement / 移動 Z | Jump/ジャンプ X | Shoot/オワタバスター R | Reset/リトライ ESC | Self-explosion/自爆 Others | Variety/いろいろ",
@@ -1069,18 +1057,6 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/super-mario-flash-2/super-mario-flash-2.swf",
     rating: 4.2,
     plays: 187599,
-    tags: ["flash", "classic"],
-    source: "Internet Archive"
-  },
-  {
-    slug: "loituma-girl",
-    title: "Loituma Girl",
-    description: "Loituma Girl (also known as \"Leekspin\") is a Flash animation set to a scat singing section of the traditional Finnish folk song \"Ievan Polkka,\"...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/flash_loituma",
-    embed: "ruffle:https://archive.org/cors/flash_loituma/loituma.swf",
-    rating: 4.2,
-    plays: 524640,
     tags: ["flash", "classic"],
     source: "Internet Archive"
   },
@@ -1937,18 +1913,6 @@ export const GAMES: Game[] = [
     source: "Internet Archive"
   },
   {
-    slug: "all-your-base-are-belong-to-us",
-    title: "All your base are belong to us",
-    description: "\"All your base are belong to us\" is a popular Internet meme based on a phrase found in the opening cutscene of the European release of the 1992 M...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/flash_allyourbase",
-    embed: "ruffle:https://archive.org/cors/flash_allyourbase/AYB2.swf",
-    rating: 4.1,
-    plays: 16171,
-    tags: ["flash", "classic"],
-    source: "Internet Archive"
-  },
-  {
     slug: "swords-and-sandals-gladiator-v-1-1-0",
     title: "Swords and Sandals: Gladiator (v 1.1.0)",
     description: "123",
@@ -1995,17 +1959,7 @@ export const GAMES: Game[] = [
     plays: 404846,
     tags: ["flash", "classic"],
     source: "Internet Archive"
-  }
-];
-
-export const CATEGORIES: GameCategory[] = [
-  "Arcade",
-  "Puzzle",
-  "Multiplayer",
-  "Strategy",
-  "Casual",
-  "Retro",
-  "Flash",,
+  },
   {
     slug: "the-binding-of-isaac-wrath-of-the-lamb-flash",
     title: "The Binding Of Isaac: Wrath of the Lamb (Flash)",
@@ -2247,18 +2201,6 @@ export const CATEGORIES: GameCategory[] = [
     source: "Internet Archive"
   },
   {
-    slug: "don-t-shoot-the-puppy",
-    title: "Don't Shoot the Puppy",
-    description: "Viewed over 40,000,000 times, this game asked the question \"how hard is it to do nothing?\". When so many other Flash games needed lightning-quick...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/noshootpuppy_flash",
-    embed: "ruffle:https://archive.org/cors/noshootpuppy_flash/dont-shoot-the-puppy.swf",
-    rating: 4.5,
-    plays: 664010,
-    tags: ["flash", "classic"],
-    source: "Internet Archive"
-  },
-  {
     slug: "the-big-adventure-of-owata-s-life",
     title: "The Big Adventure of Owata's Life | 人生オワタの大冒険",
     description: "How to play/操作説明: ←↑↓→ | movement / 移動 Z | Jump/ジャンプ X | Shoot/オワタバスター R | Reset/リトライ ESC | Self-explosion/自爆 Others | Variety/いろいろ",
@@ -2279,18 +2221,6 @@ export const CATEGORIES: GameCategory[] = [
     embed: "ruffle:https://archive.org/cors/super-mario-flash-2/super-mario-flash-2.swf",
     rating: 4.2,
     plays: 187599,
-    tags: ["flash", "classic"],
-    source: "Internet Archive"
-  },
-  {
-    slug: "loituma-girl",
-    title: "Loituma Girl",
-    description: "Loituma Girl (also known as \"Leekspin\") is a Flash animation set to a scat singing section of the traditional Finnish folk song \"Ievan Polkka,\"...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/flash_loituma",
-    embed: "ruffle:https://archive.org/cors/flash_loituma/loituma.swf",
-    rating: 4.2,
-    plays: 524640,
     tags: ["flash", "classic"],
     source: "Internet Archive"
   },
@@ -3147,18 +3077,6 @@ export const CATEGORIES: GameCategory[] = [
     source: "Internet Archive"
   },
   {
-    slug: "all-your-base-are-belong-to-us",
-    title: "All your base are belong to us",
-    description: "\"All your base are belong to us\" is a popular Internet meme based on a phrase found in the opening cutscene of the European release of the 1992 M...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/flash_allyourbase",
-    embed: "ruffle:https://archive.org/cors/flash_allyourbase/AYB2.swf",
-    rating: 4.1,
-    plays: 16171,
-    tags: ["flash", "classic"],
-    source: "Internet Archive"
-  },
-  {
     slug: "swords-and-sandals-gladiator-v-1-1-0",
     title: "Swords and Sandals: Gladiator (v 1.1.0)",
     description: "123",
@@ -3208,7 +3126,7 @@ export const CATEGORIES: GameCategory[] = [
   }
 ];
 
-export const CATEGORIES = [
+export const CATEGORIES: GameCategory[] = [
   "Arcade",
   "Puzzle",
   "Multiplayer",
