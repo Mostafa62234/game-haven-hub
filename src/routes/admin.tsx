@@ -98,11 +98,16 @@ function AdminDashboard() {
 
 
   const deleteCustomGame = async (slug: string) => {
-    if (!confirm("Are you sure you want to delete this game permanently?")) return;
+    const isStatic = GAMES.find(g => g.slug === slug);
+    const message = isStatic 
+      ? "This is a built-in game. Deleting its record will RESET it to default and UNHIDE it. Continue?" 
+      : "Are you sure you want to delete this custom game permanently?";
+
+    if (!confirm(message)) return;
     try {
       const { error } = await supabase.from("admin_games").delete().eq("slug", slug);
       if (error) throw error;
-      toast.success("Game deleted");
+      toast.success(isStatic ? "Game reset to default" : "Game deleted");
       fetchData();
     } catch (err: any) {
       toast.error(err.message);
