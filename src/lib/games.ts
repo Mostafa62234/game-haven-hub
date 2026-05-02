@@ -2490,7 +2490,56 @@ export const GAMES: Game[] = [
       "classic"
     ],
     source: "Internet Archive"
+  },
+  {
+    slug: "age-of-war-2",
+    title: "Age of War 2",
+    description: "Battle through the ages in this classic strategy game. Upgrade your base and destroy the enemy!",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/age-of-war-2-flash-game",
+    embed: "ruffle:https://archive.org/cors/age-of-war-2-flash-game/ageofwar2.swf",
+    rating: 4.9,
+    plays: 8000000,
+    tags: ["flash", "strategy", "classic", "war"],
+    source: "Internet Archive"
+  },
+  {
+    slug: "wheely-1",
+    title: "Wheely 1",
+    description: "Help the little red car Wheely on his first big adventure!",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/wheely-flash-game-series",
+    embed: "ruffle:https://archive.org/cors/wheely-flash-game-series/wheely1.swf",
+    rating: 4.5,
+    plays: 1200000,
+    tags: ["flash", "puzzle", "casual", "wheely"],
+    source: "Internet Archive"
+  },
+  {
+    slug: "wheely-2",
+    title: "Wheely 2",
+    description: "Help Wheely find his love in this sequel!",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/wheely-flash-game-series",
+    embed: "ruffle:https://archive.org/cors/wheely-flash-game-series/wheely2.swf",
+    rating: 4.5,
+    plays: 1100000,
+    tags: ["flash", "puzzle", "casual", "wheely"],
+    source: "Internet Archive"
+  },
+  {
+    slug: "snail-bob-1",
+    title: "Snail Bob 1",
+    description: "Help Snail Bob find a new home in this physics-based puzzle adventure!",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/snail-bob-flash-game-series",
+    embed: "ruffle:https://archive.org/cors/snail-bob-flash-game-series/snailbob1.swf",
+    rating: 4.6,
+    plays: 2000000,
+    tags: ["flash", "puzzle", "physics", "snail-bob"],
+    source: "Internet Archive"
   }
+
 ];
 
 export const CATEGORIES: GameCategory[] = [
