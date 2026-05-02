@@ -9,9 +9,10 @@ import { RufflePlayer } from "./ruffle-player";
 interface GameFrameProps {
   embed: string;
   title: string;
+  thumbnail?: string;
 }
 
-export function GameFrame({ embed, title }: GameFrameProps) {
+export function GameFrame({ embed, title, thumbnail }: GameFrameProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isFs, setIsFs] = useState(false);
 
@@ -52,7 +53,7 @@ export function GameFrame({ embed, title }: GameFrameProps) {
       ) : isJsdos && jsdosBundle ? (
         <DosPlayer bundleUrl={jsdosBundle} />
       ) : isRuffle && ruffleSwf ? (
-        <RufflePlayer swfUrl={ruffleSwf} />
+        <RufflePlayer swfUrl={ruffleSwf} thumbnail={thumbnail} title={title} />
       ) : (
         <iframe
           src={embed}

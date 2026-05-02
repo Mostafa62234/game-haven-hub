@@ -59,10 +59,6 @@ export const Route = createRootRoute({
       },
     ],
     scripts: [
-      {
-        src: "https://unpkg.com/@ruffle-rs/ruffle",
-        async: false,
-      },
       ...(ADSENSE_CLIENT
         ? [
             {
