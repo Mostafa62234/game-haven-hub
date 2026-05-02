@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/components/auth-provider";
 import { supabase } from "@/integrations/supabase/client";
@@ -17,8 +17,9 @@ import {
   RefreshCw,
   LayoutDashboard,
   Gamepad2,
-  Advertisement
+  ExternalLink
 } from "lucide-react";
+
 import { toast } from "sonner";
 import { 
   Dialog, 
@@ -269,10 +270,21 @@ function AdminDashboard() {
                                   variant="ghost" 
                                   size="sm" 
                                   className="rounded-full"
+                                  asChild
+                                >
+                                  <Link to="/play/$slug" params={{ slug: game.slug }}>
+                                    <ExternalLink className="h-4 w-4 text-primary" />
+                                  </Link>
+                                </Button>
+                                <Button 
+                                  variant="ghost" 
+                                  size="sm" 
+                                  className="rounded-full"
                                   onClick={() => toggleGameVisibility(game, isHidden)}
                                 >
                                   {isHidden ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4 text-muted-foreground" />}
                                 </Button>
+
 
                                 {isCustom && (
                                   <Button 
