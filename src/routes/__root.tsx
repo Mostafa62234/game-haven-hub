@@ -81,23 +81,27 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 import { GamesProvider } from "@/components/games-provider";
+import { SettingsProvider } from "@/components/settings-provider";
 
 function RootComponent() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <GamesProvider>
-          <div className="flex min-h-screen flex-col">
-            <SiteHeader />
-            <main className="flex-1">
-              <Outlet />
-            </main>
-            <SiteFooter />
-          </div>
-          <Toaster />
-        </GamesProvider>
+        <SettingsProvider>
+          <GamesProvider>
+            <div className="flex min-h-screen flex-col">
+              <SiteHeader />
+              <main className="flex-1">
+                <Outlet />
+              </main>
+              <SiteFooter />
+            </div>
+            <Toaster />
+          </GamesProvider>
+        </SettingsProvider>
       </AuthProvider>
     </ThemeProvider>
   );
 }
+
 

@@ -3,7 +3,11 @@ import { Star } from "lucide-react";
 import type { Game } from "@/lib/games";
 import { Badge } from "@/components/ui/badge";
 
+import { useSettings } from "./settings-provider";
+
 export function GameCard({ game }: { game: Game }) {
+  const { dataSaver } = useSettings();
+  
   return (
     <Link
       to="/play/$slug"
@@ -14,9 +18,9 @@ export function GameCard({ game }: { game: Game }) {
         <img
           src={(() => {
             if (!game.thumbnail.includes('archive.org')) return game.thumbnail;
-            const isSaveData = typeof navigator !== 'undefined' && (navigator as any).connection?.saveData;
-            return `${game.thumbnail}?width=${isSaveData ? 200 : 400}`;
+            return `${game.thumbnail}?width=${dataSaver ? 200 : 400}`;
           })()}
+
           alt={game.title}
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"

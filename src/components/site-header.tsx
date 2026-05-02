@@ -15,11 +15,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+import { useSettings } from "./settings-provider";
+import { Switch } from "@/components/ui/switch";
+import { Wifi, WifiOff } from "lucide-react";
+
 export function SiteHeader() {
   const path = useRouterState({ select: (s) => s.location.pathname });
   const navigate = useNavigate();
   const [q, setQ] = useState("");
   const { user, isAdmin, signOut } = useAuth();
+  const { dataSaver, setDataSaver } = useSettings();
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -50,8 +55,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-primary shadow-glow">
+        <Link to="/" className="flex items-center gap-2 group">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-primary shadow-glow transition-transform group-hover:scale-110">
             <Gamepad2 className="h-5 w-5 text-primary-foreground" />
           </div>
           <span className="text-lg font-bold tracking-tight">
@@ -72,52 +77,80 @@ export function SiteHeader() {
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Search games..."
-              className="rounded-full pl-9"
+              className="rounded-full pl-9 bg-muted/50 border-none focus-visible:ring-primary/20"
             />
           </div>
         </form>
 
         <div className="ml-auto flex items-center gap-1 md:ml-0">
           <ThemeToggle />
-          {user ? (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="rounded-full">
+          
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon" className="rounded-full">
+                {user ? (
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-primary text-sm font-bold text-primary-foreground">
                     {initials}
                   </span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56">
-                <DropdownMenuLabel className="truncate">
-                  {(user.user_metadata?.display_name as string) ?? user.email}
-                </DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link to="/profile">
-                    <User className="mr-2 h-4 w-4" /> Profile
-                  </Link>
-                </DropdownMenuItem>
-                {isAdmin && (
-                  <DropdownMenuItem asChild>
-                    <Link to="/admin">
-                      <Shield className="mr-2 h-4 w-4" /> Admin
+                ) : (
+                  <User className="h-5 w-5 text-muted-foreground" />
+                )}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-64 p-2 rounded-2xl shadow-card">
+              <DropdownMenuLabel className="px-3 py-2">
+                <div className="flex flex-col">
+                  <span className="text-sm font-bold truncate">
+                    {user ? ((user.user_metadata?.display_name as string) ?? user.email) : "Guest Player"}
+                  </span>
+                  <span className="text-[10px] text-muted-foreground uppercase tracking-widest font-medium">Account Settings</span>
+                </div>
+              </DropdownMenuLabel>
+              
+              <DropdownMenuSeparator />
+              
+              <div className="flex items-center justify-between px-3 py-2 hover:bg-muted/50 rounded-lg transition-colors cursor-pointer" onClick={() => setDataSaver(!dataSaver)}>
+                <div className="flex items-center gap-2">
+                  {dataSaver ? <WifiOff className="h-4 w-4 text-primary" /> : <Wifi className="h-4 w-4 text-muted-foreground" />}
+                  <div className="flex flex-col">
+                    <span className="text-xs font-bold">Ultra Data Saver</span>
+                    <span className="text-[9px] text-muted-foreground">Minimize internet usage</span>
+                  </div>
+                </div>
+                <Switch checked={dataSaver} onCheckedChange={setDataSaver} onClick={(e) => e.stopPropagation()} />
+              </div>
+
+              <DropdownMenuSeparator />
+
+              {user ? (
+                <>
+                  <DropdownMenuItem asChild className="rounded-lg cursor-pointer">
+                    <Link to="/profile">
+                      <User className="mr-2 h-4 w-4" /> Profile
                     </Link>
                   </DropdownMenuItem>
-                )}
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={signOut}>
-                  <LogOut className="mr-2 h-4 w-4" /> Sign out
+                  {isAdmin && (
+                    <DropdownMenuItem asChild className="rounded-lg cursor-pointer bg-primary/10 text-primary hover:bg-primary/20">
+                      <Link to="/admin">
+                        <Shield className="mr-2 h-4 w-4" /> Admin Panel
+                      </Link>
+                    </DropdownMenuItem>
+                  )}
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={signOut} className="rounded-lg cursor-pointer text-destructive focus:text-destructive focus:bg-destructive/10">
+                    <LogOut className="mr-2 h-4 w-4" /> Sign out
+                  </DropdownMenuItem>
+                </>
+              ) : (
+                <DropdownMenuItem asChild className="rounded-lg cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90">
+                  <Link to="/auth">Sign in to sync progress</Link>
                 </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          ) : (
-            <Button asChild size="sm" className="rounded-full">
-              <Link to="/auth">Sign in</Link>
-            </Button>
-          )}
+              )}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
+
 
       {/* Mobile search */}
       <form onSubmit={onSubmit} className="border-t border-border bg-background px-4 py-2 md:hidden">
