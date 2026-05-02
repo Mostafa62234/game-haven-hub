@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { TicTacToeGame } from "./tic-tac-toe";
 import { MemoryMatchGame } from "./memory-match";
 import { DosPlayer } from "./dos-player";
+import { RufflePlayer } from "./ruffle-player";
 
 interface GameFrameProps {
   embed: string;
@@ -30,6 +31,8 @@ export function GameFrame({ embed, title }: GameFrameProps) {
   const internalKey = isInternal ? embed.replace("internal:", "") : null;
   const isJsdos = embed.startsWith("jsdos:");
   const jsdosBundle = isJsdos ? embed.replace("jsdos:", "") : null;
+  const isRuffle = embed.startsWith("ruffle:");
+  const ruffleSwf = isRuffle ? embed.replace("ruffle:", "") : null;
 
   return (
     <div
@@ -48,11 +51,12 @@ export function GameFrame({ embed, title }: GameFrameProps) {
         )
       ) : isJsdos && jsdosBundle ? (
         <DosPlayer bundleUrl={jsdosBundle} />
+      ) : isRuffle && ruffleSwf ? (
+        <RufflePlayer swfUrl={ruffleSwf} />
       ) : (
         <iframe
           src={embed}
           title={title}
-
           allow="autoplay; fullscreen; gamepad; cross-origin-isolated"
           allowFullScreen
           referrerPolicy="no-referrer"
