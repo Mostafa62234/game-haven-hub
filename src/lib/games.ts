@@ -61,22 +61,6 @@ export const GAMES: Game[] = [
     source: "silentspacemarine.com (HTML5 Port)"
   },
   {
-    slug: "prince-of-persia-2",
-    title: "Mario-Style Platformer",
-    description: "An open-source side-scrolling platformer in the spirit of the SNES era. Run, jump, collect coins.",
-    category: "Retro",
-    thumbnail: "https://tse2.mm.bing.net/th?q=Mario-Style%20Platformer%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://www.mariohtml5.com/",
-    rating: 4.5,
-    plays: 8800000,
-    tags: [
-      "platformer",
-      "snes-era",
-      "retro"
-    ],
-    source: "Notch's Infinite Mario (open-source HTML5 port)"
-  },
-  {
     slug: "oregon-trail",
     title: "The Oregon Trail",
     description: "Lead your wagon party west across 19th-century America in this educational classic.",
@@ -125,22 +109,6 @@ export const GAMES: Game[] = [
     source: "Internet Archive"
   },
   {
-    slug: "prince-of-persia",
-    title: "Prince of Persia (HTML5)",
-    description: "The legendary cinematic platformer from 1989, faithfully remade as an open-source HTML5 port.",
-    category: "Retro",
-    thumbnail: "https://tse2.mm.bing.net/th?q=Prince%20of%20Persia%20(HTML5)%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://princejs.com/",
-    rating: 4.7,
-    plays: 2400000,
-    tags: [
-      "platformer",
-      "80s",
-      "adventure"
-    ],
-    source: "princejs.com (open-source port by Oliver Klemenz)"
-  },
-  {
     slug: "donkey-kong",
     title: "Donkey Kong",
     description: "The classic 1983 MS-DOS port of the arcade legend. Climb the ladders and dodge the barrels!",
@@ -173,36 +141,6 @@ export const GAMES: Game[] = [
     source: "Internet Archive"
   },
   {
-    slug: "prince-of-persia-3",
-    title: "Prince of Persia",
-    description: "A flash animation from a compilation of 1,100 Flash Animations. The Prince of Persia Special Edition, a flash-based version of the original Prince ...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/1100_prince_of_persia",
-    embed: "ruffle:https://archive.org/cors/1100_prince_of_persia/prince_of_persia.swf",
-    rating: 4.5,
-    plays: 460665,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "prince-of-persia-3",
-    title: "Prince of Persia",
-    description: "A flash animation from a compilation of 1,100 Flash Animations. The Prince of Persia Special Edition, a flash-based version of the original Prince ...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/1100_prince_of_persia",
-    embed: "ruffle:https://archive.org/cors/1100_prince_of_persia/prince_of_persia.swf",
-    rating: 4.5,
-    plays: 460665,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
     slug: "pac-man-flash",
     title: "Pac-Man (Flash)",
     description: "(woah theres flash emulation on archive.org, epic! gotta try this out) One of the most popular and influential games of the 1980's,  Pac-Man  stars...",
@@ -214,38 +152,6 @@ export const GAMES: Game[] = [
     tags: [
       "flash",
       "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "pac-man-flash",
-    title: "Pac-Man (Flash)",
-    description: "(woah theres flash emulation on archive.org, epic! gotta try this out) One of the most popular and influential games of the 1980's,  Pac-Man  stars...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/pacman_swf",
-    embed: "ruffle:https://archive.org/cors/pacman_swf/pacman.swf",
-    rating: 4,
-    plays: 374572,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "gunball-2",
-    title: "Gunball 2: Emperor's Revenge",
-    description: "Upgrade your gunball and defeat challenging enemies in the arena. A true Flash classic.",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/gunball-2-emperors-revenge",
-    embed: "ruffle:https://archive.org/cors/gunball-2-emperors-revenge/gunball-2-emperors-revenge.swf",
-    rating: 4.5,
-    plays: 1200000,
-    tags: [
-      "flash",
-      "action",
-      "shooter",
-      "upgrade"
     ],
     source: "Internet Archive"
   },
@@ -372,21 +278,6 @@ export const GAMES: Game[] = [
       "official"
     ],
     source: "elgoog.im (Google Doodle archive)"
-  },
-  {
-    slug: "snake",
-    title: "Snake Classic",
-    description: "Eat, grow longer, and don't bite yourself. A timeless arcade favorite.",
-    category: "Retro",
-    thumbnail: "https://tse2.mm.bing.net/th?q=Snake%20Classic%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://playsnake.org/",
-    rating: 4.3,
-    plays: 5600000,
-    tags: [
-      "retro",
-      "arcade",
-      "single-player"
-    ]
   },
   {
     slug: "pong",
@@ -609,37 +500,6 @@ export const GAMES: Game[] = [
     source: "Internet Archive"
   },
   {
-    slug: "papas-pizzeria",
-    title: "Papa's Pizzeria",
-    description: "Bake pies and manage the shop in the Flash game that launched a cooking empire.",
-    category: "Flash",
-    thumbnail: "https://tse2.mm.bing.net/th?q=Papa's%20Pizzeria%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/papas-pizzeria_flash?autoplay=1",
-    rating: 4.8,
-    plays: 22000000,
-    tags: [
-      "flash",
-      "cooking",
-      "simulation"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "papas-burgeria",
-    title: "Papa's Burgeria",
-    description: "Grill burgers and build them high.",
-    category: "Flash",
-    thumbnail: "https://tse2.mm.bing.net/th?q=Papa's%20Burgeria%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/PapasBurgeriav1.0.3?autoplay=1",
-    rating: 4.6,
-    plays: 22000000,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
     slug: "papas-freezeria",
     title: "Papa's Freezeria",
     description: "Mix up frozen treats on the island.",
@@ -678,51 +538,6 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/papascupcakeria_v2/papascupcakeria_v2.swf",
     rating: 4.6,
     plays: 19000000,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "wheely-1",
-    title: "Wheely 1",
-    description: "Help Wheely the little red car reach the exit.",
-    category: "Flash",
-    thumbnail: "https://tse2.mm.bing.net/th?q=Wheely%201%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/wheely-1?autoplay=1",
-    rating: 4.3,
-    plays: 12000000,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "wheely-2",
-    title: "Wheely 2",
-    description: "Wheely goes on an adventure to find his love.",
-    category: "Flash",
-    thumbnail: "https://tse2.mm.bing.net/th?q=Wheely%202%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/wheely-2?autoplay=1",
-    rating: 4.9,
-    plays: 11000000,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "snail-bob",
-    title: "Snail Bob",
-    description: "Guide Snail Bob to his new home.",
-    category: "Flash",
-    thumbnail: "https://tse2.mm.bing.net/th?q=Snail%20Bob%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "ruffle:https://archive.org/cors/snail-bob-1_202403/Snail Bob 1.swf",
-    rating: 4.1,
-    plays: 15000000,
     tags: [
       "flash",
       "classic"
@@ -783,21 +598,6 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/strikeforceheroes_202310/strikeforceheroes.swf",
     rating: 4.4,
     plays: 50000000,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "strike-force-heroes-2",
-    title: "Strike Force Heroes 2",
-    description: "More classes and a deeper campaign.",
-    category: "Flash",
-    thumbnail: "https://tse2.mm.bing.net/th?q=Strike%20Force%20Heroes%202%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/strikeforceheroes2_202310?autoplay=1",
-    rating: 4.3,
-    plays: 45000000,
     tags: [
       "flash",
       "classic"
@@ -1413,1146 +1213,6 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/nick_jr__face___numbers_game__usa__by_oldadobeflashgames01_de1bf15/nick_jr__face___numbers_game__usa__by_oldadobeflashgames01_de1bf15.swf",
     rating: 4.1,
     plays: 41604,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "the-impossible-quiz-2",
-    title: "The Impossible Quiz 2",
-    description: "(NOTE: due to the size of this game, it might take a bit to load) The game contains a total of 120 questions, some of which even have several varia...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/tiq2_swf",
-    embed: "ruffle:https://archive.org/cors/tiq2_swf/theimpossiblequiz2.swf",
-    rating: 4.1,
-    plays: 20822,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "donald-the-beanstalk",
-    title: "Donald & the Beanstalk",
-    description: "Donald trades his favourite pet, Boo Boo Chicken, for five magic beans. He misses his pet, so Mickey and Goofy go with him up the beanstalk to get ...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/beanstalk_swf",
-    embed: "ruffle:https://archive.org/cors/beanstalk_swf/beanstalk.swf",
-    rating: 4.8,
-    plays: 245980,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "reimu-s-donation-box",
-    title: "Reimu's Donation Box | 霊夢の賽銭箱",
-    description: "Reimu's Donation Box ( 霊夢の賽銭箱 ) is a flash game testing your clicking speed. You have to click as fast as possible to fill the donation box of Reim...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/saisen",
-    embed: "ruffle:https://archive.org/cors/saisen/saisen.swf",
-    rating: 4.4,
-    plays: 497575,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "alien-hominid",
-    title: "Alien Hominid",
-    description: "Alien Hominid is a side-scrolling shooter in a similar vein to games such as Metal Slug, where one hit instantly kills and has a two-player simulta...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/flash_alien_hominid",
-    embed: "ruffle:https://archive.org/cors/flash_alien_hominid/alien_hominid.swf",
-    rating: 4.9,
-    plays: 862139,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "fiash",
-    title: "Fiash!",
-    description: "A simple arcade game guiding a fish away from being eaten by other fish.",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/flash_fishy",
-    embed: "ruffle:https://archive.org/cors/flash_fishy/flash_fishy.swf",
-    rating: 4.5,
-    plays: 34806,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "happy-tree-friends-nutty-s-party-smoochie",
-    title: "Happy Tree Friends - Nutty's Party Smoochie",
-    description: "It’s a party and everyone is invited! Just be careful what presents you ask for ‘cause you just may get it!",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/htf-nuttys-party-smoochie_flash",
-    embed: "ruffle:https://archive.org/cors/htf-nuttys-party-smoochie_flash/htf-nuttys-party-smoochie_flash.swf",
-    rating: 4.7,
-    plays: 761598,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "super-smash-flash-2-classic-edition",
-    title: "Super Smash Flash 2: Classic Edition",
-    description: "Version 3.1.1a (In-Universe Version Release November 11, 2013) Bugs fixed Hyrule Castle New Music (In-Universe Inital Release June 26, 2011)",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/ssf2-2007_20210626",
-    embed: "ruffle:https://archive.org/cors/ssf2-2007_20210626/ssf2-2007_20210626.swf",
-    rating: 4.4,
-    plays: 380807,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "the-last-stand-union-city",
-    title: "the-last-stand-union-city",
-    description: "Scavenge, shoot and survive your way through Union City in this sprawling zombie action RPG. Play in Survivor mode for a more realistic experience ...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/the-last-stand-union-city",
-    embed: "ruffle:https://archive.org/cors/the-last-stand-union-city/the-last-stand-union-city.swf",
-    rating: 4.1,
-    plays: 570980,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "minecraft-tower-defence-2",
-    title: "Minecraft Tower Defence 2",
-    description: "Minecraft Flash game by Microwave Games Description: Enjoy the second version of the famous Minecraft Tower Defence. Controls: Mouse",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/minecraft-tower-defence-2",
-    embed: "ruffle:https://archive.org/cors/minecraft-tower-defence-2/minecraft-tower-defence-2.swf",
-    rating: 4.4,
-    plays: 176119,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "papa-s-pizzeria",
-    title: "Papa's Pizzeria",
-    description: "When Papa Louie runs off on another adventure, Delivery Boy Roy is left in charge of Papa's Pizzeria. Unfortunately for Roy, the customers are use ...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/flash_papaspizzeria",
-    embed: "ruffle:https://archive.org/cors/flash_papaspizzeria/papaspizzeria_v2.swf",
-    rating: 4.9,
-    plays: 278097,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "drag-racer-v3-flash-game",
-    title: "Drag Racer V3 - Flash Game",
-    description: "Drag Racer V3 Flash Game Developer: Phantom Games Originally Uploaded: 6 Dec. 2006",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/dragracerv3_202012",
-    embed: "ruffle:https://archive.org/cors/dragracerv3_202012/20.swf",
-    rating: 4.8,
-    plays: 52406,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "tanks",
-    title: "TANKS",
-    description: "A Scorched Earth clone that supports up to five players, all of which can be controlled by the computer or individual players on a keyboard. There'...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/tanks_flashgame",
-    embed: "ruffle:https://archive.org/cors/tanks_flashgame/tanks.swf",
-    rating: 4.5,
-    plays: 262644,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "super-mario-sunshine-64",
-    title: "Super Mario Sunshine 64",
-    description: "The predecessor to the popular Super Mario 63. This game is primarily played with the arrow keys and space bar.",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/super-mario-sunshine-64",
-    embed: "ruffle:https://archive.org/cors/super-mario-sunshine-64/super-mario-sunshine-64.swf",
-    rating: 4.9,
-    plays: 853757,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "happy-tree-friends-giggles-valentine-smoochie",
-    title: "Happy Tree Friends - Giggles' Valentine Smoochie",
-    description: "A sweet Valentine’s Day Smoochie featuring Giggles!",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/htf-giggles-valentine-smoochie_flash",
-    embed: "ruffle:https://archive.org/cors/htf-giggles-valentine-smoochie_flash/htf-giggles-valentine-smoochie_flash.swf",
-    rating: 4.1,
-    plays: 214444,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "happy-tree-friends-toothy-s-easter-smoochie",
-    title: "Happy Tree Friends - Toothy's Easter Smoochie",
-    description: "Not every Easter egg turns out to be a treat!",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/htf-toothy-s-easter-smoochie_flash",
-    embed: "ruffle:https://archive.org/cors/htf-toothy-s-easter-smoochie_flash/htf-toothys-easter-smoochie_flash.swf",
-    rating: 4.6,
-    plays: 659472,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "binding-of-isaac",
-    title: "Binding Of Isaac",
-    description: "isaac",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/binding-of-isaac",
-    embed: "ruffle:https://archive.org/cors/binding-of-isaac/Binding of Isaac.swf",
-    rating: 4.2,
-    plays: 377705,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "happy-tree-friends-flaky-s-baseball-smoochie",
-    title: "Happy Tree Friends - Flaky's Baseball Smoochie",
-    description: "Be sure to wear protective gear for this baseball game!",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/htf-flakys-baseball-smoochie_flash",
-    embed: "ruffle:https://archive.org/cors/htf-flakys-baseball-smoochie_flash/htf-flakys-baseball-smoochie_flash.swf",
-    rating: 4.7,
-    plays: 408282,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "black-licorice-flash",
-    title: "Black Licorice (Flash)",
-    description: "After clicking past the title screen, a brief message appears, warning the player not to give black licorice to any of the trick-or-treaters at the...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/licorice_swf",
-    embed: "ruffle:https://archive.org/cors/licorice_swf/licorice.swf",
-    rating: 4.1,
-    plays: 560156,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "pacman",
-    title: "Pacman",
-    description: "A faithful reproduction of the classic Pacman game.",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/pacman_flash_202011",
-    embed: "ruffle:https://archive.org/cors/pacman_flash_202011/pacman.swf",
-    rating: 4.6,
-    plays: 889301,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "stick-cricket",
-    title: "Stick Cricket",
-    description: "Stick Cricket, with it's engaging crowd noises and simple but satisfying four-directional control, found itself updated dozens of times across plen...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/stickcricket_flash",
-    embed: "ruffle:https://archive.org/cors/stickcricket_flash/stick-cricket.swf",
-    rating: 4.7,
-    plays: 556946,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "happy-tree-friends-petunia-s-summer-smoochie",
-    title: "Happy Tree Friends - Petunia's Summer Smoochie",
-    description: "Petunia dips her toe in the water and gets more than she expects.",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/htf-petunias-summer-smoochie_flash",
-    embed: "ruffle:https://archive.org/cors/htf-petunias-summer-smoochie_flash/htf-petunias-summer-smoochie_flash.swf",
-    rating: 4.3,
-    plays: 752470,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "helicopter-game",
-    title: "Helicopter Game",
-    description: "An infinitely progressing corridor, a helicopter that's heavily affected by the rules of gravity, and quickly approaching walls is all that's neede...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/helicoptergame_flash",
-    embed: "ruffle:https://archive.org/cors/helicoptergame_flash/helicoptergame.swf",
-    rating: 4.6,
-    plays: 276055,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "portal-the-flash-version",
-    title: "Portal: The Flash Version",
-    description: "From https://portal.wecreatestuff.com/ : Based on Valve's Portal , Portal: The Flash Version brings it all up in 2d! Portal: The Flash Version incl...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/portal_flash_version",
-    embed: "ruffle:https://archive.org/cors/portal_flash_version/Portal_wcs2.swf",
-    rating: 4.7,
-    plays: 94569,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "happy-tree-friends-cub-s-christmas-smoochie",
-    title: "Happy Tree Friends - Cub's Christmas Smoochie",
-    description: "Cub discovers that there’s no time like the “present” to get your Christmas gift!",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/htf-cubs-christmas-smoochie_flash",
-    embed: "ruffle:https://archive.org/cors/htf-cubs-christmas-smoochie_flash/htf-cubs-christmas-smoochie_flash.swf",
-    rating: 4.5,
-    plays: 843132,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "plumber-2",
-    title: "Plumber 2",
-    description: "A flash animation from a compilation of 1,100 Flash Animations. Create a continuous pipeline between the tap and the overflow pipe.",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/1100_plumber_2",
-    embed: "ruffle:https://archive.org/cors/1100_plumber_2/plumber_2.swf",
-    rating: 4.2,
-    plays: 54686,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "happy-tree-friends-pop-s-bbq-smoochie",
-    title: "Happy Tree Friends - Pop's BBQ Smoochie",
-    description: "What NOT to do at your next summer BBQ!",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/htf-pops-bbq-smoochie_flash",
-    embed: "ruffle:https://archive.org/cors/htf-pops-bbq-smoochie_flash/htf-pops-bbq-smoochie_flash.swf",
-    rating: 4.4,
-    plays: 575389,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "my-new-room",
-    title: "My New Room",
-    description: "Decorate your room with items you like best. Pick colors for your furniture and wallpaper and don't forget to pick a pet! My New Room is a Room Mak...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/my-new-room",
-    embed: "ruffle:https://archive.org/cors/my-new-room/my_new_room_girlsgogames_com_v1_01.swf",
-    rating: 4.5,
-    plays: 90065,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "hoops-yoyo-i-love-you",
-    title: "Hoops & Yoyo: I Love You",
-    description: "An E-Card from the H&Y Website.",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/iloveyou_swf",
-    embed: "ruffle:https://archive.org/cors/iloveyou_swf/iloveyou.swf",
-    rating: 4.3,
-    plays: 753143,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "pac-xon-flash",
-    title: "Pac-Xon (Flash)",
-    description: "The world of flash games sure is big, is kinda like a maze where one travels and looks for the treasure chest, sometimes it is a very well designed...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/pacxon_swf",
-    embed: "ruffle:https://archive.org/cors/pacxon_swf/pacxon.swf",
-    rating: 4.3,
-    plays: 874210,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "speak-spell-online",
-    title: "Speak & Spell Online",
-    description: "== Original Description from https://www.speaknspell.co.uk/ == Welcome to Speak & Spell Online About the emulator This emulator began in 2002, as a...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/speaknspell",
-    embed: "ruffle:https://archive.org/cors/speaknspell/speaknspell.swf",
-    rating: 4.5,
-    plays: 740622,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "fire-escape",
-    title: "Fire Escape",
-    description: "It’s a five-alarm fire and there’s nobody but Flaky to help the trapped victims get out of the burning building safely.",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/htf_fireescape",
-    embed: "ruffle:https://archive.org/cors/htf_fireescape/htf_fireescape.swf",
-    rating: 4.4,
-    plays: 93820,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "mario-combat",
-    title: "Mario Combat",
-    description: "You're Super Mario! What does that mean? It means you gotta go kick Bowser's ass! And thats exactly what your going to do! Here's a fun little shor...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/flash_Mario_Combat",
-    embed: "ruffle:https://archive.org/cors/flash_Mario_Combat/Mario_Combat.swf",
-    rating: 4.1,
-    plays: 97596,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "mud-and-blood-2",
-    title: "Mud and Blood 2",
-    description: "War is hell, and Mud & Blood is not afraid to show it. You're given a plethora of options and an overwhelming enemy to take out the advancing Germa...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/mudandblood2_flash",
-    embed: "ruffle:https://archive.org/cors/mudandblood2_flash/mudandblood2.swf",
-    rating: 4.1,
-    plays: 56508,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "oswald-ice-cone-game",
-    title: "Oswald: Ice Cone Game",
-    description: "The snow cone machine is acting crazy, and it's spitting out flavor balls. Help Oswald catch the flavor ball of what he and his friends want.",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/oswald_icecone",
-    embed: "ruffle:https://archive.org/cors/oswald_icecone/iceconegame.swf",
-    rating: 4.5,
-    plays: 99007,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "happy-tree-friends-sniffles-science-smoochie",
-    title: "Happy Tree Friends - Sniffles' Science Smoochie",
-    description: "Rockets and magnet and crazy concoctions, these are a few of Sniffles' favorite things.",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/htf-sniffles-science-smoochie_flash",
-    embed: "ruffle:https://archive.org/cors/htf-sniffles-science-smoochie_flash/htf-sniffles-science-smoochie_flash.swf",
-    rating: 4.5,
-    plays: 666018,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "age-of-war-2",
-    title: "Age of War",
-    description: "Created by Louissi. Take control of 16 different units and 15 different turrets to defend your base and destroy your ennemy. In this game, you star...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/flash_age_of_war",
-    embed: "ruffle:https://archive.org/cors/flash_age_of_war/age_of_war.swf",
-    rating: 4.7,
-    plays: 72743,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "talking-tom-cat-2-flash-version",
-    title: "Talking Tom Cat 2 (Flash Version)",
-    description: "i never saw someone upload this so",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/talking-tom-cat-2-flash",
-    embed: "ruffle:https://archive.org/cors/talking-tom-cat-2-flash/talking_tom_cat_2_in_flash___by_adreamyhead0_d4x9xp2.swf",
-    rating: 4.4,
-    plays: 610249,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "unfair-mario",
-    title: "unfair_mario",
-    description: "Unfair Mario is a platform game inspired by Mario and Trap Adventure 2. Can you complete the level without triggering the hidden traps?",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/unfair_mario",
-    embed: "ruffle:https://archive.org/cors/unfair_mario/unfair_mario.swf",
-    rating: 4.1,
-    plays: 40931,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "happy-tree-friends-mime-s-olympic-smoochie",
-    title: "Happy Tree Friends - Mime's Olympic Smoochie",
-    description: "The Olympic Games are going to be a killer!",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/htf-mimes-olympic-smoochie_flash",
-    embed: "ruffle:https://archive.org/cors/htf-mimes-olympic-smoochie_flash/htf-mimes-olympic-smoochie_flash.swf",
-    rating: 4.2,
-    plays: 713408,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "pacman-advanced",
-    title: "Pacman Advanced",
-    description: "Another Flash Pac-Man clone. In this game, you have to eat all the food in the maze while avoiding the ghosts. Eat the red food to make the ghosts ...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/pacmanx-advanced_flash",
-    embed: "ruffle:https://archive.org/cors/pacmanx-advanced_flash/PacmanxAdvanced.swf",
-    rating: 4,
-    plays: 257161,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "caramelldansen-hd-remake",
-    title: "Caramelldansen (HD Remake)",
-    description: "From KnowYourMeme: Caramelldansen (eng. The Caramel Dance) is a series of animated dance videos that use the dance track with the same title. Its o...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/flash_Caramelldansen",
-    embed: "ruffle:https://archive.org/cors/flash_Caramelldansen/flash_Caramelldansen.swf",
-    rating: 4.8,
-    plays: 106556,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "breaking-the-bank",
-    title: "Breaking The Bank",
-    description: "Breaking the Bank is the first game in the Henry Stickmin series. It was created after Puffballs United's first game, Crossing the Pit. It is the p...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/flash_breaking_the_bank",
-    embed: "ruffle:https://archive.org/cors/flash_breaking_the_bank/breaking_the_bank.swf",
-    rating: 4.8,
-    plays: 902544,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "the-right-mix",
-    title: "The Right Mix",
-    description: "A fun flash game about making different alcoholic drink mixes!",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/flash_therightmix",
-    embed: "ruffle:https://archive.org/cors/flash_therightmix/flash_therightmix.swf",
-    rating: 4.7,
-    plays: 476261,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "spongebob-patty-panic",
-    title: "SpongeBob: Patty Panic",
-    description: "SpongeBob must go around several platforms and stomp Krabby Patty ingredients into trays at the bottom of the screen. Avoid Plankton and other unna...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/panic_swf",
-    embed: "ruffle:https://archive.org/cors/panic_swf/panic.swf",
-    rating: 4.8,
-    plays: 150322,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "the-impossible-quiz-book-chapter-1",
-    title: "The Impossible Quiz Book: Chapter 1",
-    description: "The Impossible Quiz is back, and this time it's in book form! Well, it's seperated into 3 themed Chapters, each of which contains 50 questions to m...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/flash_theimpossiblequizbook",
-    embed: "ruffle:https://archive.org/cors/flash_theimpossiblequizbook/theimpossiblequizbook.swf",
-    rating: 4.4,
-    plays: 129324,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "uzinagaz-watch-out-behind-hunter-girl-ver",
-    title: "[ UZINAGAZ]watch Out Behind Hunter Girl Ver",
-    description: "flash game",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/uzinagazwatch-out-behind-hunter-girl-ver",
-    embed: "ruffle:https://archive.org/cors/uzinagazwatch-out-behind-hunter-girl-ver/[UZINAGAZ]watch-out-behind-hunter-girl-ver.swf",
-    rating: 4.4,
-    plays: 60930,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "swords-and-sandals-gladiator-v-1-1-0",
-    title: "Swords and Sandals: Gladiator (v 1.1.0)",
-    description: "123",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/swords-and-sandals-v-1.1.0",
-    embed: "ruffle:https://archive.org/cors/swords-and-sandals-v-1.1.0/Swords and Sandals (v 1.1.0).swf",
-    rating: 4.6,
-    plays: 386326,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "bang-boom-splat",
-    title: "Bang, Boom, Splat!",
-    description: "Cheats: Code Effect ------------------------------------ Type in go - all levels Type in go2 - new levels Type in bang - all weapons Type in ammo l...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/bang-boom-splat-swf",
-    embed: "ruffle:https://archive.org/cors/bang-boom-splat-swf/Bang, Boom, Splat!.swf",
-    rating: 4.4,
-    plays: 304626,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "whack-your-boss-19-ways",
-    title: "Whack Your Boss (19 ways)",
-    description: "Not sure about office etiquette? Here's a few graphic lessons in bad office behavior. Please, don't do any of these things in real life. Because th...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/dont_whack_your_boss",
-    embed: "ruffle:https://archive.org/cors/dont_whack_your_boss/dont_whack_your_boss.swf",
-    rating: 4.2,
-    plays: 404846,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "the-binding-of-isaac-wrath-of-the-lamb-flash",
-    title: "The Binding Of Isaac: Wrath of the Lamb (Flash)",
-    description: "The flash version of The Binding of Isaac: Wrath of the Lamb",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/the-binding-of-isaac_202111",
-    embed: "ruffle:https://archive.org/cors/the-binding-of-isaac_202111/The Binding of Isaac.swf",
-    rating: 4.3,
-    plays: 519926,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "homerun",
-    title: "homerun",
-    description: "くまのプーさんのホームランダービー タイミングを合わせて、マウスでバットを振ろう！ ホームラン何本打てるかな？ ジャンル：スポーツ　名人向け　難易度：★★★★★",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/homerun_20201126",
-    embed: "ruffle:https://archive.org/cors/homerun_20201126/homerun.swf",
-    rating: 4.9,
-    plays: 181183,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "stick-rpg-complete",
-    title: "Stick RPG Complete",
-    description: "Made by XGen Studios. Play as a stick and get money by working and selling stuff. Contains drug use and fowl language.",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/stick-rpg-complete",
-    embed: "ruffle:https://archive.org/cors/stick-rpg-complete/Stick-RPG-Complete.swf",
-    rating: 4.6,
-    plays: 556011,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "cannibals-missioneries",
-    title: "Cannibals & Missioneries",
-    description: "Classic algorithm game",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/cannibals-missioneries",
-    embed: "ruffle:https://archive.org/cors/cannibals-missioneries/Cannibals_&_Missioneries.swf",
-    rating: 4.7,
-    plays: 109681,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "swords-and-sandals-2-v-2-1-0",
-    title: "Swords And Sandals 2 (v 2.1.0)",
-    description: "Swords and Sandals 2 is a classic flash game, launched in 2006. The one uploaded here is version Full 2.1.0. To play the game after the end of flas...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/swords-and-sandals-2",
-    embed: "ruffle:https://archive.org/cors/swords-and-sandals-2/Swords and Sandals 2 (v 2.1.0).swf",
-    rating: 4.5,
-    plays: 151089,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "aplicaciones-musicales-en-flash2008-2009",
-    title: "aplicaciones musicales en flash2008-2009",
-    description: "Conjunto de aplicaciones Ãºtiles para la educaciÃ³n musical creadas pr Julio Payno",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/AplicacionesMusicalesEnFlash2008-2009",
-    embed: "ruffle:https://archive.org/cors/AplicacionesMusicalesEnFlash2008-2009/5diferencias.swf",
-    rating: 4.9,
-    plays: 32438,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "bloxorz",
-    title: "Bloxorz",
-    description: "GAME DESCRIPTION Bloxorz is a free puzzle game. All that we ask is that you help us maintain order. A square peg into a square hole. It's simple. G...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/bloxors",
-    embed: "ruffle:https://archive.org/cors/bloxors/bloxors.swf",
-    rating: 4.3,
-    plays: 819402,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "winnie-the-pooh-s-home-run-derby-english",
-    title: "Winnie the Pooh's Home Run Derby (English)",
-    description: "Silly old bear. If the harbinger of spring is the sound of a bat on a ball, then I have become the harbinger of winter: a barren and desolate spot ...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/homerunderby_en",
-    embed: "ruffle:https://archive.org/cors/homerunderby_en/homerunderby_en.swf",
-    rating: 4.4,
-    plays: 455248,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "firey-s-candy-bar-adventure",
-    title: "Firey's Candy Bar Adventure",
-    description: "As seen on Daemeon Network",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/candy-bar-adventure-1",
-    embed: "ruffle:https://archive.org/cors/candy-bar-adventure-1/CandyBarAdventure (1).swf",
-    rating: 4.1,
-    plays: 340489,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "super-mario-crossover-offline",
-    title: "Super Mario Crossover Offline",
-    description: "Versions v3.1.21 v4.0 Experimental Preview Changes Super Mario Bros. Crossover v3.1.21 Decompressed Disabled online check Unlocked all cheats Unloc...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/SuperMarioCrossoverOffline",
-    embed: "ruffle:https://archive.org/cors/SuperMarioCrossoverOffline/super_mario_bros_crossover.swf",
-    rating: 4.9,
-    plays: 205568,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "mutilate-a-doll-2",
-    title: "Mutilate-a-Doll 2",
-    description: "--THIS GAME DOES NOT WORK ON THE ARCHIVE.ORG PLAYER DOWNLOAD THE FILE AND OPEN IT ON A FLASH GAME PLAYER-- Flash Game by Rava Games Mutilate variou...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/mutilate-a-doll-2_202011",
-    embed: "ruffle:https://archive.org/cors/mutilate-a-doll-2_202011/164481_mutilate-a-doll-2_v4.swf",
-    rating: 4.5,
-    plays: 123080,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "pico-s-school",
-    title: "Pico's School",
-    description: "Goth kids have shot up your school, and it's up to Pico to save the day! Originally featured on Newgrounds in 1999, I finally refactored the .FLA t...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/flash_picosschool",
-    embed: "ruffle:https://archive.org/cors/flash_picosschool/flash_picosschool.swf",
-    rating: 4.8,
-    plays: 181725,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "bubble-shooter",
-    title: "Bubble Shooter",
-    description: "A popular Puzzle Bobble/Bust-A-Move flash clone.",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/bubble-shooter_swf",
-    embed: "ruffle:https://archive.org/cors/bubble-shooter_swf/bubble-shooter.swf",
-    rating: 4.1,
-    plays: 329997,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "the-urinal-game",
-    title: "The Urinal Game",
-    description: "An early Flash game that was later remade in HTML5. https://www.albinoblacksheep.com/games/urinal",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/urinalgame",
-    embed: "ruffle:https://archive.org/cors/urinalgame/urinalgame.swf",
-    rating: 4.2,
-    plays: 860337,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "get-to-the-top-althrough-there-is-no-top-bfdi",
-    title: "Get to the Top Althrough There is No Top BFDI",
-    description: "(note that while the game is still playable, you can't tell what your score is) A platformer from htwins where you get BFDI Characters as high as y...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/bfdi_swf",
-    embed: "ruffle:https://archive.org/cors/bfdi_swf/ag-bfdi.swf",
-    rating: 4.6,
-    plays: 642228,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "robot-unicorn-attack",
-    title: "Robot Unicorn Attack",
-    description: "Robot Unicorn Attack is a Flash game developed by Spiritonin Media Games and published by Adult Swim. It's an endless runner where players take con...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/robotunicornattack_flash",
-    embed: "ruffle:https://archive.org/cors/robotunicornattack_flash/robotunicornattack_flash.swf",
-    rating: 4,
-    plays: 409617,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "a-koopa-s-revenge-2",
-    title: "A Koopa's Revenge 2",
-    description: "A Koopa's Revenge 2 is out now! HOLD DOWN CONTROL TO RUN. For years the Mario Bros. & company have been stepping on koopas and goombas. Now it's ti...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/a-koopas-revenge-2",
-    embed: "ruffle:https://archive.org/cors/a-koopas-revenge-2/a koopa's revenge 2.swf",
-    rating: 4.5,
-    plays: 636418,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "impossible-quiz-deluxe-newgrounds",
-    title: "impossible quiz deluxe newgrounds",
-    description: "https://web.archive.org/web/20191210222512/https://uploads.ungrounded.net//365000//365143_Impossible_Quiz_Deluxe_NG..swf",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/impossible-quiz-deluxe-newgrounds",
-    embed: "ruffle:https://archive.org/cors/impossible-quiz-deluxe-newgrounds/365143_Impossible_Quiz_Deluxe_NG..swf",
-    rating: 4.1,
-    plays: 286326,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "the-big-adventure-of-owata-s-life",
-    title: "The Big Adventure of Owata's Life | 人生オワタの大冒険",
-    description: "How to play/操作説明: ←↑↓→ | movement / 移動 Z | Jump/ジャンプ X | Shoot/オワタバスター R | Reset/リトライ ESC | Self-explosion/自爆 Others | Variety/いろいろ",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/owata",
-    embed: "ruffle:https://archive.org/cors/owata/owata.swf",
-    rating: 4.8,
-    plays: 471696,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "super-mario-flash-2",
-    title: "Super Mario Flash 2",
-    description: "Super Mario Flash 2, sequel of Super Mario Flash, is what a sequel should be, the same with more stuff :D. Now based on Super Mario World, the game...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/super-mario-flash-2",
-    embed: "ruffle:https://archive.org/cors/super-mario-flash-2/super-mario-flash-2.swf",
-    rating: 4.2,
-    plays: 187599,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "nick-jr-face-alphabet-game",
-    title: "Nick Jr. Face - Alphabet Game",
-    description: "Face Has Letters Of The Alphabet From A To Z.",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/nick_jr__face___alphabet_game__usa__by_oldadobeflashgames01_de1bf82",
-    embed: "ruffle:https://archive.org/cors/nick_jr__face___alphabet_game__usa__by_oldadobeflashgames01_de1bf82/nick_jr__face___alphabet_game__usa__by_oldadobeflashgames01_de1bf82.swf",
-    rating: 4,
-    plays: 738413,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "madness-project-nexus-classic",
-    title: "Madness: Project Nexus Classic",
-    description: "Experience the original flash version of Madness Combat: Project Nexus WARNING: The game may try to send you to newgrounds when loads up, to avoid ...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/madness-project-nexus-classic",
-    embed: "ruffle:https://archive.org/cors/madness-project-nexus-classic/Madness Project Nexus Classic.swf",
-    rating: 4,
-    plays: 95849,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "super-smash-flash",
-    title: "Super Smash Flash",
-    description: "Choose your characters and options and battle it out with 28 different characters in the original title that started it all – Super Smash Flash! Th...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/supersmashflash_swf",
-    embed: "ruffle:https://archive.org/cors/supersmashflash_swf/SuperSmash.swf",
-    rating: 4.5,
-    plays: 643118,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "happy-tree-friends-cuddles-pet-smoochie",
-    title: "Happy Tree Friends - Cuddles' Pet Smoochie",
-    description: "Feeding rabbits can be very dangerous!",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/htf-cuddles-pet-smoochie_flash",
-    embed: "ruffle:https://archive.org/cors/htf-cuddles-pet-smoochie_flash/htf-cuddles-pet-smoochie_flash.swf",
-    rating: 4.4,
-    plays: 74878,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "escaping-the-prison",
-    title: "Escaping the Prison",
-    description: "Escaping the Prison is the second game from the Henry Stickmin series, this is the original version NOT the remastered version. You need Adobe Flas...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/etp_20200826",
-    embed: "ruffle:https://archive.org/cors/etp_20200826/533001_PrisonNG.swf",
-    rating: 4.6,
-    plays: 554185,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "nick-jr-face-numbers-game",
-    title: "Nick Jr. Face - Numbers Game",
-    description: "Would You Like Count Many Things From 1 to 10?",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/nick_jr__face___numbers_game__usa__by_oldadobeflashgames01_de1bf15",
-    embed: "ruffle:https://archive.org/cors/nick_jr__face___numbers_game__usa__by_oldadobeflashgames01_de1bf15/nick_jr__face___numbers_game__usa__by_oldadobeflashgames01_de1bf15.swf",
-    rating: 4.1,
-    plays: 41604,
-    tags: [
-      "flash",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "the-impossible-quiz-2",
-    title: "The Impossible Quiz 2",
-    description: "(NOTE: due to the size of this game, it might take a bit to load) The game contains a total of 120 questions, some of which even have several varia...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/tiq2_swf",
-    embed: "ruffle:https://archive.org/cors/tiq2_swf/theimpossiblequiz2.swf",
-    rating: 4.1,
-    plays: 20822,
     tags: [
       "flash",
       "classic"
@@ -3295,137 +1955,335 @@ export const GAMES: Game[] = [
     source: "Internet Archive"
   },
   {
-    slug: "bloons-tower-defense-1",
+    slug: "wheely-1",
+    title: "Wheely 1",
+    description: "Help Wheely the little red car on his adventure in part 1 of this classic puzzle series.",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/wheely-games_202205",
+    embed: "ruffle:https://archive.org/cors/wheely-games_202205/Wheely.swf",
+    rating: 4.585661659702689,
+    plays: 5610067,
+    tags: [
+      "flash",
+      "puzzle",
+      "classic",
+      "car"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "wheely-2",
+    title: "Wheely 2",
+    description: "Help Wheely the little red car on his adventure in part 2 of this classic puzzle series.",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/wheely-games_202205",
+    embed: "ruffle:https://archive.org/cors/wheely-games_202205/Wheely2.swf",
+    rating: 4.718699837837268,
+    plays: 4202143,
+    tags: [
+      "flash",
+      "puzzle",
+      "classic",
+      "car"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "wheely-3",
+    title: "Wheely 3",
+    description: "Help Wheely the little red car on his adventure in part 3 of this classic puzzle series.",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/wheely-games_202205",
+    embed: "ruffle:https://archive.org/cors/wheely-games_202205/Wheely3.swf",
+    rating: 4.613509140149984,
+    plays: 4873702,
+    tags: [
+      "flash",
+      "puzzle",
+      "classic",
+      "car"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "wheely-4",
+    title: "Wheely 4",
+    description: "Help Wheely the little red car on his adventure in part 4 of this classic puzzle series.",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/wheely-games_202205",
+    embed: "ruffle:https://archive.org/cors/wheely-games_202205/Wheely4.swf",
+    rating: 4.703499643826248,
+    plays: 6370633,
+    tags: [
+      "flash",
+      "puzzle",
+      "classic",
+      "car"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "wheely-5",
+    title: "Wheely 5",
+    description: "Help Wheely the little red car on his adventure in part 5 of this classic puzzle series.",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/wheely-games_202205",
+    embed: "ruffle:https://archive.org/cors/wheely-games_202205/Wheely5.swf",
+    rating: 4.630269554004876,
+    plays: 4032242,
+    tags: [
+      "flash",
+      "puzzle",
+      "classic",
+      "car"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "wheely-6",
+    title: "Wheely 6",
+    description: "Help Wheely the little red car on his adventure in part 6 of this classic puzzle series.",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/wheely-games_202205",
+    embed: "ruffle:https://archive.org/cors/wheely-games_202205/Wheely6.swf",
+    rating: 4.772008899837837,
+    plays: 6218726,
+    tags: [
+      "flash",
+      "puzzle",
+      "classic",
+      "car"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "wheely-7",
+    title: "Wheely 7",
+    description: "Help Wheely the little red car on his adventure in part 7 of this classic puzzle series.",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/wheely-games_202205",
+    embed: "ruffle:https://archive.org/cors/wheely-games_202205/Wheely7.swf",
+    rating: 4.637642938269133,
+    plays: 6175637,
+    tags: [
+      "flash",
+      "puzzle",
+      "classic",
+      "car"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "wheely-8",
+    title: "Wheely 8",
+    description: "Help Wheely the little red car on his adventure in part 8 of this classic puzzle series.",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/wheely-games_202205",
+    embed: "ruffle:https://archive.org/cors/wheely-games_202205/Wheely8.swf",
+    rating: 4.421017086633095,
+    plays: 6524145,
+    tags: [
+      "flash",
+      "puzzle",
+      "classic",
+      "car"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "snail-bob-1",
+    title: "Snail Bob",
+    description: "Guide Snail Bob through dangerous puzzles and obstacles to reach the exit safely.",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/snail-bob-collection",
+    embed: "ruffle:https://archive.org/cors/snail-bob-collection/snail-bob.swf",
+    rating: 4.513980573814082,
+    plays: 4066539,
+    tags: [
+      "flash",
+      "puzzle",
+      "classic",
+      "logic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "snail-bob-2",
+    title: "Snail Bob 2",
+    description: "Guide Snail Bob through dangerous puzzles and obstacles to reach the exit safely.",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/snail-bob-collection",
+    embed: "ruffle:https://archive.org/cors/snail-bob-collection/snail-bob-2.swf",
+    rating: 4.882607308342686,
+    plays: 5755963,
+    tags: [
+      "flash",
+      "puzzle",
+      "classic",
+      "logic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "snail-bob-3",
+    title: "Snail Bob 3",
+    description: "Guide Snail Bob through dangerous puzzles and obstacles to reach the exit safely.",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/snail-bob-collection",
+    embed: "ruffle:https://archive.org/cors/snail-bob-collection/snail-bob-3.swf",
+    rating: 4.5435627748557055,
+    plays: 6345445,
+    tags: [
+      "flash",
+      "puzzle",
+      "classic",
+      "logic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "snail-bob-4",
+    title: "Snail Bob 4: Space",
+    description: "Guide Snail Bob through dangerous puzzles and obstacles to reach the exit safely.",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/snail-bob-collection",
+    embed: "ruffle:https://archive.org/cors/snail-bob-collection/snail-bob-space.swf",
+    rating: 4.713702111988647,
+    plays: 7917829,
+    tags: [
+      "flash",
+      "puzzle",
+      "classic",
+      "logic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "snail-bob-5",
+    title: "Snail Bob 5: Love Story",
+    description: "Guide Snail Bob through dangerous puzzles and obstacles to reach the exit safely.",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/snail-bob-collection",
+    embed: "ruffle:https://archive.org/cors/snail-bob-collection/snail-bob-5-love-story.swf",
+    rating: 4.802741651392825,
+    plays: 3142367,
+    tags: [
+      "flash",
+      "puzzle",
+      "classic",
+      "logic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "snail-bob-6",
+    title: "Snail Bob 6: Winter Story",
+    description: "Guide Snail Bob through dangerous puzzles and obstacles to reach the exit safely.",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/snail-bob-collection",
+    embed: "ruffle:https://archive.org/cors/snail-bob-collection/snail-bob-6-winter-story.swf",
+    rating: 4.837032273482341,
+    plays: 4837425,
+    tags: [
+      "flash",
+      "puzzle",
+      "classic",
+      "logic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "snail-bob-7",
+    title: "Snail Bob 7: Fantasy Story",
+    description: "Guide Snail Bob through dangerous puzzles and obstacles to reach the exit safely.",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/snail-bob-collection",
+    embed: "ruffle:https://archive.org/cors/snail-bob-collection/snail-bob-7-fantasy-story.swf",
+    rating: 4.615822688483525,
+    plays: 6838679,
+    tags: [
+      "flash",
+      "puzzle",
+      "classic",
+      "logic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "snail-bob-8",
+    title: "Snail Bob 8: Island Story",
+    description: "Guide Snail Bob through dangerous puzzles and obstacles to reach the exit safely.",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/snail-bob-collection",
+    embed: "ruffle:https://archive.org/cors/snail-bob-collection/snail-bob-8-island-story.swf",
+    rating: 4.69456694525239,
+    plays: 4911356,
+    tags: [
+      "flash",
+      "puzzle",
+      "classic",
+      "logic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "gunball-reloaded",
+    title: "Gunball Reloaded",
+    description: "The upgraded version of the action-packed shooter. Battle enemies and upgrade your gunball!",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/gunball-reloaded",
+    embed: "ruffle:https://archive.org/cors/gunball-reloaded/gunball-reloaded.swf",
+    rating: 4.6,
+    plays: 1500000,
+    tags: [
+      "flash",
+      "action",
+      "shooter"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "btd1",
     title: "Bloons Tower Defense",
-    description: "The original and iconic tower defense game. Place dart monkeys and pop all the balloons before they escape!",
+    description: "Play Bloons Tower Defense classic Flash game.",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/btd1_flashgame",
     embed: "ruffle:https://archive.org/cors/btd1_flashgame/BTD1.swf",
     rating: 4.8,
-    plays: 9200000,
+    plays: 5000000,
     tags: [
       "flash",
-      "classic",
-      "tower-defense",
-      "strategy"
+      "classic"
     ],
     source: "Internet Archive"
   },
   {
     slug: "fancy-pants-2",
-    title: "Fancy Pants Adventures: World 2",
-    description: "The beloved stick-figure platformer is back with bigger levels, new enemies, and super-smooth parkour gameplay.",
+    title: "Fancy Pants 2",
+    description: "Play Fancy Pants 2 classic Flash game.",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/fancypantsworld2",
     embed: "ruffle:https://archive.org/cors/fancypantsworld2/FancyPantsWorld2.swf",
     rating: 4.8,
-    plays: 7600000,
+    plays: 5000000,
     tags: [
       "flash",
-      "classic",
-      "platformer",
-      "action"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "bubble-tanks-2",
-    title: "Bubble Tanks 2",
-    description: "Evolve your bubble tank by defeating enemies and absorbing their bubbles. An addictive twin-stick shooter.",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/bubbletanks2",
-    embed: "ruffle:https://archive.org/cors/bubbletanks2/BubbleTanks2.swf",
-    rating: 4.5,
-    plays: 3200000,
-    tags: [
-      "flash",
-      "classic",
-      "shooter",
-      "action"
+      "classic"
     ],
     source: "Internet Archive"
   },
   {
     slug: "electric-man-2",
     title: "Electric Man 2",
-    description: "Fight your way through the Tournament of Voltagen as a powerful stickman with super-powered electric attacks.",
+    description: "Play Electric Man 2 classic Flash game.",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/electric-man-2-hs_flash",
     embed: "ruffle:https://archive.org/cors/electric-man-2-hs_flash/ElectricMan2HS.swf",
-    rating: 4.7,
-    plays: 5800000,
+    rating: 4.8,
+    plays: 5000000,
     tags: [
       "flash",
-      "classic",
-      "fighting",
-      "action"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "bowman-2",
-    title: "Bowman 2",
-    description: "Draw back your bow and fire arrows at your opponent across the map. A timeless archery duel game.",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/bowman2_flashgame",
-    embed: "ruffle:https://archive.org/cors/bowman2_flashgame/Bowman2.swf",
-    rating: 4.5,
-    plays: 4100000,
-    tags: [
-      "flash",
-      "classic",
-      "action"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "indestructo-tank",
-    title: "IndestructoTank!",
-    description: "You are invincible. Use enemy attacks to launch yourself into the air and destroy aircraft. Pure Flash gold.",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/indestructotank_ae",
-    embed: "ruffle:https://archive.org/cors/indestructotank_ae/IndestructoTankAE.swf",
-    rating: 4.6,
-    plays: 3500000,
-    tags: [
-      "flash",
-      "classic",
-      "action",
-      "arcade"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "dad-n-me",
-    title: "Dad 'n Me",
-    description: "Beat up kids in the playground in this hilariously violent brawler by Newgrounds legends Tom Fulp and Dan Paladin.",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/dad-n-me_newgrounds",
-    embed: "ruffle:https://archive.org/cors/dad-n-me_newgrounds/DadNMe.swf",
-    rating: 4.4,
-    plays: 2900000,
-    tags: [
-      "flash",
-      "classic",
-      "brawler",
-      "action"
-    ],
-    source: "Internet Archive"
-  },
-  {
-    slug: "color-tower-defense",
-    title: "Colorful Tower Defense",
-    description: "A visually stunning tower defense game where color-coded towers defend against waves of colorful creeps.",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/colorful-tower-defense",
-    embed: "ruffle:https://archive.org/cors/colorful-tower-defense/ColorfulTowerDefense.swf",
-    rating: 4.3,
-    plays: 1900000,
-    tags: [
-      "flash",
-      "classic",
-      "tower-defense",
-      "strategy"
+      "classic"
     ],
     source: "Internet Archive"
   }
