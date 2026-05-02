@@ -30,10 +30,15 @@ export function GameFrame({ embed, title, thumbnail }: GameFrameProps) {
 
   const isInternal = embed.startsWith("internal:");
   const internalKey = isInternal ? embed.replace("internal:", "") : null;
-  const isJsdos = embed.startsWith("jsdos:");
-  const jsdosBundle = isJsdos ? embed.replace("jsdos:", "") : null;
-  const isRuffle = embed.startsWith("ruffle:");
-  const ruffleSwf = isRuffle ? embed.replace("ruffle:", "") : null;
+  
+  // Auto-detect Flash (.swf) even without prefix
+  const isRuffle = embed.startsWith("ruffle:") || embed.toLowerCase().endsWith(".swf");
+  const ruffleSwf = isRuffle ? (embed.startsWith("ruffle:") ? embed.replace("ruffle:", "") : embed) : null;
+
+  // Auto-detect JS-DOS (.zip) even without prefix
+  const isJsdos = embed.startsWith("jsdos:") || embed.toLowerCase().endsWith(".zip");
+  const jsdosBundle = isJsdos ? (embed.startsWith("jsdos:") ? embed.replace("jsdos:", "") : embed) : null;
+
 
   return (
     <div
