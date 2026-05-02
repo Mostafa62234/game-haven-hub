@@ -1,4 +1,4 @@
-﻿export type GameCategory =
+export type GameCategory =
   | "Arcade"
   | "Puzzle"
   | "Multiplayer"
@@ -2667,18 +2667,8 @@ export const GAMES: Game[] = [
     plays: 404846,
     tags: ["flash", "classic"],
     source: "Internet Archive"
-  }
-];
-
-export const CATEGORIES: GameCategory[] = [
-  "Arcade",
-  "Puzzle",
-  "Multiplayer",
-  "Strategy",
-  "Casual",
-  "Retro",
-  "Flash",,
-  {
+  },
+{
     slug: "age-of-war-1",
     title: "Age of War",
     description: "Evolve your civilization from cavemen to the future and destroy the enemy base in this strategy classic.",
@@ -2786,6 +2776,16 @@ export const CATEGORIES: GameCategory[] = [
     tags: ["flash","classic","tower-defense","strategy"],
     source: "Internet Archive"
   }
+];
+
+export const CATEGORIES: GameCategory[] = [
+  "Arcade",
+  "Puzzle",
+  "Multiplayer",
+  "Strategy",
+  "Casual",
+  "Retro",
+  "Flash",
 ];
 
 export function getGame(slug: string): Game | undefined {
