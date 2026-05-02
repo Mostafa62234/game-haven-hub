@@ -74,11 +74,18 @@ function AdminDashboard() {
     }
   }, [isAdmin, authLoading, navigate]);
 
-  const toggleGameVisibility = async (slug: string, currentHidden: boolean) => {
+  const toggleGameVisibility = async (game: any, currentHidden: boolean) => {
     try {
       const { error } = await supabase
         .from("admin_games")
-        .upsert({ slug, hidden: !currentHidden }, { onConflict: "slug" });
+        .upsert({ 
+          slug: game.slug, 
+          title: game.title,
+          category: game.category,
+          embed: game.embed,
+          thumbnail: game.thumbnail,
+          hidden: !currentHidden 
+        }, { onConflict: "slug" });
       
       if (error) throw error;
       toast.success(currentHidden ? "Game Restored" : "Game Hidden");
@@ -87,6 +94,7 @@ function AdminDashboard() {
       toast.error(err.message);
     }
   };
+
 
   const deleteCustomGame = async (slug: string) => {
     if (!confirm("Are you sure you want to delete this game permanently?")) return;
@@ -261,10 +269,11 @@ function AdminDashboard() {
                                   variant="ghost" 
                                   size="sm" 
                                   className="rounded-full"
-                                  onClick={() => toggleGameVisibility(game.slug, isHidden)}
+                                  onClick={() => toggleGameVisibility(game, isHidden)}
                                 >
                                   {isHidden ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4 text-muted-foreground" />}
                                 </Button>
+
                                 {isCustom && (
                                   <Button 
                                     variant="ghost" 
