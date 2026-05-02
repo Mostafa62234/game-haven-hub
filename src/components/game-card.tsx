@@ -22,26 +22,25 @@ export function GameCard({ game }: { game: Game }) {
               if (!game.thumbnail.includes('archive.org')) return game.thumbnail;
               return `${game.thumbnail}?width=${dataSaver ? 200 : 400}`;
             })()}
-
-
-          alt={game.title}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-        
-        <FavoriteButton 
-          gameSlug={game.slug} 
-          className="absolute right-3 top-3 z-10 scale-0 transition-transform duration-300 group-hover:scale-100" 
-        />
-        <Badge className="absolute left-3 top-3 rounded-full border-0 bg-background/80 text-foreground backdrop-blur">
-          {game.category}
-        </Badge>
-        <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-foreground">
-          <span className="flex items-center gap-1 text-amber-400">
-            <Star className="h-3 w-3 fill-current" />
-            {game.rating.toFixed(1)}
-          </span>
+            alt={game.title}
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          
+          <FavoriteButton 
+            gameSlug={game.slug} 
+            className="absolute right-3 top-3 z-10 scale-0 transition-transform duration-300 group-hover:scale-100" 
+          />
+          <Badge className="absolute left-3 top-3 rounded-full border-0 bg-background/80 text-foreground backdrop-blur">
+            {game.category}
+          </Badge>
+          <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-foreground">
+            <span className="flex items-center gap-1 text-amber-400">
+              <Star className="h-3 w-3 fill-current" />
+              {game.rating.toFixed(1)}
+            </span>
+          </div>
         </div>
       </Link>
 
@@ -52,4 +51,3 @@ export function GameCard({ game }: { game: Game }) {
     </div>
   );
 }
-
