@@ -12,7 +12,11 @@ export function GameCard({ game }: { game: Game }) {
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-muted">
         <img
-          src={game.thumbnail.includes('archive.org') ? `${game.thumbnail}?width=400` : game.thumbnail}
+          src={(() => {
+            if (!game.thumbnail.includes('archive.org')) return game.thumbnail;
+            const isSaveData = typeof navigator !== 'undefined' && (navigator as any).connection?.saveData;
+            return `${game.thumbnail}?width=${isSaveData ? 200 : 400}`;
+          })()}
           alt={game.title}
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"

@@ -55,20 +55,11 @@ export const Route = createRootRoute({
       { rel: "stylesheet", href: appCss },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap",
       },
+
     ],
-    scripts: [
-      ...(ADSENSE_CLIENT
-        ? [
-            {
-              async: true,
-              src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`,
-              crossOrigin: "anonymous",
-            },
-          ]
-        : []),
-    ],
+    scripts: [],
   }),
   shellComponent: RootShell,
   component: RootComponent,

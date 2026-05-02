@@ -56,6 +56,17 @@ export function AdSlot({ slot, format = "banner", className, label = "Advertisem
 
   useEffect(() => {
     if (!hasAdsense || !enabled) return;
+    
+    // Lazy load the AdSense script only once
+    if (!document.getElementById("adsense-script")) {
+      const script = document.createElement("script");
+      script.id = "adsense-script";
+      script.async = true;
+      script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`;
+      script.crossOrigin = "anonymous";
+      document.head.appendChild(script);
+    }
+
     try {
       // @ts-expect-error - adsbygoogle is injected by the AdSense script
       (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -63,6 +74,7 @@ export function AdSlot({ slot, format = "banner", className, label = "Advertisem
       /* ignore */
     }
   }, [hasAdsense, enabled]);
+
 
   if (!enabled) return null;
 
