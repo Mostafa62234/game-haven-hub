@@ -113,7 +113,7 @@ export const GAMES: Game[] = [
     title: "Donkey Kong",
     description: "The classic 1983 MS-DOS port of the arcade legend. Climb the ladders and dodge the barrels!",
     category: "Retro",
-    thumbnail: "https://tse2.mm.bing.net/th?q=Donkey%20Kong%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    thumbnail: "https://archive.org/services/img/msdos_Donkey_Kong_1983",
     embed: "https://archive.org/embed/msdos_Donkey_Kong_1983?autoplay=1",
     rating: 4.8,
     plays: 1500000,
