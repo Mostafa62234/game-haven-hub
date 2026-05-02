@@ -28,362 +28,85 @@ export interface Game {
 // console ROMs (Mario, Zelda, etc.) ΓÇö instead we offer faithful
 // open-source clones and the same retro arcade vibe.
 export const GAMES: Game[] = [
-  // === Originals & classics ===
-  {
-    slug: "tic-tac-toe",
-    title: "Tic Tac Toe",
-    description:
-      "The classic 3-in-a-row strategy game. Play locally with a friend or online over a room code.",
-    category: "Multiplayer",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=Tic%20Tac%20Toe%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "internal:tic-tac-toe",
-    rating: 4.6,
-    plays: 1200000,
-    tags: ["classic", "2-player", "quick"],
-  },
-  {
-    slug: "2048",
-    title: "2048",
-    description:
-      "Combine matching tiles to reach the legendary 2048 tile. Easy to learn, hard to master.",
-    category: "Puzzle",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=2048%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://play2048.co/",
-    rating: 4.8,
-    plays: 8400000,
-    tags: ["numbers", "puzzle", "addictive"],
-    source: "play2048.co (open-source, MIT)",
-  },
-  {
-    slug: "hextris",
-    title: "Hextris",
-    description:
-      "A fast-paced puzzle game inspired by Tetris. Match colors on a rotating hexagon.",
-    category: "Arcade",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=Hextris%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://hextris.io/",
-    rating: 4.7,
-    plays: 3100000,
-    tags: ["arcade", "tetris-like", "fast"],
-    source: "hextris.io (open-source)",
-  },
-  {
-    slug: "memory-match",
-    title: "Memory Match",
-    description:
-      "Flip cards two at a time and find every matching pair. Train your memory.",
-    category: "Casual",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=Memory%20Match%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "internal:memory-match",
-    rating: 4.5,
-    plays: 650000,
-    tags: ["memory", "casual", "single-player"],
-  },
-  {
-    slug: "chess",
-    title: "Chess Online",
-    description:
-      "Play the timeless game of strategy. Plan ahead, control the center, checkmate.",
-    category: "Strategy",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=Chess%20Online%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://lichess.org/",
-    rating: 4.9,
-    plays: 20000000,
-    tags: ["strategy", "classic", "deep"],
-    source: "lichess.org (free & open-source)",
-  },
-  {
-    slug: "minesweeper",
-    title: "Minesweeper",
-    description:
-      "Use logic to clear the board without detonating any of the hidden mines.",
-    category: "Puzzle",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=Minesweeper%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://minesweeper.online/",
-    rating: 4.6,
-    plays: 9200000,
-    tags: ["logic", "classic", "single-player"],
-  },
-  {
-    slug: "sudoku",
-    title: "Sudoku",
-    description:
-      "Fill the grid so every row, column and box contains 1-9. The number puzzle the world loves.",
-    category: "Puzzle",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=Sudoku%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://sudoku.com/",
-    rating: 4.7,
-    plays: 11000000,
-    tags: ["numbers", "logic", "daily"],
-  },
-
-  // === Retro / console-era games (legally embeddable) ===
-  {
-    slug: "pacman-doodle",
-    title: "Pac-Man (Google Doodle)",
-    description:
-      "The official Google 30th-anniversary Pac-Man doodle ΓÇö the original arcade legend, playable in your browser.",
-    category: "Retro",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=Pac-Man%20(Google%20Doodle)%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://elgoog.im/pacman/",
-    rating: 4.9,
-    plays: 30000000,
-    tags: ["arcade", "80s", "official"],
-    source: "elgoog.im (Google Doodle archive)",
-  },
   {
     slug: "tetris",
     title: "Tetris Tribute",
-    description:
-      "Stack falling tetrominoes, clear lines, and chase the high score. Pure arcade bliss.",
+    description: "Stack falling tetrominoes, clear lines, and chase the high score. Pure arcade bliss.",
     category: "Retro",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=Tetris%20Tribute%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    thumbnail: "https://tse2.mm.bing.net/th?q=Tetris%20Tribute%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
     embed: "https://tetris.com/play-tetris",
     rating: 4.8,
     plays: 15000000,
-    tags: ["arcade", "classic", "score"],
-    source: "tetris.com (official)",
-  },
-  {
-    slug: "snake",
-    title: "Snake Classic",
-    description:
-      "Eat, grow longer, and don't bite yourself. A timeless arcade favorite.",
-    category: "Retro",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=Snake%20Classic%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://playsnake.org/",
-    rating: 4.3,
-    plays: 5600000,
-    tags: ["retro", "arcade", "single-player"],
-  },
-  {
-    slug: "pong",
-    title: "Pong (HTML5)",
-    description:
-      "The game that started it all. Two paddles, one ball, infinite reflexes.",
-    category: "Retro",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=Pong%20(HTML5)%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://www.ponggame.org/",
-    rating: 4.2,
-    plays: 1800000,
-    tags: ["retro", "70s", "2-player"],
-  },
-  {
-    slug: "prince-of-persia",
-    title: "Prince of Persia (HTML5)",
-    description:
-      "The legendary cinematic platformer from 1989, faithfully remade as an open-source HTML5 port.",
-    category: "Retro",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=Prince%20of%20Persia%20(HTML5)%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://princejs.com/",
-    rating: 4.7,
-    plays: 2400000,
-    tags: ["platformer", "80s", "adventure"],
-    source: "princejs.com (open-source port by Oliver Klemenz)",
+    tags: [
+      "arcade",
+      "classic",
+      "score"
+    ],
+    source: "tetris.com (official)"
   },
   {
     slug: "doom",
     title: "DOOM (Browser Port)",
-    description:
-      "The 1993 first-person shooter that shaped the genre. Playable directly in your browser.",
+    description: "The 1993 first-person shooter that shaped the genre. Playable directly in your browser.",
     category: "Retro",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=DOOM%20(Browser%20Port)%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed:
-      "https://silentspacemarine.com/",
+    thumbnail: "https://tse2.mm.bing.net/th?q=DOOM%20(Browser%20Port)%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "https://silentspacemarine.com/",
     rating: 4.8,
     plays: 9100000,
-    tags: ["fps", "90s", "classic"],
-    source: "silentspacemarine.com (HTML5 Port)",
-  },
-  {
-    slug: "minecraft-classic",
-    title: "Minecraft Classic",
-    description:
-      "The original 2009 Minecraft experience. Build and destroy blocks in a shared browser world.",
-    category: "Retro",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=Minecraft%20Classic%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://classic.minecraft.net/",
-    rating: 4.6,
-    plays: 3300000,
-    tags: ["classic", "building", "sandbox"],
-    source: "classic.minecraft.net",
-  },
-  {
-    slug: "chrome-dino",
-    title: "Chrome Dino Game",
-    description:
-      "The legendary T-Rex runner game! Jump the cacti and duck the pterodactyls in an endless desert.",
-    category: "Arcade",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=Chrome%20Dino%20Game%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://dino-chrome.com/",
-    rating: 4.4,
-    plays: 4200000,
-    tags: ["runner", "arcade", "casual"],
-    source: "dino-chrome.com",
-  },
-  {
-    slug: "sandspiel",
-    title: "Sandspiel",
-    description:
-      "A falling sand game with cellular automata. Create art, elements, and complex ecosystems.",
-    category: "Casual",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=Sandspiel%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://sandspiel.club/",
-    rating: 4.6,
-    plays: 5700000,
-    tags: ["sandbox", "simulation", "physics"],
-    source: "sandspiel.club",
-  },
-  {
-    slug: "slow-roads",
-    title: "Slow Roads",
-    description:
-      "A casual, endlessly generated driving game. Relax, take in the beautiful scenery, and enjoy the open road.",
-    category: "Casual",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=Slow%20Roads%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://slowroads.io/",
-    rating: 4.7,
-    plays: 2900000,
-    tags: ["driving", "relaxing", "simulation"],
-    source: "slowroads.io",
+    tags: [
+      "fps",
+      "90s",
+      "classic"
+    ],
+    source: "silentspacemarine.com (HTML5 Port)"
   },
   {
     slug: "prince-of-persia-2",
     title: "Mario-Style Platformer",
-    description:
-      "An open-source side-scrolling platformer in the spirit of the SNES era. Run, jump, collect coins.",
+    description: "An open-source side-scrolling platformer in the spirit of the SNES era. Run, jump, collect coins.",
     category: "Retro",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=Mario-Style%20Platformer%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    thumbnail: "https://tse2.mm.bing.net/th?q=Mario-Style%20Platformer%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
     embed: "https://www.mariohtml5.com/",
     rating: 4.5,
     plays: 8800000,
-    tags: ["platformer", "snes-era", "retro"],
-    source: "Notch's Infinite Mario (open-source HTML5 port)",
-  },
-  {
-    slug: "agar",
-    title: "Agar.io",
-    description:
-      "Eat smaller cells, avoid bigger ones, and become the biggest blob on the server.",
-    category: "Multiplayer",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=Agar.io%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://agar.io/",
-    rating: 4.4,
-    plays: 50000000,
-    tags: ["io", "multiplayer", "casual"],
-  },
-  {
-    slug: "flappy-bird",
-    title: "Flap Adventure",
-    description:
-      "Tap to flap and dodge the pipes. One of the most addictive arcade challenges of all time.",
-    category: "Arcade",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=Flap%20Adventure%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://flappybird.io/",
-    rating: 4.4,
-    plays: 12000000,
-    tags: ["arcade", "casual", "one-tap"],
-  },
-  {
-    slug: "checkers",
-    title: "Checkers",
-    description:
-      "Jump, capture, and crown your kings. A simple-to-learn strategy classic for two players.",
-    category: "Strategy",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=Checkers%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://www.247checkers.com/",
-    rating: 4.2,
-    plays: 2100000,
-    tags: ["strategy", "2-player", "classic"],
-  },
-  {
-    slug: "wolfenstein-3d",
-    title: "Wolfenstein 3D",
-    description:
-      "Id Software's 1992 FPS pioneer, playable in-browser via the Internet Archive's authorized emulator build.",
-    category: "Retro",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=Wolfenstein%203D%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/msdos_Wolfenstein_3D_1992?autoplay=1",
-    rating: 4.6,
-    plays: 3300000,
-    tags: ["fps", "90s", "id-software"],
-    source: "Internet Archive MS-DOS collection",
+    tags: [
+      "platformer",
+      "snes-era",
+      "retro"
+    ],
+    source: "Notch's Infinite Mario (open-source HTML5 port)"
   },
   {
     slug: "oregon-trail",
     title: "The Oregon Trail",
-    description:
-      "Lead your wagon party west across 19th-century America in this educational classic.",
+    description: "Lead your wagon party west across 19th-century America in this educational classic.",
     category: "Retro",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=The%20Oregon%20Trail%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    thumbnail: "https://tse2.mm.bing.net/th?q=The%20Oregon%20Trail%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
     embed: "https://archive.org/embed/msdos_Oregon_Trail_The_1990?autoplay=1",
     rating: 4.4,
     plays: 4200000,
-    tags: ["classic", "educational", "90s"],
-    source: "Internet Archive",
-  },
-  {
-    slug: "lemmings",
-    title: "Lemmings",
-    description:
-      "Save the lemmings by assigning them tasks before they walk off a cliff. A puzzle-platformer icon.",
-    category: "Puzzle",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=Lemmings%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/msdos_Lemmings_1991?autoplay=1",
-    rating: 4.7,
-    plays: 2900000,
-    tags: ["puzzle", "platformer", "90s"],
-    source: "Internet Archive",
-  },
-  {
-    slug: "donkey-kong",
-    title: "Donkey Kong",
-    description:
-      "The classic 1983 MS-DOS port of the arcade legend. Climb the ladders and dodge the barrels!",
-    category: "Retro",
-    thumbnail:
-      "https://tse2.mm.bing.net/th?q=Donkey%20Kong%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "https://archive.org/embed/msdos_Donkey_Kong_1983?autoplay=1",
-    rating: 4.8,
-    plays: 1500000,
-    tags: ["arcade", "80s", "platformer"],
-    source: "Internet Archive",
-  },
-  {
-    slug: "daggerfall",
-    title: "The Elder Scrolls II: Daggerfall",
-    description: "The massive 1996 fantasy open-world RPG by Bethesda.",
-    category: "Retro",
-    thumbnail: "https://tse2.mm.bing.net/th?q=The%20Elder%20Scrolls%20II%3A%20Daggerfall%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "jsdos:https://archive.org/cors/msdos_Elder_Scrolls_The_-_Daggerfall_1996/Elder_Scrolls_The_-_Daggerfall_1996.zip",
-    rating: 4.8,
-    plays: 1400000,
-    tags: ["rpg", "open-world", "90s"],
+    tags: [
+      "classic",
+      "educational",
+      "90s"
+    ],
     source: "Internet Archive"
+  },
+  {
+    slug: "wolfenstein-3d",
+    title: "Wolfenstein 3D",
+    description: "Id Software's 1992 FPS pioneer, playable in-browser via the Internet Archive's authorized emulator build.",
+    category: "Retro",
+    thumbnail: "https://tse2.mm.bing.net/th?q=Wolfenstein%203D%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "https://archive.org/embed/msdos_Wolfenstein_3D_1992?autoplay=1",
+    rating: 4.6,
+    plays: 3300000,
+    tags: [
+      "fps",
+      "90s",
+      "id-software"
+    ],
+    source: "Internet Archive MS-DOS collection"
   },
   {
     slug: "fallout-1",
@@ -394,7 +117,415 @@ export const GAMES: Game[] = [
     embed: "jsdos:https://archive.org/cors/msdos_Fallout_1997/Fallout_1997.zip",
     rating: 4.9,
     plays: 2800000,
-    tags: ["rpg", "post-apocalyptic", "classic"],
+    tags: [
+      "rpg",
+      "post-apocalyptic",
+      "classic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "prince-of-persia",
+    title: "Prince of Persia (HTML5)",
+    description: "The legendary cinematic platformer from 1989, faithfully remade as an open-source HTML5 port.",
+    category: "Retro",
+    thumbnail: "https://tse2.mm.bing.net/th?q=Prince%20of%20Persia%20(HTML5)%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "https://princejs.com/",
+    rating: 4.7,
+    plays: 2400000,
+    tags: [
+      "platformer",
+      "80s",
+      "adventure"
+    ],
+    source: "princejs.com (open-source port by Oliver Klemenz)"
+  },
+  {
+    slug: "donkey-kong",
+    title: "Donkey Kong",
+    description: "The classic 1983 MS-DOS port of the arcade legend. Climb the ladders and dodge the barrels!",
+    category: "Retro",
+    thumbnail: "https://tse2.mm.bing.net/th?q=Donkey%20Kong%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "https://archive.org/embed/msdos_Donkey_Kong_1983?autoplay=1",
+    rating: 4.8,
+    plays: 1500000,
+    tags: [
+      "arcade",
+      "80s",
+      "platformer"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "daggerfall",
+    title: "The Elder Scrolls II: Daggerfall",
+    description: "The massive 1996 fantasy open-world RPG by Bethesda.",
+    category: "Retro",
+    thumbnail: "https://tse2.mm.bing.net/th?q=The%20Elder%20Scrolls%20II%3A%20Daggerfall%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "jsdos:https://archive.org/cors/msdos_Elder_Scrolls_The_-_Daggerfall_1996/Elder_Scrolls_The_-_Daggerfall_1996.zip",
+    rating: 4.8,
+    plays: 1400000,
+    tags: [
+      "rpg",
+      "open-world",
+      "90s"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "prince-of-persia-3",
+    title: "Prince of Persia",
+    description: "A flash animation from a compilation of 1,100 Flash Animations. The Prince of Persia Special Edition, a flash-based version of the original Prince ...",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/1100_prince_of_persia",
+    embed: "ruffle:https://archive.org/cors/1100_prince_of_persia/prince_of_persia.swf",
+    rating: 4.5,
+    plays: 460665,
+    tags: [
+      "flash",
+      "classic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "prince-of-persia-3",
+    title: "Prince of Persia",
+    description: "A flash animation from a compilation of 1,100 Flash Animations. The Prince of Persia Special Edition, a flash-based version of the original Prince ...",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/1100_prince_of_persia",
+    embed: "ruffle:https://archive.org/cors/1100_prince_of_persia/prince_of_persia.swf",
+    rating: 4.5,
+    plays: 460665,
+    tags: [
+      "flash",
+      "classic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "pac-man-flash",
+    title: "Pac-Man (Flash)",
+    description: "(woah theres flash emulation on archive.org, epic! gotta try this out) One of the most popular and influential games of the 1980's,  Pac-Man  stars...",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/pacman_swf",
+    embed: "ruffle:https://archive.org/cors/pacman_swf/pacman.swf",
+    rating: 4,
+    plays: 374572,
+    tags: [
+      "flash",
+      "classic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "pac-man-flash",
+    title: "Pac-Man (Flash)",
+    description: "(woah theres flash emulation on archive.org, epic! gotta try this out) One of the most popular and influential games of the 1980's,  Pac-Man  stars...",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/pacman_swf",
+    embed: "ruffle:https://archive.org/cors/pacman_swf/pacman.swf",
+    rating: 4,
+    plays: 374572,
+    tags: [
+      "flash",
+      "classic"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "gunball-2",
+    title: "Gunball 2: Emperor's Revenge",
+    description: "Upgrade your gunball and defeat challenging enemies in the arena. A true Flash classic.",
+    category: "Flash",
+    thumbnail: "https://archive.org/services/img/gunball-2-emperors-revenge",
+    embed: "ruffle:https://archive.org/cors/gunball-2-emperors-revenge/gunball-2-emperors-revenge.swf",
+    rating: 4.5,
+    plays: 1200000,
+    tags: [
+      "flash",
+      "action",
+      "shooter",
+      "upgrade"
+    ],
+    source: "Internet Archive"
+  },
+  {
+    slug: "tic-tac-toe",
+    title: "Tic Tac Toe",
+    description: "The classic 3-in-a-row strategy game. Play locally with a friend or online over a room code.",
+    category: "Multiplayer",
+    thumbnail: "https://tse2.mm.bing.net/th?q=Tic%20Tac%20Toe%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "internal:tic-tac-toe",
+    rating: 4.6,
+    plays: 1200000,
+    tags: [
+      "classic",
+      "2-player",
+      "quick"
+    ]
+  },
+  {
+    slug: "2048",
+    title: "2048",
+    description: "Combine matching tiles to reach the legendary 2048 tile. Easy to learn, hard to master.",
+    category: "Puzzle",
+    thumbnail: "https://tse2.mm.bing.net/th?q=2048%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "https://play2048.co/",
+    rating: 4.8,
+    plays: 8400000,
+    tags: [
+      "numbers",
+      "puzzle",
+      "addictive"
+    ],
+    source: "play2048.co (open-source, MIT)"
+  },
+  {
+    slug: "hextris",
+    title: "Hextris",
+    description: "A fast-paced puzzle game inspired by Tetris. Match colors on a rotating hexagon.",
+    category: "Arcade",
+    thumbnail: "https://tse2.mm.bing.net/th?q=Hextris%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "https://hextris.io/",
+    rating: 4.7,
+    plays: 3100000,
+    tags: [
+      "arcade",
+      "tetris-like",
+      "fast"
+    ],
+    source: "hextris.io (open-source)"
+  },
+  {
+    slug: "memory-match",
+    title: "Memory Match",
+    description: "Flip cards two at a time and find every matching pair. Train your memory.",
+    category: "Casual",
+    thumbnail: "https://tse2.mm.bing.net/th?q=Memory%20Match%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "internal:memory-match",
+    rating: 4.5,
+    plays: 650000,
+    tags: [
+      "memory",
+      "casual",
+      "single-player"
+    ]
+  },
+  {
+    slug: "chess",
+    title: "Chess Online",
+    description: "Play the timeless game of strategy. Plan ahead, control the center, checkmate.",
+    category: "Strategy",
+    thumbnail: "https://tse2.mm.bing.net/th?q=Chess%20Online%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "https://lichess.org/",
+    rating: 4.9,
+    plays: 20000000,
+    tags: [
+      "strategy",
+      "classic",
+      "deep"
+    ],
+    source: "lichess.org (free & open-source)"
+  },
+  {
+    slug: "minesweeper",
+    title: "Minesweeper",
+    description: "Use logic to clear the board without detonating any of the hidden mines.",
+    category: "Puzzle",
+    thumbnail: "https://tse2.mm.bing.net/th?q=Minesweeper%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "https://minesweeper.online/",
+    rating: 4.6,
+    plays: 9200000,
+    tags: [
+      "logic",
+      "classic",
+      "single-player"
+    ]
+  },
+  {
+    slug: "sudoku",
+    title: "Sudoku",
+    description: "Fill the grid so every row, column and box contains 1-9. The number puzzle the world loves.",
+    category: "Puzzle",
+    thumbnail: "https://tse2.mm.bing.net/th?q=Sudoku%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "https://sudoku.com/",
+    rating: 4.7,
+    plays: 11000000,
+    tags: [
+      "numbers",
+      "logic",
+      "daily"
+    ]
+  },
+  {
+    slug: "pacman-doodle",
+    title: "Pac-Man (Google Doodle)",
+    description: "The official Google 30th-anniversary Pac-Man doodle ΓÇö the original arcade legend, playable in your browser.",
+    category: "Retro",
+    thumbnail: "https://tse2.mm.bing.net/th?q=Pac-Man%20(Google%20Doodle)%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "https://elgoog.im/pacman/",
+    rating: 4.9,
+    plays: 30000000,
+    tags: [
+      "arcade",
+      "80s",
+      "official"
+    ],
+    source: "elgoog.im (Google Doodle archive)"
+  },
+  {
+    slug: "snake",
+    title: "Snake Classic",
+    description: "Eat, grow longer, and don't bite yourself. A timeless arcade favorite.",
+    category: "Retro",
+    thumbnail: "https://tse2.mm.bing.net/th?q=Snake%20Classic%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "https://playsnake.org/",
+    rating: 4.3,
+    plays: 5600000,
+    tags: [
+      "retro",
+      "arcade",
+      "single-player"
+    ]
+  },
+  {
+    slug: "pong",
+    title: "Pong (HTML5)",
+    description: "The game that started it all. Two paddles, one ball, infinite reflexes.",
+    category: "Retro",
+    thumbnail: "https://tse2.mm.bing.net/th?q=Pong%20(HTML5)%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "https://www.ponggame.org/",
+    rating: 4.2,
+    plays: 1800000,
+    tags: [
+      "retro",
+      "70s",
+      "2-player"
+    ]
+  },
+  {
+    slug: "minecraft-classic",
+    title: "Minecraft Classic",
+    description: "The original 2009 Minecraft experience. Build and destroy blocks in a shared browser world.",
+    category: "Retro",
+    thumbnail: "https://tse2.mm.bing.net/th?q=Minecraft%20Classic%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "https://classic.minecraft.net/",
+    rating: 4.6,
+    plays: 3300000,
+    tags: [
+      "classic",
+      "building",
+      "sandbox"
+    ],
+    source: "classic.minecraft.net"
+  },
+  {
+    slug: "chrome-dino",
+    title: "Chrome Dino Game",
+    description: "The legendary T-Rex runner game! Jump the cacti and duck the pterodactyls in an endless desert.",
+    category: "Arcade",
+    thumbnail: "https://tse2.mm.bing.net/th?q=Chrome%20Dino%20Game%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "https://dino-chrome.com/",
+    rating: 4.4,
+    plays: 4200000,
+    tags: [
+      "runner",
+      "arcade",
+      "casual"
+    ],
+    source: "dino-chrome.com"
+  },
+  {
+    slug: "sandspiel",
+    title: "Sandspiel",
+    description: "A falling sand game with cellular automata. Create art, elements, and complex ecosystems.",
+    category: "Casual",
+    thumbnail: "https://tse2.mm.bing.net/th?q=Sandspiel%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "https://sandspiel.club/",
+    rating: 4.6,
+    plays: 5700000,
+    tags: [
+      "sandbox",
+      "simulation",
+      "physics"
+    ],
+    source: "sandspiel.club"
+  },
+  {
+    slug: "slow-roads",
+    title: "Slow Roads",
+    description: "A casual, endlessly generated driving game. Relax, take in the beautiful scenery, and enjoy the open road.",
+    category: "Casual",
+    thumbnail: "https://tse2.mm.bing.net/th?q=Slow%20Roads%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "https://slowroads.io/",
+    rating: 4.7,
+    plays: 2900000,
+    tags: [
+      "driving",
+      "relaxing",
+      "simulation"
+    ],
+    source: "slowroads.io"
+  },
+  {
+    slug: "agar",
+    title: "Agar.io",
+    description: "Eat smaller cells, avoid bigger ones, and become the biggest blob on the server.",
+    category: "Multiplayer",
+    thumbnail: "https://tse2.mm.bing.net/th?q=Agar.io%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "https://agar.io/",
+    rating: 4.4,
+    plays: 50000000,
+    tags: [
+      "io",
+      "multiplayer",
+      "casual"
+    ]
+  },
+  {
+    slug: "flappy-bird",
+    title: "Flap Adventure",
+    description: "Tap to flap and dodge the pipes. One of the most addictive arcade challenges of all time.",
+    category: "Arcade",
+    thumbnail: "https://tse2.mm.bing.net/th?q=Flap%20Adventure%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "https://flappybird.io/",
+    rating: 4.4,
+    plays: 12000000,
+    tags: [
+      "arcade",
+      "casual",
+      "one-tap"
+    ]
+  },
+  {
+    slug: "checkers",
+    title: "Checkers",
+    description: "Jump, capture, and crown your kings. A simple-to-learn strategy classic for two players.",
+    category: "Strategy",
+    thumbnail: "https://tse2.mm.bing.net/th?q=Checkers%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "https://www.247checkers.com/",
+    rating: 4.2,
+    plays: 2100000,
+    tags: [
+      "strategy",
+      "2-player",
+      "classic"
+    ]
+  },
+  {
+    slug: "lemmings",
+    title: "Lemmings",
+    description: "Save the lemmings by assigning them tasks before they walk off a cliff. A puzzle-platformer icon.",
+    category: "Puzzle",
+    thumbnail: "https://tse2.mm.bing.net/th?q=Lemmings%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
+    embed: "https://archive.org/embed/msdos_Lemmings_1991?autoplay=1",
+    rating: 4.7,
+    plays: 2900000,
+    tags: [
+      "puzzle",
+      "platformer",
+      "90s"
+    ],
     source: "Internet Archive"
   },
   {
@@ -406,7 +537,11 @@ export const GAMES: Game[] = [
     embed: "https://d07riv.github.io/diabloweb/",
     rating: 4.7,
     plays: 3500000,
-    tags: ["rpg", "action", "dungeon-crawler"],
+    tags: [
+      "rpg",
+      "action",
+      "dungeon-crawler"
+    ],
     source: "DiabloWeb (Open Source Port)"
   },
   {
@@ -418,7 +553,11 @@ export const GAMES: Game[] = [
     embed: "https://archive.org/embed/msdos_Ultima_IV_-_Quest_of_the_Avatar_1985?autoplay=1",
     rating: 4.6,
     plays: 850000,
-    tags: ["rpg", "80s", "classic"],
+    tags: [
+      "rpg",
+      "80s",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -430,10 +569,13 @@ export const GAMES: Game[] = [
     embed: "https://epicport.com/en/ttd",
     rating: 4.8,
     plays: 1100000,
-    tags: ["simulation", "strategy", "open-source"],
+    tags: [
+      "simulation",
+      "strategy",
+      "open-source"
+    ],
     source: "EpicPort (OpenTTD Web)"
   },
-
   {
     slug: "gunblood",
     title: "Gunblood",
@@ -443,7 +585,11 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/gunblood_flash/gunblood.swf",
     rating: 4.5,
     plays: 5200000,
-    tags: ["flash", "shooter", "action"],
+    tags: [
+      "flash",
+      "shooter",
+      "action"
+    ],
     source: "Internet Archive"
   },
   {
@@ -455,68 +601,87 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/happy-wheels-flash/happyWheels.swf",
     rating: 4.9,
     plays: 85000000,
-    tags: ["flash", "physics", "funny"],
+    tags: [
+      "flash",
+      "physics",
+      "funny"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "papas-pizzeria",
-    title: "Papa\'s Pizzeria",
+    title: "Papa's Pizzeria",
     description: "Bake pies and manage the shop in the Flash game that launched a cooking empire.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Papa's%20Pizzeria%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
     embed: "https://archive.org/embed/papas-pizzeria_flash?autoplay=1",
     rating: 4.8,
     plays: 22000000,
-    tags: ["flash", "cooking", "simulation"],
+    tags: [
+      "flash",
+      "cooking",
+      "simulation"
+    ],
     source: "Internet Archive"
   },
-
   {
     slug: "papas-burgeria",
-    title: "Papa\'s Burgeria",
+    title: "Papa's Burgeria",
     description: "Grill burgers and build them high.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Papa's%20Burgeria%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
     embed: "https://archive.org/embed/PapasBurgeriav1.0.3?autoplay=1",
     rating: 4.6,
     plays: 22000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "papas-freezeria",
-    title: "Papa\'s Freezeria",
+    title: "Papa's Freezeria",
     description: "Mix up frozen treats on the island.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Papa's%20Freezeria%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
     embed: "ruffle:https://archive.org/cors/papasfreezeria_202011/papasfreezeria.swf",
     rating: 4.4,
     plays: 30000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "papas-taco-mia",
-    title: "Papa\'s Taco Mia",
+    title: "Papa's Taco Mia",
     description: "Build tacos for crazy customers.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Papa's%20Taco%20Mia%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
     embed: "ruffle:https://archive.org/cors/papastacomia_202008/papastacomia_v2.swf",
     rating: 4.1,
     plays: 18000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "papas-cupcakeria",
-    title: "Papa\'s Cupcakeria",
+    title: "Papa's Cupcakeria",
     description: "Bake and frost cupcakes.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Papa's%20Cupcakeria%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
     embed: "ruffle:https://archive.org/cors/papascupcakeria_v2/papascupcakeria_v2.swf",
     rating: 4.6,
     plays: 19000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -528,7 +693,10 @@ export const GAMES: Game[] = [
     embed: "https://archive.org/embed/wheely-1?autoplay=1",
     rating: 4.3,
     plays: 12000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -540,7 +708,10 @@ export const GAMES: Game[] = [
     embed: "https://archive.org/embed/wheely-2?autoplay=1",
     rating: 4.9,
     plays: 11000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -552,7 +723,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/snail-bob-1_202403/Snail Bob 1.swf",
     rating: 4.1,
     plays: 15000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -564,7 +738,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/gunmayhem/gunmayhem.swf",
     rating: 4.7,
     plays: 45000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -576,7 +753,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/gun-mayhem-two/Gun Mayhem 2 More Mayhem.swf",
     rating: 4.8,
     plays: 40000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -588,10 +768,12 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/raze-2/Raze 2.swf",
     rating: 4.4,
     plays: 35000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
-
   {
     slug: "strike-force-heroes",
     title: "Strike Force Heroes",
@@ -601,7 +783,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/strikeforceheroes_202310/strikeforceheroes.swf",
     rating: 4.4,
     plays: 50000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -613,7 +798,10 @@ export const GAMES: Game[] = [
     embed: "https://archive.org/embed/strikeforceheroes2_202310?autoplay=1",
     rating: 4.3,
     plays: 45000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -625,7 +813,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/madness_202303/Madness.swf",
     rating: 4.4,
     plays: 25000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -637,7 +828,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/stick-war-2.5-user-control/Stick_War_2.5_User_Control.swf",
     rating: 4.2,
     plays: 55000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -649,19 +843,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/age-of-war-3/Age_Of_War_3.swf",
     rating: 4.4,
     plays: 48000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "worlds-hardest-game",
-    title: "World\'s Hardest Game",
+    title: "World's Hardest Game",
     description: "Move the red square to the green zone. It is harder than it looks.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=World's%20Hardest%20Game%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
     embed: "ruffle:https://archive.org/cors/flash_theworldshardestgame2/theworldshardestgame2.swf",
     rating: 4.5,
     plays: 35000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -673,7 +873,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/duck-life/duck-life.swf",
     rating: 4.4,
     plays: 20000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -685,7 +888,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/flash_Line_Rider_2/Line_Rider_2.swf",
     rating: 4.3,
     plays: 33000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -697,7 +903,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/learn-to-fly-2_202210/learn to fly 2.swf",
     rating: 4.3,
     plays: 25000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -709,7 +918,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/earn-to-die-2016/Earn to Die 2016.swf",
     rating: 4.9,
     plays: 30000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -721,7 +933,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/swords-and-sandals-2-demo_flash/358324_swords_sandals2_promo.swf",
     rating: 4.3,
     plays: 22000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -733,7 +948,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/chaos-faction-2-5645/chaos-faction-2-5645.swf",
     rating: 4.8,
     plays: 16000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -745,7 +963,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/575535-zombotron_202504/575535_Zombotron.swf",
     rating: 4.9,
     plays: 17000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -757,7 +978,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/riddleschool5_202011/RiddleSchool5.swf",
     rating: 4.2,
     plays: 11000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -769,31 +993,40 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/motherload_202209/motherload.swf",
     rating: 4.4,
     plays: 27000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "papas-wingeria",
-    title: "Papa\'s Wingeria",
+    title: "Papa's Wingeria",
     description: "Fry up chicken wings in Starlight City.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Papa's%20Wingeria%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
     embed: "ruffle:https://archive.org/cors/papaswingeria_v2/papaswingeria_v2.swf",
     rating: 4.3,
     plays: 18000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "papas-pancakeria",
-    title: "Papa\'s Pancakeria",
+    title: "Papa's Pancakeria",
     description: "Stack pancakes and waffles for the locals.",
     category: "Flash",
     thumbnail: "https://tse2.mm.bing.net/th?q=Papa's%20Pancakeria%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
     embed: "ruffle:https://archive.org/cors/papas-pancakeria-game/papaspancakeria_v2.swf",
     rating: 4.6,
     plays: 16000000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -805,7 +1038,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/the-binding-of-isaac_202111/The Binding of Isaac.swf",
     rating: 4.3,
     plays: 519926,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -817,7 +1053,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/homerun_20201126/homerun.swf",
     rating: 4.9,
     plays: 181183,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -829,19 +1068,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/stick-rpg-complete/Stick-RPG-Complete.swf",
     rating: 4.6,
     plays: 556011,
-    tags: ["flash", "classic"],
-    source: "Internet Archive"
-  },
-  {
-    slug: "female-furry-dollmaker",
-    title: "Female Furry Dollmaker",
-    description: "A female-centric dollmaker made alongside the male one by geN8hedgehog.",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/flash_femalefurrydollmaker",
-    embed: "ruffle:https://archive.org/cors/flash_femalefurrydollmaker/femalefurrydollmaker.swf",
-    rating: 4.6,
-    plays: 799426,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -853,7 +1083,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/cannibals-missioneries/Cannibals_&_Missioneries.swf",
     rating: 4.7,
     plays: 109681,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -865,7 +1098,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/swords-and-sandals-2/Swords and Sandals 2 (v 2.1.0).swf",
     rating: 4.5,
     plays: 151089,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -877,7 +1113,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/AplicacionesMusicalesEnFlash2008-2009/5diferencias.swf",
     rating: 4.9,
     plays: 32438,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -889,31 +1128,40 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/bloxors/bloxors.swf",
     rating: 4.3,
     plays: 819402,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "winnie-the-pooh-s-home-run-derby-english",
-    title: "Winnie the Pooh\'s Home Run Derby (English)",
+    title: "Winnie the Pooh's Home Run Derby (English)",
     description: "Silly old bear. If the harbinger of spring is the sound of a bat on a ball, then I have become the harbinger of winter: a barren and desolate spot ...",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/homerunderby_en",
     embed: "ruffle:https://archive.org/cors/homerunderby_en/homerunderby_en.swf",
     rating: 4.4,
     plays: 455248,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "firey-s-candy-bar-adventure",
-    title: "Firey\'s Candy Bar Adventure",
+    title: "Firey's Candy Bar Adventure",
     description: "As seen on Daemeon Network",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/candy-bar-adventure-1",
     embed: "ruffle:https://archive.org/cors/candy-bar-adventure-1/CandyBarAdventure (1).swf",
     rating: 4.1,
     plays: 340489,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -925,7 +1173,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/SuperMarioCrossoverOffline/super_mario_bros_crossover.swf",
     rating: 4.9,
     plays: 205568,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -937,19 +1188,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/mutilate-a-doll-2_202011/164481_mutilate-a-doll-2_v4.swf",
     rating: 4.5,
     plays: 123080,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "pico-s-school",
-    title: "Pico\'s School",
+    title: "Pico's School",
     description: "Goth kids have shot up your school, and it's up to Pico to save the day! Originally featured on Newgrounds in 1999, I finally refactored the .FLA t...",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/flash_picosschool",
     embed: "ruffle:https://archive.org/cors/flash_picosschool/flash_picosschool.swf",
     rating: 4.8,
     plays: 181725,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -961,7 +1218,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/bubble-shooter_swf/bubble-shooter.swf",
     rating: 4.1,
     plays: 329997,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -973,7 +1233,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/urinalgame/urinalgame.swf",
     rating: 4.2,
     plays: 860337,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -985,7 +1248,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/bfdi_swf/ag-bfdi.swf",
     rating: 4.6,
     plays: 642228,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -995,21 +1261,27 @@ export const GAMES: Game[] = [
     category: "Flash",
     thumbnail: "https://archive.org/services/img/robotunicornattack_flash",
     embed: "ruffle:https://archive.org/cors/robotunicornattack_flash/robotunicornattack_flash.swf",
-    rating: 4.0,
+    rating: 4,
     plays: 409617,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "a-koopa-s-revenge-2",
-    title: "A Koopa\'s Revenge 2",
+    title: "A Koopa's Revenge 2",
     description: "A Koopa's Revenge 2 is out now! HOLD DOWN CONTROL TO RUN. For years the Mario Bros. & company have been stepping on koopas and goombas. Now it's ti...",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/a-koopas-revenge-2",
     embed: "ruffle:https://archive.org/cors/a-koopas-revenge-2/a koopa's revenge 2.swf",
     rating: 4.5,
     plays: 636418,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1021,19 +1293,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/impossible-quiz-deluxe-newgrounds/365143_Impossible_Quiz_Deluxe_NG..swf",
     rating: 4.1,
     plays: 286326,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "the-big-adventure-of-owata-s-life",
-    title: "The Big Adventure of Owata\'s Life | 人生オワタの大冒険",
+    title: "The Big Adventure of Owata's Life | 人生オワタの大冒険",
     description: "How to play/操作説明: ←↑↓→ | movement / 移動 Z | Jump/ジャンプ X | Shoot/オワタバスター R | Reset/リトライ ESC | Self-explosion/自爆 Others | Variety/いろいろ",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/owata",
     embed: "ruffle:https://archive.org/cors/owata/owata.swf",
     rating: 4.8,
     plays: 471696,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1045,7 +1323,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/super-mario-flash-2/super-mario-flash-2.swf",
     rating: 4.2,
     plays: 187599,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1055,21 +1336,12 @@ export const GAMES: Game[] = [
     category: "Flash",
     thumbnail: "https://archive.org/services/img/nick_jr__face___alphabet_game__usa__by_oldadobeflashgames01_de1bf82",
     embed: "ruffle:https://archive.org/cors/nick_jr__face___alphabet_game__usa__by_oldadobeflashgames01_de1bf82/nick_jr__face___alphabet_game__usa__by_oldadobeflashgames01_de1bf82.swf",
-    rating: 4.0,
+    rating: 4,
     plays: 738413,
-    tags: ["flash", "classic"],
-    source: "Internet Archive"
-  },
-  {
-    slug: "pac-man-flash",
-    title: "Pac-Man (Flash)",
-    description: "(woah theres flash emulation on archive.org, epic! gotta try this out) One of the most popular and influential games of the 1980's,  Pac-Man  stars...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/pacman_swf",
-    embed: "ruffle:https://archive.org/cors/pacman_swf/pacman.swf",
-    rating: 4.0,
-    plays: 374572,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1079,9 +1351,12 @@ export const GAMES: Game[] = [
     category: "Flash",
     thumbnail: "https://archive.org/services/img/madness-project-nexus-classic",
     embed: "ruffle:https://archive.org/cors/madness-project-nexus-classic/Madness Project Nexus Classic.swf",
-    rating: 4.0,
+    rating: 4,
     plays: 95849,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1093,19 +1368,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/supersmashflash_swf/SuperSmash.swf",
     rating: 4.5,
     plays: 643118,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "happy-tree-friends-cuddles-pet-smoochie",
-    title: "Happy Tree Friends - Cuddles\' Pet Smoochie",
+    title: "Happy Tree Friends - Cuddles' Pet Smoochie",
     description: "Feeding rabbits can be very dangerous!",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/htf-cuddles-pet-smoochie_flash",
     embed: "ruffle:https://archive.org/cors/htf-cuddles-pet-smoochie_flash/htf-cuddles-pet-smoochie_flash.swf",
     rating: 4.4,
     plays: 74878,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1117,7 +1398,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/etp_20200826/533001_PrisonNG.swf",
     rating: 4.6,
     plays: 554185,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1129,7 +1413,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/nick_jr__face___numbers_game__usa__by_oldadobeflashgames01_de1bf15/nick_jr__face___numbers_game__usa__by_oldadobeflashgames01_de1bf15.swf",
     rating: 4.1,
     plays: 41604,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1141,7 +1428,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/tiq2_swf/theimpossiblequiz2.swf",
     rating: 4.1,
     plays: 20822,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1153,19 +1443,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/beanstalk_swf/beanstalk.swf",
     rating: 4.8,
     plays: 245980,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "reimu-s-donation-box",
-    title: "Reimu\'s Donation Box | 霊夢の賽銭箱",
+    title: "Reimu's Donation Box | 霊夢の賽銭箱",
     description: "Reimu's Donation Box ( 霊夢の賽銭箱 ) is a flash game testing your clicking speed. You have to click as fast as possible to fill the donation box of Reim...",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/saisen",
     embed: "ruffle:https://archive.org/cors/saisen/saisen.swf",
     rating: 4.4,
     plays: 497575,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1177,7 +1473,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/flash_alien_hominid/alien_hominid.swf",
     rating: 4.9,
     plays: 862139,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1189,19 +1488,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/flash_fishy/flash_fishy.swf",
     rating: 4.5,
     plays: 34806,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "happy-tree-friends-nutty-s-party-smoochie",
-    title: "Happy Tree Friends - Nutty\'s Party Smoochie",
+    title: "Happy Tree Friends - Nutty's Party Smoochie",
     description: "It’s a party and everyone is invited! Just be careful what presents you ask for ‘cause you just may get it!",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/htf-nuttys-party-smoochie_flash",
     embed: "ruffle:https://archive.org/cors/htf-nuttys-party-smoochie_flash/htf-nuttys-party-smoochie_flash.swf",
     rating: 4.7,
     plays: 761598,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1213,7 +1518,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/ssf2-2007_20210626/ssf2-2007_20210626.swf",
     rating: 4.4,
     plays: 380807,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1225,7 +1533,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/the-last-stand-union-city/the-last-stand-union-city.swf",
     rating: 4.1,
     plays: 570980,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1237,19 +1548,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/minecraft-tower-defence-2/minecraft-tower-defence-2.swf",
     rating: 4.4,
     plays: 176119,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "papa-s-pizzeria",
-    title: "Papa\'s Pizzeria",
+    title: "Papa's Pizzeria",
     description: "When Papa Louie runs off on another adventure, Delivery Boy Roy is left in charge of Papa's Pizzeria. Unfortunately for Roy, the customers are use ...",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/flash_papaspizzeria",
     embed: "ruffle:https://archive.org/cors/flash_papaspizzeria/papaspizzeria_v2.swf",
     rating: 4.9,
     plays: 278097,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1261,7 +1578,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/dragracerv3_202012/20.swf",
     rating: 4.8,
     plays: 52406,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1273,7 +1593,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/tanks_flashgame/tanks.swf",
     rating: 4.5,
     plays: 262644,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1285,31 +1608,40 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/super-mario-sunshine-64/super-mario-sunshine-64.swf",
     rating: 4.9,
     plays: 853757,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "happy-tree-friends-giggles-valentine-smoochie",
-    title: "Happy Tree Friends - Giggles\' Valentine Smoochie",
+    title: "Happy Tree Friends - Giggles' Valentine Smoochie",
     description: "A sweet Valentine’s Day Smoochie featuring Giggles!",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/htf-giggles-valentine-smoochie_flash",
     embed: "ruffle:https://archive.org/cors/htf-giggles-valentine-smoochie_flash/htf-giggles-valentine-smoochie_flash.swf",
     rating: 4.1,
     plays: 214444,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "happy-tree-friends-toothy-s-easter-smoochie",
-    title: "Happy Tree Friends - Toothy\'s Easter Smoochie",
+    title: "Happy Tree Friends - Toothy's Easter Smoochie",
     description: "Not every Easter egg turns out to be a treat!",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/htf-toothy-s-easter-smoochie_flash",
     embed: "ruffle:https://archive.org/cors/htf-toothy-s-easter-smoochie_flash/htf-toothys-easter-smoochie_flash.swf",
     rating: 4.6,
     plays: 659472,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1321,19 +1653,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/binding-of-isaac/Binding of Isaac.swf",
     rating: 4.2,
     plays: 377705,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "happy-tree-friends-flaky-s-baseball-smoochie",
-    title: "Happy Tree Friends - Flaky\'s Baseball Smoochie",
+    title: "Happy Tree Friends - Flaky's Baseball Smoochie",
     description: "Be sure to wear protective gear for this baseball game!",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/htf-flakys-baseball-smoochie_flash",
     embed: "ruffle:https://archive.org/cors/htf-flakys-baseball-smoochie_flash/htf-flakys-baseball-smoochie_flash.swf",
     rating: 4.7,
     plays: 408282,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1345,7 +1683,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/licorice_swf/licorice.swf",
     rating: 4.1,
     plays: 560156,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1357,7 +1698,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/pacman_flash_202011/pacman.swf",
     rating: 4.6,
     plays: 889301,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1369,19 +1713,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/stickcricket_flash/stick-cricket.swf",
     rating: 4.7,
     plays: 556946,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "happy-tree-friends-petunia-s-summer-smoochie",
-    title: "Happy Tree Friends - Petunia\'s Summer Smoochie",
+    title: "Happy Tree Friends - Petunia's Summer Smoochie",
     description: "Petunia dips her toe in the water and gets more than she expects.",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/htf-petunias-summer-smoochie_flash",
     embed: "ruffle:https://archive.org/cors/htf-petunias-summer-smoochie_flash/htf-petunias-summer-smoochie_flash.swf",
     rating: 4.3,
     plays: 752470,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1393,7 +1743,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/helicoptergame_flash/helicoptergame.swf",
     rating: 4.6,
     plays: 276055,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1405,19 +1758,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/portal_flash_version/Portal_wcs2.swf",
     rating: 4.7,
     plays: 94569,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "happy-tree-friends-cub-s-christmas-smoochie",
-    title: "Happy Tree Friends - Cub\'s Christmas Smoochie",
+    title: "Happy Tree Friends - Cub's Christmas Smoochie",
     description: "Cub discovers that there’s no time like the “present” to get your Christmas gift!",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/htf-cubs-christmas-smoochie_flash",
     embed: "ruffle:https://archive.org/cors/htf-cubs-christmas-smoochie_flash/htf-cubs-christmas-smoochie_flash.swf",
     rating: 4.5,
     plays: 843132,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1429,19 +1788,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/1100_plumber_2/plumber_2.swf",
     rating: 4.2,
     plays: 54686,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "happy-tree-friends-pop-s-bbq-smoochie",
-    title: "Happy Tree Friends - Pop\'s BBQ Smoochie",
+    title: "Happy Tree Friends - Pop's BBQ Smoochie",
     description: "What NOT to do at your next summer BBQ!",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/htf-pops-bbq-smoochie_flash",
     embed: "ruffle:https://archive.org/cors/htf-pops-bbq-smoochie_flash/htf-pops-bbq-smoochie_flash.swf",
     rating: 4.4,
     plays: 575389,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1453,7 +1818,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/my-new-room/my_new_room_girlsgogames_com_v1_01.swf",
     rating: 4.5,
     plays: 90065,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1465,7 +1833,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/iloveyou_swf/iloveyou.swf",
     rating: 4.3,
     plays: 753143,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1477,7 +1848,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/pacxon_swf/pacxon.swf",
     rating: 4.3,
     plays: 874210,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1489,7 +1863,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/speaknspell/speaknspell.swf",
     rating: 4.5,
     plays: 740622,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1501,7 +1878,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/htf_fireescape/htf_fireescape.swf",
     rating: 4.4,
     plays: 93820,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1513,7 +1893,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/flash_Mario_Combat/Mario_Combat.swf",
     rating: 4.1,
     plays: 97596,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1525,7 +1908,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/mudandblood2_flash/mudandblood2.swf",
     rating: 4.1,
     plays: 56508,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1537,19 +1923,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/oswald_icecone/iceconegame.swf",
     rating: 4.5,
     plays: 99007,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "happy-tree-friends-sniffles-science-smoochie",
-    title: "Happy Tree Friends - Sniffles\' Science Smoochie",
+    title: "Happy Tree Friends - Sniffles' Science Smoochie",
     description: "Rockets and magnet and crazy concoctions, these are a few of Sniffles' favorite things.",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/htf-sniffles-science-smoochie_flash",
     embed: "ruffle:https://archive.org/cors/htf-sniffles-science-smoochie_flash/htf-sniffles-science-smoochie_flash.swf",
     rating: 4.5,
     plays: 666018,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1561,7 +1953,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/flash_age_of_war/age_of_war.swf",
     rating: 4.7,
     plays: 72743,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1573,7 +1968,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/talking-tom-cat-2-flash/talking_tom_cat_2_in_flash___by_adreamyhead0_d4x9xp2.swf",
     rating: 4.4,
     plays: 610249,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1585,19 +1983,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/unfair_mario/unfair_mario.swf",
     rating: 4.1,
     plays: 40931,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "happy-tree-friends-mime-s-olympic-smoochie",
-    title: "Happy Tree Friends - Mime\'s Olympic Smoochie",
+    title: "Happy Tree Friends - Mime's Olympic Smoochie",
     description: "The Olympic Games are going to be a killer!",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/htf-mimes-olympic-smoochie_flash",
     embed: "ruffle:https://archive.org/cors/htf-mimes-olympic-smoochie_flash/htf-mimes-olympic-smoochie_flash.swf",
     rating: 4.2,
     plays: 713408,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1607,9 +2011,12 @@ export const GAMES: Game[] = [
     category: "Flash",
     thumbnail: "https://archive.org/services/img/pacmanx-advanced_flash",
     embed: "ruffle:https://archive.org/cors/pacmanx-advanced_flash/PacmanxAdvanced.swf",
-    rating: 4.0,
+    rating: 4,
     plays: 257161,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1621,7 +2028,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/flash_Caramelldansen/flash_Caramelldansen.swf",
     rating: 4.8,
     plays: 106556,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1633,19 +2043,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/flash_breaking_the_bank/breaking_the_bank.swf",
     rating: 4.8,
     plays: 902544,
-    tags: ["flash", "classic"],
-    source: "Internet Archive"
-  },
-  {
-    slug: "prince-of-persia-3",
-    title: "Prince of Persia",
-    description: "A flash animation from a compilation of 1,100 Flash Animations. The Prince of Persia Special Edition, a flash-based version of the original Prince ...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/1100_prince_of_persia",
-    embed: "ruffle:https://archive.org/cors/1100_prince_of_persia/prince_of_persia.swf",
-    rating: 4.5,
-    plays: 460665,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1657,7 +2058,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/flash_therightmix/flash_therightmix.swf",
     rating: 4.7,
     plays: 476261,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1669,7 +2073,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/panic_swf/panic.swf",
     rating: 4.8,
     plays: 150322,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1681,7 +2088,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/flash_theimpossiblequizbook/theimpossiblequizbook.swf",
     rating: 4.4,
     plays: 129324,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1693,7 +2103,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/uzinagazwatch-out-behind-hunter-girl-ver/[UZINAGAZ]watch-out-behind-hunter-girl-ver.swf",
     rating: 4.4,
     plays: 60930,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1705,7 +2118,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/swords-and-sandals-v-1.1.0/Swords and Sandals (v 1.1.0).swf",
     rating: 4.6,
     plays: 386326,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1717,7 +2133,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/bang-boom-splat-swf/Bang, Boom, Splat!.swf",
     rating: 4.4,
     plays: 304626,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1729,7 +2148,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/dont_whack_your_boss/dont_whack_your_boss.swf",
     rating: 4.2,
     plays: 404846,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1741,7 +2163,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/the-binding-of-isaac_202111/The Binding of Isaac.swf",
     rating: 4.3,
     plays: 519926,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1753,7 +2178,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/homerun_20201126/homerun.swf",
     rating: 4.9,
     plays: 181183,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1765,19 +2193,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/stick-rpg-complete/Stick-RPG-Complete.swf",
     rating: 4.6,
     plays: 556011,
-    tags: ["flash", "classic"],
-    source: "Internet Archive"
-  },
-  {
-    slug: "female-furry-dollmaker",
-    title: "Female Furry Dollmaker",
-    description: "A female-centric dollmaker made alongside the male one by geN8hedgehog.",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/flash_femalefurrydollmaker",
-    embed: "ruffle:https://archive.org/cors/flash_femalefurrydollmaker/femalefurrydollmaker.swf",
-    rating: 4.6,
-    plays: 799426,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1789,7 +2208,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/cannibals-missioneries/Cannibals_&_Missioneries.swf",
     rating: 4.7,
     plays: 109681,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1801,7 +2223,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/swords-and-sandals-2/Swords and Sandals 2 (v 2.1.0).swf",
     rating: 4.5,
     plays: 151089,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1813,7 +2238,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/AplicacionesMusicalesEnFlash2008-2009/5diferencias.swf",
     rating: 4.9,
     plays: 32438,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1825,31 +2253,40 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/bloxors/bloxors.swf",
     rating: 4.3,
     plays: 819402,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "winnie-the-pooh-s-home-run-derby-english",
-    title: "Winnie the Pooh\'s Home Run Derby (English)",
+    title: "Winnie the Pooh's Home Run Derby (English)",
     description: "Silly old bear. If the harbinger of spring is the sound of a bat on a ball, then I have become the harbinger of winter: a barren and desolate spot ...",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/homerunderby_en",
     embed: "ruffle:https://archive.org/cors/homerunderby_en/homerunderby_en.swf",
     rating: 4.4,
     plays: 455248,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "firey-s-candy-bar-adventure",
-    title: "Firey\'s Candy Bar Adventure",
+    title: "Firey's Candy Bar Adventure",
     description: "As seen on Daemeon Network",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/candy-bar-adventure-1",
     embed: "ruffle:https://archive.org/cors/candy-bar-adventure-1/CandyBarAdventure (1).swf",
     rating: 4.1,
     plays: 340489,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1861,7 +2298,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/SuperMarioCrossoverOffline/super_mario_bros_crossover.swf",
     rating: 4.9,
     plays: 205568,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1873,19 +2313,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/mutilate-a-doll-2_202011/164481_mutilate-a-doll-2_v4.swf",
     rating: 4.5,
     plays: 123080,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "pico-s-school",
-    title: "Pico\'s School",
+    title: "Pico's School",
     description: "Goth kids have shot up your school, and it's up to Pico to save the day! Originally featured on Newgrounds in 1999, I finally refactored the .FLA t...",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/flash_picosschool",
     embed: "ruffle:https://archive.org/cors/flash_picosschool/flash_picosschool.swf",
     rating: 4.8,
     plays: 181725,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1897,7 +2343,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/bubble-shooter_swf/bubble-shooter.swf",
     rating: 4.1,
     plays: 329997,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1909,7 +2358,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/urinalgame/urinalgame.swf",
     rating: 4.2,
     plays: 860337,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1921,7 +2373,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/bfdi_swf/ag-bfdi.swf",
     rating: 4.6,
     plays: 642228,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1931,21 +2386,27 @@ export const GAMES: Game[] = [
     category: "Flash",
     thumbnail: "https://archive.org/services/img/robotunicornattack_flash",
     embed: "ruffle:https://archive.org/cors/robotunicornattack_flash/robotunicornattack_flash.swf",
-    rating: 4.0,
+    rating: 4,
     plays: 409617,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "a-koopa-s-revenge-2",
-    title: "A Koopa\'s Revenge 2",
+    title: "A Koopa's Revenge 2",
     description: "A Koopa's Revenge 2 is out now! HOLD DOWN CONTROL TO RUN. For years the Mario Bros. & company have been stepping on koopas and goombas. Now it's ti...",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/a-koopas-revenge-2",
     embed: "ruffle:https://archive.org/cors/a-koopas-revenge-2/a koopa's revenge 2.swf",
     rating: 4.5,
     plays: 636418,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1957,19 +2418,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/impossible-quiz-deluxe-newgrounds/365143_Impossible_Quiz_Deluxe_NG..swf",
     rating: 4.1,
     plays: 286326,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "the-big-adventure-of-owata-s-life",
-    title: "The Big Adventure of Owata\'s Life | 人生オワタの大冒険",
+    title: "The Big Adventure of Owata's Life | 人生オワタの大冒険",
     description: "How to play/操作説明: ←↑↓→ | movement / 移動 Z | Jump/ジャンプ X | Shoot/オワタバスター R | Reset/リトライ ESC | Self-explosion/自爆 Others | Variety/いろいろ",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/owata",
     embed: "ruffle:https://archive.org/cors/owata/owata.swf",
     rating: 4.8,
     plays: 471696,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1981,7 +2448,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/super-mario-flash-2/super-mario-flash-2.swf",
     rating: 4.2,
     plays: 187599,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -1991,21 +2461,12 @@ export const GAMES: Game[] = [
     category: "Flash",
     thumbnail: "https://archive.org/services/img/nick_jr__face___alphabet_game__usa__by_oldadobeflashgames01_de1bf82",
     embed: "ruffle:https://archive.org/cors/nick_jr__face___alphabet_game__usa__by_oldadobeflashgames01_de1bf82/nick_jr__face___alphabet_game__usa__by_oldadobeflashgames01_de1bf82.swf",
-    rating: 4.0,
+    rating: 4,
     plays: 738413,
-    tags: ["flash", "classic"],
-    source: "Internet Archive"
-  },
-  {
-    slug: "pac-man-flash",
-    title: "Pac-Man (Flash)",
-    description: "(woah theres flash emulation on archive.org, epic! gotta try this out) One of the most popular and influential games of the 1980's,  Pac-Man  stars...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/pacman_swf",
-    embed: "ruffle:https://archive.org/cors/pacman_swf/pacman.swf",
-    rating: 4.0,
-    plays: 374572,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2015,9 +2476,12 @@ export const GAMES: Game[] = [
     category: "Flash",
     thumbnail: "https://archive.org/services/img/madness-project-nexus-classic",
     embed: "ruffle:https://archive.org/cors/madness-project-nexus-classic/Madness Project Nexus Classic.swf",
-    rating: 4.0,
+    rating: 4,
     plays: 95849,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2029,19 +2493,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/supersmashflash_swf/SuperSmash.swf",
     rating: 4.5,
     plays: 643118,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "happy-tree-friends-cuddles-pet-smoochie",
-    title: "Happy Tree Friends - Cuddles\' Pet Smoochie",
+    title: "Happy Tree Friends - Cuddles' Pet Smoochie",
     description: "Feeding rabbits can be very dangerous!",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/htf-cuddles-pet-smoochie_flash",
     embed: "ruffle:https://archive.org/cors/htf-cuddles-pet-smoochie_flash/htf-cuddles-pet-smoochie_flash.swf",
     rating: 4.4,
     plays: 74878,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2053,7 +2523,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/etp_20200826/533001_PrisonNG.swf",
     rating: 4.6,
     plays: 554185,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2065,7 +2538,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/nick_jr__face___numbers_game__usa__by_oldadobeflashgames01_de1bf15/nick_jr__face___numbers_game__usa__by_oldadobeflashgames01_de1bf15.swf",
     rating: 4.1,
     plays: 41604,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2077,7 +2553,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/tiq2_swf/theimpossiblequiz2.swf",
     rating: 4.1,
     plays: 20822,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2089,19 +2568,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/beanstalk_swf/beanstalk.swf",
     rating: 4.8,
     plays: 245980,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "reimu-s-donation-box",
-    title: "Reimu\'s Donation Box | 霊夢の賽銭箱",
+    title: "Reimu's Donation Box | 霊夢の賽銭箱",
     description: "Reimu's Donation Box ( 霊夢の賽銭箱 ) is a flash game testing your clicking speed. You have to click as fast as possible to fill the donation box of Reim...",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/saisen",
     embed: "ruffle:https://archive.org/cors/saisen/saisen.swf",
     rating: 4.4,
     plays: 497575,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2113,7 +2598,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/flash_alien_hominid/alien_hominid.swf",
     rating: 4.9,
     plays: 862139,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2125,19 +2613,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/flash_fishy/flash_fishy.swf",
     rating: 4.5,
     plays: 34806,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "happy-tree-friends-nutty-s-party-smoochie",
-    title: "Happy Tree Friends - Nutty\'s Party Smoochie",
+    title: "Happy Tree Friends - Nutty's Party Smoochie",
     description: "It’s a party and everyone is invited! Just be careful what presents you ask for ‘cause you just may get it!",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/htf-nuttys-party-smoochie_flash",
     embed: "ruffle:https://archive.org/cors/htf-nuttys-party-smoochie_flash/htf-nuttys-party-smoochie_flash.swf",
     rating: 4.7,
     plays: 761598,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2149,7 +2643,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/ssf2-2007_20210626/ssf2-2007_20210626.swf",
     rating: 4.4,
     plays: 380807,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2161,7 +2658,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/the-last-stand-union-city/the-last-stand-union-city.swf",
     rating: 4.1,
     plays: 570980,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2173,19 +2673,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/minecraft-tower-defence-2/minecraft-tower-defence-2.swf",
     rating: 4.4,
     plays: 176119,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "papa-s-pizzeria",
-    title: "Papa\'s Pizzeria",
+    title: "Papa's Pizzeria",
     description: "When Papa Louie runs off on another adventure, Delivery Boy Roy is left in charge of Papa's Pizzeria. Unfortunately for Roy, the customers are use ...",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/flash_papaspizzeria",
     embed: "ruffle:https://archive.org/cors/flash_papaspizzeria/papaspizzeria_v2.swf",
     rating: 4.9,
     plays: 278097,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2197,7 +2703,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/dragracerv3_202012/20.swf",
     rating: 4.8,
     plays: 52406,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2209,7 +2718,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/tanks_flashgame/tanks.swf",
     rating: 4.5,
     plays: 262644,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2221,31 +2733,40 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/super-mario-sunshine-64/super-mario-sunshine-64.swf",
     rating: 4.9,
     plays: 853757,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "happy-tree-friends-giggles-valentine-smoochie",
-    title: "Happy Tree Friends - Giggles\' Valentine Smoochie",
+    title: "Happy Tree Friends - Giggles' Valentine Smoochie",
     description: "A sweet Valentine’s Day Smoochie featuring Giggles!",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/htf-giggles-valentine-smoochie_flash",
     embed: "ruffle:https://archive.org/cors/htf-giggles-valentine-smoochie_flash/htf-giggles-valentine-smoochie_flash.swf",
     rating: 4.1,
     plays: 214444,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "happy-tree-friends-toothy-s-easter-smoochie",
-    title: "Happy Tree Friends - Toothy\'s Easter Smoochie",
+    title: "Happy Tree Friends - Toothy's Easter Smoochie",
     description: "Not every Easter egg turns out to be a treat!",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/htf-toothy-s-easter-smoochie_flash",
     embed: "ruffle:https://archive.org/cors/htf-toothy-s-easter-smoochie_flash/htf-toothys-easter-smoochie_flash.swf",
     rating: 4.6,
     plays: 659472,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2257,19 +2778,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/binding-of-isaac/Binding of Isaac.swf",
     rating: 4.2,
     plays: 377705,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "happy-tree-friends-flaky-s-baseball-smoochie",
-    title: "Happy Tree Friends - Flaky\'s Baseball Smoochie",
+    title: "Happy Tree Friends - Flaky's Baseball Smoochie",
     description: "Be sure to wear protective gear for this baseball game!",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/htf-flakys-baseball-smoochie_flash",
     embed: "ruffle:https://archive.org/cors/htf-flakys-baseball-smoochie_flash/htf-flakys-baseball-smoochie_flash.swf",
     rating: 4.7,
     plays: 408282,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2281,7 +2808,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/licorice_swf/licorice.swf",
     rating: 4.1,
     plays: 560156,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2293,7 +2823,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/pacman_flash_202011/pacman.swf",
     rating: 4.6,
     plays: 889301,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2305,19 +2838,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/stickcricket_flash/stick-cricket.swf",
     rating: 4.7,
     plays: 556946,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "happy-tree-friends-petunia-s-summer-smoochie",
-    title: "Happy Tree Friends - Petunia\'s Summer Smoochie",
+    title: "Happy Tree Friends - Petunia's Summer Smoochie",
     description: "Petunia dips her toe in the water and gets more than she expects.",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/htf-petunias-summer-smoochie_flash",
     embed: "ruffle:https://archive.org/cors/htf-petunias-summer-smoochie_flash/htf-petunias-summer-smoochie_flash.swf",
     rating: 4.3,
     plays: 752470,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2329,7 +2868,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/helicoptergame_flash/helicoptergame.swf",
     rating: 4.6,
     plays: 276055,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2341,19 +2883,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/portal_flash_version/Portal_wcs2.swf",
     rating: 4.7,
     plays: 94569,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "happy-tree-friends-cub-s-christmas-smoochie",
-    title: "Happy Tree Friends - Cub\'s Christmas Smoochie",
+    title: "Happy Tree Friends - Cub's Christmas Smoochie",
     description: "Cub discovers that there’s no time like the “present” to get your Christmas gift!",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/htf-cubs-christmas-smoochie_flash",
     embed: "ruffle:https://archive.org/cors/htf-cubs-christmas-smoochie_flash/htf-cubs-christmas-smoochie_flash.swf",
     rating: 4.5,
     plays: 843132,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2365,19 +2913,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/1100_plumber_2/plumber_2.swf",
     rating: 4.2,
     plays: 54686,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "happy-tree-friends-pop-s-bbq-smoochie",
-    title: "Happy Tree Friends - Pop\'s BBQ Smoochie",
+    title: "Happy Tree Friends - Pop's BBQ Smoochie",
     description: "What NOT to do at your next summer BBQ!",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/htf-pops-bbq-smoochie_flash",
     embed: "ruffle:https://archive.org/cors/htf-pops-bbq-smoochie_flash/htf-pops-bbq-smoochie_flash.swf",
     rating: 4.4,
     plays: 575389,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2389,7 +2943,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/my-new-room/my_new_room_girlsgogames_com_v1_01.swf",
     rating: 4.5,
     plays: 90065,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2401,7 +2958,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/iloveyou_swf/iloveyou.swf",
     rating: 4.3,
     plays: 753143,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2413,7 +2973,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/pacxon_swf/pacxon.swf",
     rating: 4.3,
     plays: 874210,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2425,7 +2988,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/speaknspell/speaknspell.swf",
     rating: 4.5,
     plays: 740622,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2437,7 +3003,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/htf_fireescape/htf_fireescape.swf",
     rating: 4.4,
     plays: 93820,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2449,7 +3018,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/flash_Mario_Combat/Mario_Combat.swf",
     rating: 4.1,
     plays: 97596,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2461,7 +3033,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/mudandblood2_flash/mudandblood2.swf",
     rating: 4.1,
     plays: 56508,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2473,19 +3048,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/oswald_icecone/iceconegame.swf",
     rating: 4.5,
     plays: 99007,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "happy-tree-friends-sniffles-science-smoochie",
-    title: "Happy Tree Friends - Sniffles\' Science Smoochie",
+    title: "Happy Tree Friends - Sniffles' Science Smoochie",
     description: "Rockets and magnet and crazy concoctions, these are a few of Sniffles' favorite things.",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/htf-sniffles-science-smoochie_flash",
     embed: "ruffle:https://archive.org/cors/htf-sniffles-science-smoochie_flash/htf-sniffles-science-smoochie_flash.swf",
     rating: 4.5,
     plays: 666018,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2497,7 +3078,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/flash_age_of_war/age_of_war.swf",
     rating: 4.7,
     plays: 72743,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2509,7 +3093,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/talking-tom-cat-2-flash/talking_tom_cat_2_in_flash___by_adreamyhead0_d4x9xp2.swf",
     rating: 4.4,
     plays: 610249,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2521,19 +3108,25 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/unfair_mario/unfair_mario.swf",
     rating: 4.1,
     plays: 40931,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
     slug: "happy-tree-friends-mime-s-olympic-smoochie",
-    title: "Happy Tree Friends - Mime\'s Olympic Smoochie",
+    title: "Happy Tree Friends - Mime's Olympic Smoochie",
     description: "The Olympic Games are going to be a killer!",
     category: "Flash",
     thumbnail: "https://archive.org/services/img/htf-mimes-olympic-smoochie_flash",
     embed: "ruffle:https://archive.org/cors/htf-mimes-olympic-smoochie_flash/htf-mimes-olympic-smoochie_flash.swf",
     rating: 4.2,
     plays: 713408,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2543,9 +3136,12 @@ export const GAMES: Game[] = [
     category: "Flash",
     thumbnail: "https://archive.org/services/img/pacmanx-advanced_flash",
     embed: "ruffle:https://archive.org/cors/pacmanx-advanced_flash/PacmanxAdvanced.swf",
-    rating: 4.0,
+    rating: 4,
     plays: 257161,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2557,7 +3153,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/flash_Caramelldansen/flash_Caramelldansen.swf",
     rating: 4.8,
     plays: 106556,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2569,19 +3168,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/flash_breaking_the_bank/breaking_the_bank.swf",
     rating: 4.8,
     plays: 902544,
-    tags: ["flash", "classic"],
-    source: "Internet Archive"
-  },
-  {
-    slug: "prince-of-persia-3",
-    title: "Prince of Persia",
-    description: "A flash animation from a compilation of 1,100 Flash Animations. The Prince of Persia Special Edition, a flash-based version of the original Prince ...",
-    category: "Flash",
-    thumbnail: "https://archive.org/services/img/1100_prince_of_persia",
-    embed: "ruffle:https://archive.org/cors/1100_prince_of_persia/prince_of_persia.swf",
-    rating: 4.5,
-    plays: 460665,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2593,7 +3183,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/flash_therightmix/flash_therightmix.swf",
     rating: 4.7,
     plays: 476261,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2605,7 +3198,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/panic_swf/panic.swf",
     rating: 4.8,
     plays: 150322,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2617,7 +3213,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/flash_theimpossiblequizbook/theimpossiblequizbook.swf",
     rating: 4.4,
     plays: 129324,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2629,7 +3228,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/uzinagazwatch-out-behind-hunter-girl-ver/[UZINAGAZ]watch-out-behind-hunter-girl-ver.swf",
     rating: 4.4,
     plays: 60930,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2641,7 +3243,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/swords-and-sandals-v-1.1.0/Swords and Sandals (v 1.1.0).swf",
     rating: 4.6,
     plays: 386326,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2653,7 +3258,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/bang-boom-splat-swf/Bang, Boom, Splat!.swf",
     rating: 4.4,
     plays: 304626,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2665,10 +3273,13 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/dont_whack_your_boss/dont_whack_your_boss.swf",
     rating: 4.2,
     plays: 404846,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
-{
+  {
     slug: "age-of-war-1",
     title: "Age of War",
     description: "Evolve your civilization from cavemen to the future and destroy the enemy base in this strategy classic.",
@@ -2677,7 +3288,10 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/age-of-war-3/Age_Of_War_3.swf",
     rating: 4.6,
     plays: 7300000,
-    tags: ["flash", "classic"],
+    tags: [
+      "flash",
+      "classic"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2689,7 +3303,12 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/btd1_flashgame/BTD1.swf",
     rating: 4.8,
     plays: 9200000,
-    tags: ["flash","classic","tower-defense","strategy"],
+    tags: [
+      "flash",
+      "classic",
+      "tower-defense",
+      "strategy"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2701,7 +3320,12 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/fancypantsworld2/FancyPantsWorld2.swf",
     rating: 4.8,
     plays: 7600000,
-    tags: ["flash","classic","platformer","action"],
+    tags: [
+      "flash",
+      "classic",
+      "platformer",
+      "action"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2713,7 +3337,12 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/bubbletanks2/BubbleTanks2.swf",
     rating: 4.5,
     plays: 3200000,
-    tags: ["flash","classic","shooter","action"],
+    tags: [
+      "flash",
+      "classic",
+      "shooter",
+      "action"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2725,7 +3354,12 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/electric-man-2-hs_flash/ElectricMan2HS.swf",
     rating: 4.7,
     plays: 5800000,
-    tags: ["flash","classic","fighting","action"],
+    tags: [
+      "flash",
+      "classic",
+      "fighting",
+      "action"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2737,7 +3371,11 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/bowman2_flashgame/Bowman2.swf",
     rating: 4.5,
     plays: 4100000,
-    tags: ["flash","classic","action"],
+    tags: [
+      "flash",
+      "classic",
+      "action"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2749,7 +3387,12 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/indestructotank_ae/IndestructoTankAE.swf",
     rating: 4.6,
     plays: 3500000,
-    tags: ["flash","classic","action","arcade"],
+    tags: [
+      "flash",
+      "classic",
+      "action",
+      "arcade"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2761,7 +3404,12 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/dad-n-me_newgrounds/DadNMe.swf",
     rating: 4.4,
     plays: 2900000,
-    tags: ["flash","classic","brawler","action"],
+    tags: [
+      "flash",
+      "classic",
+      "brawler",
+      "action"
+    ],
     source: "Internet Archive"
   },
   {
@@ -2773,7 +3421,12 @@ export const GAMES: Game[] = [
     embed: "ruffle:https://archive.org/cors/colorful-tower-defense/ColorfulTowerDefense.swf",
     rating: 4.3,
     plays: 1900000,
-    tags: ["flash","classic","tower-defense","strategy"],
+    tags: [
+      "flash",
+      "classic",
+      "tower-defense",
+      "strategy"
+    ],
     source: "Internet Archive"
   }
 ];

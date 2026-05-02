@@ -54,7 +54,7 @@ export function DosPlayer({ bundleUrl, thumbnail, title }: DosPlayerProps) {
 
         if (!isMounted || !containerRef.current) return;
 
-        window.emulators.pathPrefix = "https://v8.js-dos.com/latest/emulators/";
+        // window.emulators.pathPrefix = "https://v8.js-dos.com/latest/emulators/";
 
         const newCi = await window.Dos(containerRef.current, {
           url: bundleUrl,
