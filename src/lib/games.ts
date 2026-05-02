@@ -451,6 +451,7 @@ export const GAMES: Game[] = [
     ],
     source: "Internet Archive"
   },
+  {
     slug: "openttd",
     title: "OpenTTD",
     description: "Open-source transport simulation game based on Transport Tycoon Deluxe. Build a massive transport empire!",
