@@ -35,7 +35,7 @@ export function RufflePlayer({ swfUrl, thumbnail, title }: RufflePlayerProps) {
   };
 
   const fetchSwfWithProgress = async (url: string): Promise<string> => {
-    const cacheName = "game-haven-assets-v1";
+    const cacheName = "playverse-games-v1";
     
     // 1. Try Cache API for instant load
     try {
@@ -132,6 +132,7 @@ export function RufflePlayer({ swfUrl, thumbnail, title }: RufflePlayerProps) {
         wmode: "direct",
         allowScriptAccess: true,
         maxExecutionDuration: 15,
+        powerPreference: "high-performance",
       };
 
       container.appendChild(player);

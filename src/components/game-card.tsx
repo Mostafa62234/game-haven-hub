@@ -5,12 +5,23 @@ import { Badge } from "@/components/ui/badge";
 
 import { useSettings } from "./settings-provider";
 import { FavoriteButton } from "./favorite-button";
+import { preloadGame, isGameCached } from "@/lib/preloader";
+import { Check } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export function GameCard({ game }: { game: Game }) {
   const { dataSaver } = useSettings();
+  const [cached, setCached] = useState(false);
+
+  useEffect(() => {
+    isGameCached(game.embed).then(setCached);
+  }, [game.embed]);
   
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-glow">
+    <div 
+      onMouseEnter={() => !dataSaver && preloadGame(game.embed).then(() => setCached(true))}
+      className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-glow"
+    >
       <Link
         to="/play/$slug"
         params={{ slug: game.slug }}
@@ -40,9 +51,15 @@ export function GameCard({ game }: { game: Game }) {
               <Star className="h-3 w-3 fill-current" />
               {game.rating.toFixed(1)}
             </span>
+            {cached && (
+              <span className="flex items-center gap-1 text-emerald-400 font-bold uppercase tracking-tighter text-[9px]">
+                <Check className="h-3 w-3" /> Ready
+              </span>
+            )}
           </div>
         </div>
       </Link>
+
 
       <div className="flex flex-1 flex-col gap-1 p-4">
         <h3 className="font-semibold leading-tight tracking-tight">{game.title}</h3>
