@@ -27,13 +27,14 @@ export function DosPlayer({ bundleUrl, thumbnail, title }: DosPlayerProps) {
   const blobUrlRef = useRef<string | null>(null);
 
   const fetchBundleWithCache = async (url: string): Promise<string> => {
-    const cacheName = "game-haven-assets-v1";
+    const cacheName = "playverse-game-cache-v1";
     try {
       const cache = await caches.open(cacheName);
       const cachedResponse = await cache.match(url);
       if (cachedResponse) {
+        console.log(`[Cache Hit] Loading DOS bundle ${url} from disk`);
         setDownloadProgress(100);
-        setLoadingStatus("Loading from local cache...");
+        setLoadingStatus("Launching from local cache (Instant)...");
         const blob = await cachedResponse.blob();
         const blobUrl = URL.createObjectURL(blob);
         blobUrlRef.current = blobUrl;
@@ -41,6 +42,11 @@ export function DosPlayer({ bundleUrl, thumbnail, title }: DosPlayerProps) {
       }
     } catch (e) {
       console.warn("Cache API not available:", e);
+    }
+
+    // Attempt to request persistent storage
+    if (navigator.storage && navigator.storage.persist) {
+      navigator.storage.persist().catch(() => {});
     }
 
     return new Promise((resolve, reject) => {

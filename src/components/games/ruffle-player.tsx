@@ -35,15 +35,16 @@ export function RufflePlayer({ swfUrl, thumbnail, title }: RufflePlayerProps) {
   };
 
   const fetchSwfWithProgress = async (url: string): Promise<string> => {
-    const cacheName = "playverse-games-v1";
+    const cacheName = "playverse-game-cache-v1";
     
     // 1. Try Cache API for instant load
     try {
       const cache = await caches.open(cacheName);
       const cachedResponse = await cache.match(url);
       if (cachedResponse) {
+        console.log(`[Cache Hit] Loading ${url} from disk`);
         setDownloadProgress(100);
-        setLoadingStatus("Launching from local cache...");
+        setLoadingStatus("Launching from local cache (Instant)...");
         const blob = await cachedResponse.blob();
         const blobUrl = URL.createObjectURL(blob);
         blobUrlRef.current = blobUrl;
@@ -51,6 +52,11 @@ export function RufflePlayer({ swfUrl, thumbnail, title }: RufflePlayerProps) {
       }
     } catch (e) {
       console.warn("Cache check failed:", e);
+    }
+
+    // Attempt to request persistent storage (optional but helpful)
+    if (navigator.storage && navigator.storage.persist) {
+      navigator.storage.persist().catch(() => {});
     }
 
     // 2. Not in cache, download with manual progress bar
