@@ -32,7 +32,6 @@ export function DosPlayer({ bundleUrl, thumbnail, title }: DosPlayerProps) {
       const cache = await caches.open(cacheName);
       const cachedResponse = await cache.match(url);
       if (cachedResponse) {
-        console.log(`[Cache Hit] Loading DOS bundle ${url} from disk`);
         setDownloadProgress(100);
         setLoadingStatus("Launching from local cache (Instant)...");
         const blob = await cachedResponse.blob();
@@ -44,46 +43,48 @@ export function DosPlayer({ bundleUrl, thumbnail, title }: DosPlayerProps) {
       console.warn("Cache API not available:", e);
     }
 
-    // Attempt to request persistent storage
-    if (navigator.storage && navigator.storage.persist) {
-      navigator.storage.persist().catch(() => {});
+    // 2. Not in cache, download with modern Fetch + Streaming
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`Download failed: ${response.statusText}`);
+
+    const contentLength = response.headers.get('content-length');
+    const total = contentLength ? parseInt(contentLength, 10) : 0;
+    let loaded = 0;
+
+    const reader = response.body?.getReader();
+    if (!reader) throw new Error("Could not initialize stream reader.");
+
+    const chunks: Uint8Array[] = [];
+    
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      
+      chunks.push(value);
+      loaded += value.length;
+      
+      if (total) {
+        const percent = Math.round((loaded / total) * 100);
+        setDownloadProgress(percent);
+        setLoadingStatus(`Optimizing speed... ${percent}%`);
+      } else {
+        setLoadingStatus(`Streaming data... ${(loaded / 1024 / 1024).toFixed(1)}MB`);
+      }
     }
 
-    return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      xhr.open("GET", url, true);
-      xhr.responseType = "blob";
+    const blob = new Blob(chunks);
+    
+    // Save to permanent cache
+    try {
+      const cache = await caches.open(cacheName);
+      await cache.put(url, new Response(blob));
+    } catch (e) {
+      console.warn("Failed to save to cache:", e);
+    }
 
-      xhr.onprogress = (event) => {
-        if (event.lengthComputable) {
-          const percent = Math.round((event.loaded / event.total) * 100);
-          setDownloadProgress(percent);
-          setLoadingStatus(`Downloading game data... ${percent}%`);
-        } else {
-          setLoadingStatus("Downloading game data...");
-        }
-      };
-
-      xhr.onload = async () => {
-        if (xhr.status === 200) {
-          const blob = xhr.response;
-          try {
-            const cache = await caches.open(cacheName);
-            await cache.put(url, new Response(blob));
-          } catch (e) {
-            console.warn("Failed to save to cache:", e);
-          }
-          const blobUrl = URL.createObjectURL(blob);
-          blobUrlRef.current = blobUrl;
-          resolve(blobUrl);
-        } else {
-          reject(new Error(`Failed to download game (HTTP ${xhr.status})`));
-        }
-      };
-
-      xhr.onerror = () => reject(new Error("Network error during game download."));
-      xhr.send();
-    });
+    const blobUrl = URL.createObjectURL(blob);
+    blobUrlRef.current = blobUrl;
+    return blobUrl;
   };
 
   const handlePlay = async () => {
