@@ -3207,3 +3207,24 @@ export const CATEGORIES: GameCategory[] = [
     source: "Internet Archive"
   }
 ];
+
+export const CATEGORIES = [
+  "Arcade",
+  "Puzzle",
+  "Multiplayer",
+  "Strategy",
+  "Casual",
+  "Retro",
+  "Flash",
+];
+
+export function getGame(slug: string): Game | undefined {
+  return GAMES.find((g) => g.slug === slug);
+}
+
+export function getRelatedGames(game: Game, count = 4): Game[] {
+  return GAMES.filter((g) => g.slug !== game.slug && g.category === game.category)
+    .slice(0, count)
+    .concat(GAMES.filter((g) => g.slug !== game.slug && g.category !== game.category))
+    .slice(0, count);
+}
