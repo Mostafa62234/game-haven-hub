@@ -35,63 +35,41 @@ export function RufflePlayer({ swfUrl, thumbnail, title }: RufflePlayerProps) {
   };
 
   const fetchSwfWithProgress = async (url: string): Promise<string> => {
-    // 1. Try to get from Cache API first
     const cacheName = "game-haven-assets-v1";
+    
+    // 1. Check if we have it in the permanent cache (Instant load, 0 data)
     try {
       const cache = await caches.open(cacheName);
       const cachedResponse = await cache.match(url);
       if (cachedResponse) {
+        console.log("Loading from permanent cache...");
         setDownloadProgress(100);
-        setLoadingStatus("Loading from local cache...");
+        setLoadingStatus("Launching from local storage...");
         const blob = await cachedResponse.blob();
         const blobUrl = URL.createObjectURL(blob);
         blobUrlRef.current = blobUrl;
         return blobUrl;
       }
     } catch (e) {
-      console.warn("Cache API not available:", e);
+      console.warn("Cache check failed:", e);
     }
 
-    // 2. Not in cache, download with progress
-    return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      xhr.open("GET", url, true);
-      xhr.responseType = "blob";
+    // 2. Not in cache? Return the direct URL immediately for "Streaming" start.
+    // This allows Ruffle to start playing the first few frames while downloading the rest.
+    console.log("Starting instant stream...");
+    setLoadingStatus("Streaming game data...");
+    
+    // Trigger background caching so it's ready for the next time
+    fetch(url).then(async (response) => {
+      if (response.ok) {
+        const cache = await caches.open(cacheName);
+        cache.put(url, response);
+      }
+    }).catch(e => console.warn("Background caching failed:", e));
 
-      xhr.onprogress = (event) => {
-        if (event.lengthComputable) {
-          const percent = Math.round((event.loaded / event.total) * 100);
-          setDownloadProgress(percent);
-          setLoadingStatus(`Downloading game data... ${percent}%`);
-        } else {
-          setLoadingStatus("Downloading game data...");
-        }
-      };
-
-      xhr.onload = async () => {
-        if (xhr.status === 200) {
-          const blob = xhr.response;
-          
-          // Save to cache for next time
-          try {
-            const cache = await caches.open(cacheName);
-            await cache.put(url, new Response(blob));
-          } catch (e) {
-            console.warn("Failed to save to cache:", e);
-          }
-
-          const blobUrl = URL.createObjectURL(blob);
-          blobUrlRef.current = blobUrl;
-          resolve(blobUrl);
-        } else {
-          reject(new Error(`Failed to download game (HTTP ${xhr.status})`));
-        }
-      };
-
-      xhr.onerror = () => reject(new Error("Network error during game download."));
-      xhr.send();
-    });
+    return url; // Return the direct URL for streaming
   };
+
 
 
   const handlePlay = async () => {
@@ -106,7 +84,7 @@ export function RufflePlayer({ swfUrl, thumbnail, title }: RufflePlayerProps) {
       const RufflePlayer = await loadRuffleScript();
       if (!RufflePlayer) throw new Error("RufflePlayer initialization failed.");
 
-      setLoadingStatus("Downloading game data...");
+      setLoadingStatus("Streaming game data...");
       const localSwfUrl = await fetchSwfWithProgress(swfUrl);
 
       const container = containerRef.current;
@@ -124,20 +102,27 @@ export function RufflePlayer({ swfUrl, thumbnail, title }: RufflePlayerProps) {
         scale: "exactFit",
         letterbox: "on",
         splashScreen: false,
-        quality: "high", // High quality vector rendering
-        preferredRenderer: "webgpu", // Try WebGPU first for max FPS, falls back to WebGL
-        wmode: "direct", // Better performance for many games
+        quality: "low", 
+        preferredRenderer: "webgpu", 
+        wmode: "direct",
+        allowScriptAccess: true,
+        maxExecutionDuration: 15,
       };
 
       container.appendChild(player);
       player.style.width = "100%";
       player.style.height = "100%";
 
-      // Optimized load call
+      // Start loading
       await player.load({
         url: localSwfUrl,
         allowScriptAccess: true,
       });
+      
+      // Hide our loading overlay once the engine takes over
+      setIsLoading(false);
+
+
 
     } catch (err: any) {
       console.error(err);
