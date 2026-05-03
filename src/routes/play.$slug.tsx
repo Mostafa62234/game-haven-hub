@@ -111,7 +111,7 @@ function PlayPage() {
 
       <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
         <div>
-          <GameFrame embed={game.embed} title={game.title} thumbnail={game.thumbnail} />
+          <GameFrame key={game.slug} embed={game.embed} title={game.title} thumbnail={game.thumbnail} />
 
           {game.embed.startsWith("jsdos:") && (
             <div className="mt-4 flex items-start gap-3 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-amber-200/90">

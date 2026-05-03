@@ -146,8 +146,7 @@ export function RufflePlayer({ swfUrl, thumbnail, title }: RufflePlayerProps) {
         maxExecutionDuration: 15,
         powerPreference: "high-performance",
         base: "/",
-        menu: false,
-        salign: "tl"
+        menu: false
       };
 
       container.appendChild(player);
