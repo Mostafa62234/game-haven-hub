@@ -98,7 +98,7 @@ export const GAMES: Game[] = [
     description: "A Post Nuclear Role Playing Game. The classic that started it all.",
     category: "Retro",
     thumbnail: "https://tse2.mm.bing.net/th?q=Fallout%20(1997)%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "jsdos:https://archive.org/cors/msdos_Fallout_1997/Fallout_1997.zip",
+    embed: "jsdos:https://archive.org/cors/msdos_Fallout_1997/Fallout_1997.zip|FALLOUT",
     rating: 4.9,
     plays: 2800000,
     tags: [
@@ -130,7 +130,7 @@ export const GAMES: Game[] = [
     description: "The massive 1996 fantasy open-world RPG by Bethesda.",
     category: "Retro",
     thumbnail: "https://tse2.mm.bing.net/th?q=The%20Elder%20Scrolls%20II%3A%20Daggerfall%20video%20game%20cover%20art%20gameplay&w=400&h=400&c=7",
-    embed: "jsdos:https://archive.org/cors/msdos_Elder_Scrolls_The_-_Daggerfall_1996/Elder_Scrolls_The_-_Daggerfall_1996.zip",
+    embed: "jsdos:https://archive.org/cors/msdos_Elder_Scrolls_The_-_Daggerfall_1996/Elder_Scrolls_The_-_Daggerfall_1996.zip|DAGGER",
     rating: 4.8,
     plays: 1400000,
     tags: [

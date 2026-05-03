@@ -115,18 +115,26 @@ export function DosPlayer({ bundleUrl, thumbnail, title }: DosPlayerProps) {
       }
 
       // 2. Fetch game bundle with cache
-      const localBundleUrl = await fetchBundleWithCache(bundleUrl);
+      const [actualBundleUrl, ...bootCommands] = bundleUrl.split("|");
+      const localBundleUrl = await fetchBundleWithCache(actualBundleUrl);
 
       if (!containerRef.current) return;
 
       // 3. Initialize DOS
       setLoadingStatus("Booting system...");
-      const newCi = await window.Dos(containerRef.current, {
+      
+      const dosOptions: any = {
         url: localBundleUrl,
         worker: true,
         cycles: "auto",
         memsiz: 32,
-      });
+      };
+
+      if (bootCommands.length > 0) {
+        dosOptions.autoexec = bootCommands;
+      }
+
+      const newCi = await window.Dos(containerRef.current, dosOptions);
 
       ciRef.current = newCi;
     } catch (err: any) {
