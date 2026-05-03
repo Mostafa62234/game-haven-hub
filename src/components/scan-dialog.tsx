@@ -57,73 +57,48 @@ export function ScanDialog() {
         console.error("Failed to fetch admin games", err);
       }
 
-      // 1. Query Flashpoint API for metadata (more accurate)
-      const res = await fetch(`https://db-api.unstable.life/search?title=${encodeURIComponent(searchTerm)}&limit=10`);
+      // 1. Query Flashpoint API for metadata
+      const res = await fetch(`https://db-api.unstable.life/search?title=${encodeURIComponent(searchTerm)}&limit=15`);
       if (!res.ok) throw new Error("Flashpoint API error");
       const fpGames = await res.json();
       
       const validGames: ScannedGame[] = [];
 
       for (const fp of fpGames) {
-        if (!fp.title) continue;
+        if (!fp.title || !fp.id) continue;
         
         const slug = generateSlug(fp.title);
         if (existingSlugs.has(slug)) continue;
 
-        // 2. Try to find a playable SWF on Internet Archive for this title
-        let embed = "";
-        let thumbnail = "";
+        // Flashpoint Infinity Asset Structure
+        const id = fp.id;
+        const prefix1 = id.slice(0, 2);
+        const prefix2 = id.slice(2, 4);
         
-        // Strategy A: If launchCommand is already a real URL
-        if (fp.launchCommand && fp.launchCommand.startsWith('http') && !fp.launchCommand.includes('localflash')) {
-          if (fp.launchCommand.toLowerCase().endsWith('.swf')) {
-            embed = `ruffle:${fp.launchCommand}`;
-          }
-        }
-
-        // Strategy B: Search Internet Archive
-        if (!embed) {
-          try {
-            // Fuzzy search: remove colon, remove " ' ", and other non-alphanumeric chars for IA search
-            const fuzzyTitle = fp.title.replace(/[:'"]/g, '').replace(/[^a-zA-Z0-9\s]/g, ' ').trim();
-            const iaQuery = `title:(${fuzzyTitle}) AND format:(Shockwave Flash)`;
-            const iaRes = await fetch(`https://archive.org/advancedsearch.php?q=${encodeURIComponent(iaQuery)}&fl[]=identifier,title&rows=1&output=json`);
-            const iaData = await iaRes.json();
-            const iaDoc = iaData.response?.docs?.[0];
-
-            if (iaDoc) {
-              const metaRes = await fetch(`https://archive.org/metadata/${iaDoc.identifier}`);
-              const meta = await metaRes.json();
-              const files = meta.files || [];
-              const swfFile = files.find((f: any) => f.name.toLowerCase().endsWith('.swf'));
-              
-              if (swfFile) {
-                embed = `ruffle:https://archive.org/cors/${iaDoc.identifier}/${swfFile.name}`;
-                thumbnail = `https://archive.org/services/img/${iaDoc.identifier}`;
-              }
-            }
-          } catch (e) {
-            console.error("IA lookup failed for", fp.title, e);
-          }
-        }
+        // Canonical Flashpoint Assets
+        const logoUrl = `https://infinity.unstable.life/images/Logos/${prefix1}/${prefix2}/${id}.png`;
+        const screenshotUrl = `https://infinity.unstable.life/images/Screenshots/${prefix1}/${prefix2}/${id}.png`;
+        
+        // Flashpoint Web Player (ooooooooo.ooo is the standard community player for Flashpoint Archive)
+        const embedUrl = `https://ooooooooo.ooo/?id=${id}`;
 
         validGames.push({
-          identifier: fp.id,
+          identifier: id,
           title: fp.title,
           description: fp.originalDescription || `A ${fp.platform} game by ${fp.developer || "unknown"}.`,
-          thumbnail: thumbnail || `https://tse2.mm.bing.net/th?q=${encodeURIComponent(fp.title + " game icon")}&w=200&h=200&c=7`,
-          embed: embed,
+          thumbnail: logoUrl,
+          embed: embedUrl,
           launchCommand: fp.launchCommand
         });
 
-        if (validGames.length >= 8) break;
+        if (validGames.length >= 10) break;
       }
 
       setResults(validGames);
       if (validGames.length === 0) {
         toast.info("No new games found in Flashpoint archive matching your search.");
       } else {
-        toast.success(`Found ${validGames.length} potential matches from Flashpoint!`);
+        toast.success(`Found ${validGames.length} games in Flashpoint Archive!`);
       }
 
     } catch (err: any) {
