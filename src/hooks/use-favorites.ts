@@ -14,7 +14,7 @@ export function useFavorites() {
     }
     setLoading(true);
     const { data } = await supabase
-      .from("favorites")
+      .from("user_favorites")
       .select("game_slug")
       .eq("user_id", user.id);
     setFavorites(data?.map((d) => d.game_slug) ?? []);
@@ -32,7 +32,7 @@ export function useFavorites() {
       try {
         if (isFav) {
           const { error } = await supabase
-            .from("favorites")
+            .from("user_favorites")
             .delete()
             .eq("user_id", user.id)
             .eq("game_slug", slug);
@@ -40,7 +40,7 @@ export function useFavorites() {
           setFavorites((f) => f.filter((s) => s !== slug));
           return false;
         } else {
-          const { error } = await supabase.from("favorites").insert({ user_id: user.id, game_slug: slug });
+          const { error } = await supabase.from("user_favorites").insert({ user_id: user.id, game_slug: slug });
           if (error) throw error;
           setFavorites((f) => [...f, slug]);
           return true;

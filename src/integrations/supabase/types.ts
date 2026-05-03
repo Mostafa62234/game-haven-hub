@@ -68,7 +68,7 @@ export type Database = {
         }
         Relationships: []
       }
-      favorites: {
+      user_favorites: {
         Row: {
           created_at: string
           game_slug: string

@@ -82,8 +82,12 @@ function PlayPage() {
       toast.info("Sign in to save favorites");
       return;
     }
-    const added = await toggle(game.slug);
-    toast.success(added ? "Added to favorites" : "Removed from favorites");
+    try {
+      const added = await toggle(game.slug);
+      toast.success(added ? "Added to favorites" : "Removed from favorites");
+    } catch (err: any) {
+      toast.error(err.message || "Failed to update favorites");
+    }
   };
 
   const share = async () => {
