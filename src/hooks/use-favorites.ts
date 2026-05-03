@@ -29,18 +29,25 @@ export function useFavorites() {
     async (slug: string) => {
       if (!user) return false;
       const isFav = favorites.includes(slug);
-      if (isFav) {
-        await supabase
-          .from("favorites")
-          .delete()
-          .eq("user_id", user.id)
-          .eq("game_slug", slug);
-        setFavorites((f) => f.filter((s) => s !== slug));
-        return false;
-      } else {
-        await supabase.from("favorites").insert({ user_id: user.id, game_slug: slug });
-        setFavorites((f) => [...f, slug]);
-        return true;
+      try {
+        if (isFav) {
+          const { error } = await supabase
+            .from("favorites")
+            .delete()
+            .eq("user_id", user.id)
+            .eq("game_slug", slug);
+          if (error) throw error;
+          setFavorites((f) => f.filter((s) => s !== slug));
+          return false;
+        } else {
+          const { error } = await supabase.from("favorites").insert({ user_id: user.id, game_slug: slug });
+          if (error) throw error;
+          setFavorites((f) => [...f, slug]);
+          return true;
+        }
+      } catch (error) {
+        console.error("Error toggling favorite:", error);
+        throw error;
       }
     },
     [user, favorites],

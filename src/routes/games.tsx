@@ -1,13 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useEffect, useState } from "react";
+import { useMemo } from "react";
 import { Search, Heart } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { GameCard } from "@/components/game-card";
 import { AdSlot } from "@/components/ad-slot";
 import { CATEGORIES, type GameCategory } from "@/lib/games";
 import { useGames } from "@/components/games-provider";
-import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/components/auth-provider";
+import { useFavorites } from "@/hooks/use-favorites";
 
 interface SearchParams {
   q?: string;
@@ -42,31 +42,11 @@ function GamesPage() {
   const navigate = Route.useNavigate();
   const { games } = useGames();
   const { user } = useAuth();
-  const [favoriteSlugs, setFavoriteSlugs] = useState<Set<string>>(new Set());
-
-  useEffect(() => {
-    if (!user) {
-      setFavoriteSlugs(new Set());
-      return;
-    }
-
-    async function fetchFavorites() {
-      const { data } = await supabase
-        .from("user_favorites")
-        .select("game_slug")
-        .eq("user_id", user?.id);
-      
-      if (data) {
-        setFavoriteSlugs(new Set(data.map(f => f.game_slug)));
-      }
-    }
-
-    fetchFavorites();
-  }, [user]);
+  const { isFavorite, favorites: favoriteSlugsList } = useFavorites();
 
   const filtered = useMemo(() => {
     return games.filter((g) => {
-      if (favorites && !favoriteSlugs.has(g.slug)) return false;
+      if (favorites && !isFavorite(g.slug)) return false;
       if (category && g.category !== category) return false;
       if (q) {
         const needle = q.toLowerCase();
@@ -78,7 +58,7 @@ function GamesPage() {
       }
       return true;
     });
-  }, [q, category, games, favorites, favoriteSlugs]);
+  }, [q, category, games, favorites, isFavorite]);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8">
@@ -148,7 +128,7 @@ function GamesPage() {
 
       {filtered.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-border p-10 text-center text-muted-foreground bg-muted/10">
-          {favorites && favoriteSlugs.size === 0 
+          {favorites && favoriteSlugsList.length === 0 
             ? "You haven't saved any games yet! Heart some games to see them here."
             : "No games match your search."}{" "}
           <Link
