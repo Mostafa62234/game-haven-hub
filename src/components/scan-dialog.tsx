@@ -22,6 +22,7 @@ export function ScanDialog() {
   const [isSaving, setIsSaving] = useState(false);
   const [results, setResults] = useState<ScannedGame[]>([]);
   const [selectedGame, setSelectedGame] = useState<ScannedGame | null>(null);
+  const [searchTerm, setSearchTerm] = useState("");
   
   // Edit state
   const [editTitle, setEditTitle] = useState("");
@@ -51,7 +52,10 @@ export function ScanDialog() {
       }
 
       // Query IA for flash games
-      const res = await fetch("https://archive.org/advancedsearch.php?q=collection:(softwarelibrary_flash)+AND+format:(Shockwave+Flash)&fl[]=identifier,title,description&sort[]=random&rows=20&output=json");
+      const queryStr = searchTerm 
+        ? `collection:(softwarelibrary_flash) AND format:(Shockwave Flash) AND title:(${searchTerm})`
+        : `collection:(softwarelibrary_flash) AND format:(Shockwave Flash)`;
+      const res = await fetch(`https://archive.org/advancedsearch.php?q=${encodeURIComponent(queryStr)}&fl[]=identifier,title,description&sort[]=downloads+desc&rows=20&output=json`);
       const data = await res.json();
       
       const docs = data.response?.docs || [];
@@ -137,9 +141,9 @@ export function ScanDialog() {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="sm" className="hidden md:flex gap-2 rounded-full border border-primary/20 bg-primary/10 text-primary hover:bg-primary/20">
+        <Button size="sm" className="hidden md:flex gap-2 rounded-full bg-gradient-primary shadow-glow text-primary-foreground hover:scale-105 transition-transform">
           <Database className="h-4 w-4" />
-          <span className="font-bold">Scan Archive</span>
+          <span className="font-bold tracking-widest text-[10px] uppercase">Scan Archive</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[600px] rounded-3xl">
@@ -153,13 +157,20 @@ export function ScanDialog() {
         {!selectedGame ? (
           <div className="space-y-4 py-4">
             <div className="flex justify-between items-center bg-muted/30 p-4 rounded-2xl border">
-              <div>
+              <div className="flex-1 mr-4">
                 <h4 className="font-bold text-sm">Discover New Games</h4>
-                <p className="text-xs text-muted-foreground">Search the Internet Archive for missing Flash games.</p>
+                <p className="text-xs text-muted-foreground mb-3">Search the Internet Archive for missing Flash games.</p>
+                <Input 
+                  placeholder="e.g. Sonic, Mario..." 
+                  value={searchTerm} 
+                  onChange={(e) => setSearchTerm(e.target.value)} 
+                  className="bg-background h-9 rounded-full px-4"
+                  onKeyDown={(e) => e.key === 'Enter' && handleScan()}
+                />
               </div>
-              <Button onClick={handleScan} disabled={isScanning} className="rounded-full bg-gradient-primary shadow-glow">
+              <Button onClick={handleScan} disabled={isScanning} className="rounded-full bg-gradient-primary shadow-glow self-end mb-0.5">
                 {isScanning ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : <Search className="h-4 w-4 mr-2" />}
-                {isScanning ? "Scanning..." : "Start Scan"}
+                {isScanning ? "Scanning..." : "Scan"}
               </Button>
             </div>
 
