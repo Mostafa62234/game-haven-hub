@@ -15,6 +15,7 @@ interface ScannedGame {
   description: string;
   thumbnail: string;
   embed: string;
+  launchCommand?: string;
 }
 
 export function ScanDialog() {
@@ -73,24 +74,37 @@ export function ScanDialog() {
         let embed = "";
         let thumbnail = "";
         
-        try {
-          const iaRes = await fetch(`https://archive.org/advancedsearch.php?q=title:("${fp.title}") AND format:(Shockwave Flash)&fl[]=identifier,title&rows=1&output=json`);
-          const iaData = await iaRes.json();
-          const iaDoc = iaData.response?.docs?.[0];
-
-          if (iaDoc) {
-            const metaRes = await fetch(`https://archive.org/metadata/${iaDoc.identifier}`);
-            const meta = await metaRes.json();
-            const files = meta.files || [];
-            const swfFile = files.find((f: any) => f.name.toLowerCase().endsWith('.swf'));
-            
-            if (swfFile) {
-              embed = `ruffle:https://archive.org/cors/${iaDoc.identifier}/${swfFile.name}`;
-              thumbnail = `https://archive.org/services/img/${iaDoc.identifier}`;
-            }
+        // Strategy A: If launchCommand is already a real URL
+        if (fp.launchCommand && fp.launchCommand.startsWith('http') && !fp.launchCommand.includes('localflash')) {
+          if (fp.launchCommand.toLowerCase().endsWith('.swf')) {
+            embed = `ruffle:${fp.launchCommand}`;
           }
-        } catch (e) {
-          console.error("IA lookup failed for", fp.title, e);
+        }
+
+        // Strategy B: Search Internet Archive
+        if (!embed) {
+          try {
+            // Fuzzy search: remove colon, remove " ' ", and other non-alphanumeric chars for IA search
+            const fuzzyTitle = fp.title.replace(/[:'"]/g, '').replace(/[^a-zA-Z0-9\s]/g, ' ').trim();
+            const iaQuery = `title:(${fuzzyTitle}) AND format:(Shockwave Flash)`;
+            const iaRes = await fetch(`https://archive.org/advancedsearch.php?q=${encodeURIComponent(iaQuery)}&fl[]=identifier,title&rows=1&output=json`);
+            const iaData = await iaRes.json();
+            const iaDoc = iaData.response?.docs?.[0];
+
+            if (iaDoc) {
+              const metaRes = await fetch(`https://archive.org/metadata/${iaDoc.identifier}`);
+              const meta = await metaRes.json();
+              const files = meta.files || [];
+              const swfFile = files.find((f: any) => f.name.toLowerCase().endsWith('.swf'));
+              
+              if (swfFile) {
+                embed = `ruffle:https://archive.org/cors/${iaDoc.identifier}/${swfFile.name}`;
+                thumbnail = `https://archive.org/services/img/${iaDoc.identifier}`;
+              }
+            }
+          } catch (e) {
+            console.error("IA lookup failed for", fp.title, e);
+          }
         }
 
         validGames.push({
@@ -98,7 +112,8 @@ export function ScanDialog() {
           title: fp.title,
           description: fp.originalDescription || `A ${fp.platform} game by ${fp.developer || "unknown"}.`,
           thumbnail: thumbnail || `https://tse2.mm.bing.net/th?q=${encodeURIComponent(fp.title + " game icon")}&w=200&h=200&c=7`,
-          embed: embed
+          embed: embed,
+          launchCommand: fp.launchCommand
         });
 
         if (validGames.length >= 8) break;
@@ -251,7 +266,19 @@ export function ScanDialog() {
             </div>
             
             <div className="space-y-2">
-              <Label className="text-[11px] uppercase tracking-wider font-bold">Embed URL / IA Identifier *</Label>
+              <div className="flex justify-between items-center">
+                <Label className="text-[11px] uppercase tracking-wider font-bold">Embed URL / IA Identifier *</Label>
+                {!selectedGame.embed && (
+                  <a 
+                    href={`https://archive.org/search.php?query=${encodeURIComponent(selectedGame.title + " format:swf")}`} 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="text-[10px] text-primary hover:underline flex items-center gap-1"
+                  >
+                    <Search className="h-2.5 w-2.5" /> Search IA Manually
+                  </a>
+                )}
+              </div>
               <div className="relative">
                 <Input 
                   placeholder="ruffle:https://archive.org/cors/..." 
@@ -259,7 +286,8 @@ export function ScanDialog() {
                   onChange={e => setSelectedGame({...selectedGame, embed: e.target.value})}
                   className={cn("h-9 rounded-lg text-xs font-mono pr-8", !selectedGame.embed && "border-amber-500/50 bg-amber-50/5")}
                 />
-                {!selectedGame.embed && <div className="absolute right-3 top-2.5 h-4 w-4 text-amber-500"><Loader2 className="h-4 w-4 animate-spin" /></div>}
+                {!selectedGame.embed && <Search className="absolute right-3 top-2.5 h-4 w-4 text-amber-500/50" />}
+                {selectedGame.embed && <CheckCircle2 className="absolute right-3 top-2.5 h-4 w-4 text-green-500" />}
               </div>
               <p className="text-[10px] text-muted-foreground">Format: <code>ruffle:URL_TO_SWF</code> or <code>https://...</code></p>
             </div>
@@ -277,7 +305,14 @@ export function ScanDialog() {
             
             <div className="flex justify-between pt-4 border-t mt-4">
               <Button variant="ghost" onClick={() => setSelectedGame(null)} className="rounded-full">Cancel</Button>
-              <Button onClick={handleAddGame} disabled={isSaving || !selectedGame.embed} className="rounded-full bg-gradient-primary shadow-glow px-6">
+              <Button 
+                onClick={handleAddGame} 
+                disabled={isSaving || !selectedGame.embed} 
+                className={cn(
+                  "rounded-full shadow-glow px-6",
+                  selectedGame.embed ? "bg-gradient-primary" : "bg-muted text-muted-foreground"
+                )}
+              >
                 {isSaving ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : <Plus className="h-4 w-4 mr-2" />}
                 Add to Hub
               </Button>
