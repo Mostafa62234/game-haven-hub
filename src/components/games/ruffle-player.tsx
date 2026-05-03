@@ -17,6 +17,8 @@ export function RufflePlayer({ swfUrl, thumbnail, title }: RufflePlayerProps) {
   const [error, setError] = useState<string | null>(null);
   const playerRef = useRef<any>(null);
   const blobUrlRef = useRef<string | null>(null);
+  const [resolution, setResolution] = useState<{w: number, h: number} | null>(null);
+  const resizeObserverRef = useRef<ResizeObserver | null>(null);
 
   const loadRuffleScript = (): Promise<any> => {
     return new Promise((resolve, reject) => {
@@ -134,20 +136,34 @@ export function RufflePlayer({ swfUrl, thumbnail, title }: RufflePlayerProps) {
         autoplay: "on",
         unmuteOverlay: "hidden",
         forceScale: true,
-        scale: "exactFit",
+        scale: "showAll",
         letterbox: "on",
         splashScreen: false,
-        quality: "low", 
+        quality: "high", 
         preferredRenderer: "webgpu", 
         wmode: "direct",
         allowScriptAccess: true,
         maxExecutionDuration: 15,
         powerPreference: "high-performance",
+        base: "/",
+        menu: false,
+        salign: "tl"
       };
 
       container.appendChild(player);
       player.style.width = "100%";
       player.style.height = "100%";
+
+      // Setup Resolution Counter Observer
+      resizeObserverRef.current = new ResizeObserver((entries) => {
+        for (let entry of entries) {
+          const { width, height } = entry.contentRect;
+          if (width > 0 && height > 0) {
+             setResolution({ w: Math.round(width), h: Math.round(height) });
+          }
+        }
+      });
+      resizeObserverRef.current.observe(container);
 
       // Start loading
       await player.load({
@@ -172,6 +188,7 @@ export function RufflePlayer({ swfUrl, thumbnail, title }: RufflePlayerProps) {
     return () => {
       if (playerRef.current) playerRef.current.remove();
       if (blobUrlRef.current) URL.revokeObjectURL(blobUrlRef.current);
+      if (resizeObserverRef.current) resizeObserverRef.current.disconnect();
     };
   }, []);
 
@@ -239,6 +256,12 @@ export function RufflePlayer({ swfUrl, thumbnail, title }: RufflePlayerProps) {
           >
             Try Again
           </button>
+        </div>
+      )}
+
+      {isPlaying && resolution && (
+        <div className="absolute top-2 right-2 z-40 bg-black/60 text-white/80 text-[10px] font-mono px-2 py-0.5 rounded shadow backdrop-blur pointer-events-none tracking-widest font-bold">
+          {resolution.w}×{resolution.h}
         </div>
       )}
     </div>

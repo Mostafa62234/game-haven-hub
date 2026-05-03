@@ -1,6 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Gamepad2, Search, User, Shield, LogOut } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
+import { ScanDialog } from "./scan-dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState, type FormEvent } from "react";
@@ -83,6 +84,7 @@ export function SiteHeader() {
         </form>
 
         <div className="ml-auto flex items-center gap-1 md:ml-0">
+          {isAdmin && <ScanDialog />}
           <ThemeToggle />
           
           <DropdownMenu>

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { 
   Shield, 
   Trash2, 
@@ -17,7 +18,9 @@ import {
   RefreshCw,
   LayoutDashboard,
   Gamepad2,
-  ExternalLink
+  ExternalLink,
+  LayoutGrid,
+  List
 } from "lucide-react";
 
 import { toast } from "sonner";
@@ -41,6 +44,8 @@ function AdminDashboard() {
   const [adPlacements, setAdPlacements] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+  const [viewMode, setViewMode] = useState<"table" | "grid">("table");
+  const [gridSize, setGridSize] = useState<"sm" | "md" | "lg">("md");
   
   // Form State
   const [newGame, setNewGame] = useState({
@@ -178,14 +183,37 @@ function AdminDashboard() {
 
           <TabsContent value="games" className="space-y-6">
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-              <div className="relative flex-1 max-w-md">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                <Input 
-                  placeholder="Filter library..." 
-                  className="pl-9 rounded-full bg-card"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
+              <div className="flex items-center gap-4 flex-1">
+                <div className="relative flex-1 max-w-md">
+                  <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                  <Input 
+                    placeholder="Filter library..." 
+                    className="pl-9 rounded-full bg-card"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                </div>
+                <div className="flex items-center gap-2 bg-card rounded-full p-1 border">
+                  <ToggleGroup type="single" value={viewMode} onValueChange={(v) => v && setViewMode(v as any)}>
+                    <ToggleGroupItem value="table" aria-label="Table View" className="rounded-full h-8 px-3">
+                      <List className="h-4 w-4" />
+                    </ToggleGroupItem>
+                    <ToggleGroupItem value="grid" aria-label="Grid View" className="rounded-full h-8 px-3">
+                      <LayoutGrid className="h-4 w-4" />
+                    </ToggleGroupItem>
+                  </ToggleGroup>
+                  
+                  {viewMode === "grid" && (
+                    <>
+                      <div className="w-px h-6 bg-border mx-1" />
+                      <ToggleGroup type="single" value={gridSize} onValueChange={(v) => v && setGridSize(v as any)}>
+                        <ToggleGroupItem value="sm" aria-label="Small" className="rounded-full h-8 px-3 text-xs font-medium">S</ToggleGroupItem>
+                        <ToggleGroupItem value="md" aria-label="Medium" className="rounded-full h-8 px-3 text-xs font-medium">M</ToggleGroupItem>
+                        <ToggleGroupItem value="lg" aria-label="Large" className="rounded-full h-8 px-3 text-xs font-medium">L</ToggleGroupItem>
+                      </ToggleGroup>
+                    </>
+                  )}
+                </div>
               </div>
               <Dialog>
                 <DialogTrigger asChild>
@@ -232,38 +260,94 @@ function AdminDashboard() {
               </Dialog>
             </div>
 
-            <div className="rounded-3xl border bg-card overflow-hidden shadow-sm">
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-sm">
-                  <thead className="bg-muted/50 text-[10px] uppercase tracking-widest font-bold text-muted-foreground border-b">
-                    <tr>
-                      <th className="px-6 py-4">Game</th>
-                      <th className="px-6 py-4">Slug</th>
-                      <th className="px-6 py-4">Status</th>
-                      <th className="px-6 py-4 text-right">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y">
-                    {/* Combined view: show everything in DB + everything in static GAMES */}
-                    {Array.from(new Set([...GAMES.map(g => g.slug), ...dbStatus.map(g => g.slug)]))
-                      .map(slug => {
-                        const staticGame = GAMES.find(g => g.slug === slug);
-                        const dbEntry = dbStatus.find(d => d.slug === slug);
-                        const isCustom = !staticGame;
-                        const game = dbEntry || staticGame;
+            {(() => {
+              const displayGames = Array.from(new Set([...GAMES.map(g => g.slug), ...dbStatus.map(g => g.slug)]))
+                .map(slug => {
+                  const staticGame = GAMES.find(g => g.slug === slug);
+                  const dbEntry = dbStatus.find(d => d.slug === slug);
+                  const isCustom = !staticGame;
+                  const game = dbEntry || staticGame;
 
-                        if (!game) return null;
-                        if (searchTerm && !game.title.toLowerCase().includes(searchTerm.toLowerCase()) && !slug.includes(searchTerm.toLowerCase())) return null;
+                  if (!game) return null;
+                  if (searchTerm && !game.title.toLowerCase().includes(searchTerm.toLowerCase()) && !slug.includes(searchTerm.toLowerCase())) return null;
+                  
+                  return { slug, game, dbEntry, isCustom, isHidden: dbEntry?.hidden || false };
+                })
+                .filter(Boolean) as any[];
 
-                        const isHidden = dbEntry?.hidden || false;
+              if (viewMode === "grid") {
+                const gridClasses = {
+                  sm: "grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5",
+                  md: "grid-cols-2 md:grid-cols-3 lg:grid-cols-4",
+                  lg: "grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
+                }[gridSize];
 
-                        return (
-                          <tr key={slug} className="hover:bg-muted/30 transition-colors">
+                return (
+                  <div className={`grid gap-4 ${gridClasses}`}>
+                    {displayGames.map(({ slug, game, dbEntry, isCustom, isHidden }) => (
+                      <div key={slug} className={`group relative flex flex-col overflow-hidden rounded-2xl border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-glow ${isHidden ? 'opacity-70' : ''}`}>
+                        <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+                          <img src={game.thumbnail} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                          <div className="absolute top-2 left-2 flex flex-col gap-1">
+                            <span className={`rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest backdrop-blur w-fit ${isHidden ? "bg-destructive/80 text-white" : "bg-primary/80 text-white"}`}>
+                              {isHidden ? "Hidden" : "Live"}
+                            </span>
+                            {isCustom && <span className="rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest backdrop-blur bg-amber-500/80 text-white w-fit">Custom</span>}
+                          </div>
+                          
+                          <div className="absolute bottom-3 left-3 right-3 flex items-center justify-end gap-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                            <Button variant="secondary" size="icon" className="h-8 w-8 rounded-full shadow-card" asChild>
+                              <Link to="/play/$slug" params={{ slug: slug }}>
+                                <ExternalLink className="h-4 w-4" />
+                              </Link>
+                            </Button>
+                            <Button variant={isHidden ? "default" : "secondary"} size="icon" className={`h-8 w-8 rounded-full shadow-card ${isHidden ? "bg-destructive text-destructive-foreground hover:bg-destructive/90" : ""}`} onClick={() => toggleGameVisibility(game, isHidden)}>
+                              {isHidden ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
+                            </Button>
+                            {dbEntry && (
+                              <Button variant="destructive" size="icon" className="h-8 w-8 rounded-full shadow-card" title={isCustom ? "Delete Game" : "Reset to Default"} onClick={() => deleteCustomGame(slug)}>
+                                <Trash2 className="h-4 w-4" />
+                              </Button>
+                            )}
+                          </div>
+                        </div>
+                        <div className="flex flex-col gap-1 p-3">
+                          <h3 className="font-bold leading-tight tracking-tight text-sm truncate">{game.title}</h3>
+                          <div className="flex justify-between items-center">
+                            <code className="text-[9px] text-muted-foreground truncate max-w-[120px]">{slug}</code>
+                            <span className="text-[9px] font-medium uppercase tracking-widest text-muted-foreground">{game.category}</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                );
+              }
+
+              return (
+                <div className="rounded-3xl border bg-card overflow-hidden shadow-sm">
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-sm">
+                      <thead className="bg-muted/50 text-[10px] uppercase tracking-widest font-bold text-muted-foreground border-b">
+                        <tr>
+                          <th className="px-6 py-4">Game</th>
+                          <th className="px-6 py-4">Slug</th>
+                          <th className="px-6 py-4">Status</th>
+                          <th className="px-6 py-4 text-right">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y">
+                        {displayGames.map(({ slug, game, dbEntry, isCustom, isHidden }) => (
+                          <tr key={slug} className={`hover:bg-muted/30 transition-colors ${isHidden ? 'opacity-70' : ''}`}>
                             <td className="px-6 py-4">
                               <div className="flex items-center gap-3">
                                 <img src={game.thumbnail} className="h-10 w-10 rounded-lg object-cover bg-muted" />
                                 <div>
-                                  <div className="font-bold">{game.title}</div>
+                                  <div className="font-bold flex items-center gap-2">
+                                    {game.title}
+                                    {isCustom && <span className="rounded-full bg-amber-500/10 px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-widest text-amber-500">Custom</span>}
+                                  </div>
                                   <div className="text-[10px] text-muted-foreground uppercase tracking-tight">{game.category}</div>
                                 </div>
                               </div>
@@ -280,47 +364,29 @@ function AdminDashboard() {
                             </td>
                             <td className="px-6 py-4 text-right">
                               <div className="flex justify-end gap-2">
-                                <Button 
-                                  variant="ghost" 
-                                  size="sm" 
-                                  className="rounded-full"
-                                  asChild
-                                >
+                                <Button variant="ghost" size="sm" className="rounded-full" asChild>
                                   <Link to="/play/$slug" params={{ slug: slug }}>
                                     <ExternalLink className="h-4 w-4 text-primary" />
                                   </Link>
                                 </Button>
-                                <Button 
-                                  variant="ghost" 
-                                  size="sm" 
-                                  className="rounded-full"
-                                  onClick={() => toggleGameVisibility(game, isHidden)}
-                                >
+                                <Button variant="ghost" size="sm" className={`rounded-full ${isHidden ? 'text-destructive hover:bg-destructive/10 hover:text-destructive' : ''}`} onClick={() => toggleGameVisibility(game, isHidden)}>
                                   {isHidden ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4 text-muted-foreground" />}
                                 </Button>
-
-
                                 {dbEntry && (
-                                  <Button 
-                                    variant="ghost" 
-                                    size="sm" 
-                                    title={isCustom ? "Delete Game" : "Reset to Default"}
-                                    className="rounded-full text-destructive hover:bg-destructive/10"
-                                    onClick={() => deleteCustomGame(slug)}
-                                  >
+                                  <Button variant="ghost" size="sm" title={isCustom ? "Delete Game" : "Reset to Default"} className="rounded-full text-destructive hover:bg-destructive/10" onClick={() => deleteCustomGame(slug)}>
                                     <Trash2 className="h-4 w-4" />
                                   </Button>
                                 )}
                               </div>
                             </td>
                           </tr>
-                        );
-                      })}
-
-                  </tbody>
-                </table>
-              </div>
-            </div>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              );
+            })()}
           </TabsContent>
 
           <TabsContent value="ads" className="space-y-6">
