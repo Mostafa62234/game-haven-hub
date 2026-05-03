@@ -7,6 +7,7 @@ import { Search, Loader2, Database, Plus, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 import { GAMES, CATEGORIES } from "@/lib/games";
 import { supabase } from "@/integrations/supabase/client";
+import { cn } from "@/lib/utils";
 
 interface ScannedGame {
   identifier: string;
@@ -34,6 +35,10 @@ export function ScanDialog() {
   };
 
   const handleScan = async () => {
+    if (!searchTerm) {
+      toast.error("Please enter a search term");
+      return;
+    }
     setIsScanning(true);
     setResults([]);
     setSelectedGame(null);
@@ -41,7 +46,7 @@ export function ScanDialog() {
       // Get existing slugs to filter out duplicates
       const existingSlugs = new Set(GAMES.map(g => g.slug));
       try {
-        const { data: adminGames } = await supabase.from("admin_games").select("slug, embed");
+        const { data: adminGames } = await supabase.from("admin_games").select("slug");
         if (adminGames) {
           adminGames.forEach(g => {
             existingSlugs.add(g.slug);
@@ -51,51 +56,59 @@ export function ScanDialog() {
         console.error("Failed to fetch admin games", err);
       }
 
-      // Query IA for flash games
-      const queryStr = searchTerm 
-        ? `collection:(softwarelibrary_flash) AND format:(Shockwave Flash) AND title:(${searchTerm})`
-        : `collection:(softwarelibrary_flash) AND format:(Shockwave Flash)`;
-      const res = await fetch(`https://archive.org/advancedsearch.php?q=${encodeURIComponent(queryStr)}&fl[]=identifier,title,description&sort[]=downloads+desc&rows=20&output=json`);
-      const data = await res.json();
+      // 1. Query Flashpoint API for metadata (more accurate)
+      const res = await fetch(`https://db-api.unstable.life/search?title=${encodeURIComponent(searchTerm)}&limit=10`);
+      if (!res.ok) throw new Error("Flashpoint API error");
+      const fpGames = await res.json();
       
-      const docs = data.response?.docs || [];
       const validGames: ScannedGame[] = [];
 
-      for (const doc of docs) {
-        if (!doc.identifier || !doc.title) continue;
+      for (const fp of fpGames) {
+        if (!fp.title) continue;
         
-        // Generate a provisional slug
-        const slug = generateSlug(doc.title);
+        const slug = generateSlug(fp.title);
         if (existingSlugs.has(slug)) continue;
 
-        // Verify it has a SWF file
+        // 2. Try to find a playable SWF on Internet Archive for this title
+        let embed = "";
+        let thumbnail = "";
+        
         try {
-          const metaRes = await fetch(`https://archive.org/metadata/${doc.identifier}`);
-          const meta = await metaRes.json();
-          const files = meta.files || [];
-          const swfFile = files.find((f: any) => f.name.toLowerCase().endsWith('.swf'));
-          
-          if (swfFile) {
-            validGames.push({
-              identifier: doc.identifier,
-              title: doc.title,
-              description: doc.description || "A classic flash game.",
-              thumbnail: `https://archive.org/services/img/${doc.identifier}`,
-              embed: `ruffle:https://archive.org/cors/${doc.identifier}/${swfFile.name}`
-            });
+          const iaRes = await fetch(`https://archive.org/advancedsearch.php?q=title:("${fp.title}") AND format:(Shockwave Flash)&fl[]=identifier,title&rows=1&output=json`);
+          const iaData = await iaRes.json();
+          const iaDoc = iaData.response?.docs?.[0];
+
+          if (iaDoc) {
+            const metaRes = await fetch(`https://archive.org/metadata/${iaDoc.identifier}`);
+            const meta = await metaRes.json();
+            const files = meta.files || [];
+            const swfFile = files.find((f: any) => f.name.toLowerCase().endsWith('.swf'));
+            
+            if (swfFile) {
+              embed = `ruffle:https://archive.org/cors/${iaDoc.identifier}/${swfFile.name}`;
+              thumbnail = `https://archive.org/services/img/${iaDoc.identifier}`;
+            }
           }
         } catch (e) {
-          console.error("Error fetching metadata for", doc.identifier, e);
+          console.error("IA lookup failed for", fp.title, e);
         }
 
-        if (validGames.length >= 5) break; // Limit to 5 valid new games per scan to be fast
+        validGames.push({
+          identifier: fp.id,
+          title: fp.title,
+          description: fp.originalDescription || `A ${fp.platform} game by ${fp.developer || "unknown"}.`,
+          thumbnail: thumbnail || `https://tse2.mm.bing.net/th?q=${encodeURIComponent(fp.title + " game icon")}&w=200&h=200&c=7`,
+          embed: embed
+        });
+
+        if (validGames.length >= 8) break;
       }
 
       setResults(validGames);
       if (validGames.length === 0) {
-        toast.info("No new games found in this scan.");
+        toast.info("No new games found in Flashpoint archive matching your search.");
       } else {
-        toast.success(`Found ${validGames.length} new games!`);
+        toast.success(`Found ${validGames.length} potential matches from Flashpoint!`);
       }
 
     } catch (err: any) {
@@ -176,19 +189,36 @@ export function ScanDialog() {
 
             {results.length > 0 && (
               <div className="space-y-2 mt-4">
-                <h4 className="text-xs uppercase tracking-widest font-bold text-muted-foreground">Results</h4>
+                <div className="flex justify-between items-center">
+                  <h4 className="text-xs uppercase tracking-widest font-bold text-muted-foreground">Results from Flashpoint</h4>
+                  <span className="text-[10px] text-muted-foreground">{results.length} found</span>
+                </div>
                 <div className="grid gap-2 max-h-[300px] overflow-y-auto pr-2">
                   {results.map(game => (
                     <div key={game.identifier} className="flex items-center justify-between p-3 rounded-xl border bg-card hover:bg-muted/50 transition-colors">
                       <div className="flex items-center gap-3 overflow-hidden">
-                        <img src={game.thumbnail} className="h-10 w-10 rounded bg-muted object-cover flex-shrink-0" />
+                        <div className="relative">
+                          <img src={game.thumbnail} className="h-10 w-10 rounded bg-muted object-cover flex-shrink-0" />
+                          {game.embed ? (
+                            <div className="absolute -bottom-1 -right-1 bg-green-500 rounded-full p-0.5 border-2 border-card">
+                              <CheckCircle2 className="h-2 w-2 text-white" />
+                            </div>
+                          ) : null}
+                        </div>
                         <div className="truncate">
                           <div className="font-bold text-sm truncate">{game.title}</div>
-                          <div className="text-[10px] text-muted-foreground truncate">{game.identifier}</div>
+                          <div className="flex gap-2 items-center">
+                             <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-muted text-muted-foreground">{game.identifier.slice(0,8)}</span>
+                             {game.embed ? (
+                               <span className="text-[10px] text-green-500 font-medium">Playable found</span>
+                             ) : (
+                               <span className="text-[10px] text-amber-500 font-medium">Link needed</span>
+                             )}
+                          </div>
                         </div>
                       </div>
-                      <Button size="sm" variant="secondary" className="rounded-full flex-shrink-0" onClick={() => selectGame(game)}>
-                        Review
+                      <Button size="sm" variant={game.embed ? "secondary" : "outline"} className="rounded-full flex-shrink-0" onClick={() => selectGame(game)}>
+                        {game.embed ? "Review" : "Fix & Add"}
                       </Button>
                     </div>
                   ))}
@@ -200,26 +230,44 @@ export function ScanDialog() {
           <div className="space-y-4 py-4">
             <div className="flex items-center gap-4 mb-4 bg-muted/30 p-3 rounded-2xl">
               <img src={selectedGame.thumbnail} className="h-16 w-16 rounded-xl object-cover shadow-sm" />
-              <div>
-                <h3 className="font-bold text-sm">{selectedGame.title}</h3>
-                <p className="text-[10px] text-muted-foreground font-mono break-all line-clamp-2">{selectedGame.embed}</p>
+              <div className="flex-1 overflow-hidden">
+                <h3 className="font-bold text-sm truncate">{selectedGame.title}</h3>
+                <p className="text-xs text-muted-foreground line-clamp-1">{selectedGame.description}</p>
+                <div className="mt-1 flex gap-2">
+                   <span className="text-[9px] bg-primary/10 text-primary px-2 py-0.5 rounded-full font-bold uppercase tracking-tighter">Flashpoint ID: {selectedGame.identifier.slice(0,13)}</span>
+                </div>
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label>Game Title *</Label>
-                <Input value={editTitle} onChange={e => setEditTitle(e.target.value)} />
+                <Label className="text-[11px] uppercase tracking-wider font-bold">Game Title *</Label>
+                <Input value={editTitle} onChange={e => setEditTitle(e.target.value)} className="h-9 rounded-lg" />
               </div>
               <div className="space-y-2">
-                <Label>URL Slug *</Label>
-                <Input value={editSlug} onChange={e => setEditSlug(e.target.value)} />
+                <Label className="text-[11px] uppercase tracking-wider font-bold">URL Slug *</Label>
+                <Input value={editSlug} onChange={e => setEditSlug(e.target.value)} className="h-9 rounded-lg font-mono text-xs" />
               </div>
             </div>
+            
             <div className="space-y-2">
-              <Label>Category</Label>
+              <Label className="text-[11px] uppercase tracking-wider font-bold">Embed URL / IA Identifier *</Label>
+              <div className="relative">
+                <Input 
+                  placeholder="ruffle:https://archive.org/cors/..." 
+                  value={selectedGame.embed} 
+                  onChange={e => setSelectedGame({...selectedGame, embed: e.target.value})}
+                  className={cn("h-9 rounded-lg text-xs font-mono pr-8", !selectedGame.embed && "border-amber-500/50 bg-amber-50/5")}
+                />
+                {!selectedGame.embed && <div className="absolute right-3 top-2.5 h-4 w-4 text-amber-500"><Loader2 className="h-4 w-4 animate-spin" /></div>}
+              </div>
+              <p className="text-[10px] text-muted-foreground">Format: <code>ruffle:URL_TO_SWF</code> or <code>https://...</code></p>
+            </div>
+
+            <div className="space-y-2">
+              <Label className="text-[11px] uppercase tracking-wider font-bold">Category</Label>
               <select 
-                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                className="flex h-9 w-full rounded-lg border border-input bg-background px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                 value={editCategory}
                 onChange={e => setEditCategory(e.target.value)}
               >
@@ -227,11 +275,11 @@ export function ScanDialog() {
               </select>
             </div>
             
-            <div className="flex justify-between pt-4">
-              <Button variant="ghost" onClick={() => setSelectedGame(null)}>Cancel</Button>
-              <Button onClick={handleAddGame} disabled={isSaving} className="rounded-full bg-gradient-primary shadow-glow">
+            <div className="flex justify-between pt-4 border-t mt-4">
+              <Button variant="ghost" onClick={() => setSelectedGame(null)} className="rounded-full">Cancel</Button>
+              <Button onClick={handleAddGame} disabled={isSaving || !selectedGame.embed} className="rounded-full bg-gradient-primary shadow-glow px-6">
                 {isSaving ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : <Plus className="h-4 w-4 mr-2" />}
-                Confirm & Add
+                Add to Hub
               </Button>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/components/auth-provider";
+import { toast } from "sonner";
 
 export function useFavorites() {
   const { user } = useAuth();
@@ -27,27 +28,39 @@ export function useFavorites() {
 
   const toggle = useCallback(
     async (slug: string) => {
-      if (!user) return false;
+      if (!user) {
+        toast.error("You must be logged in to favorite games.");
+        return false;
+      }
+      
       const isFav = favorites.includes(slug);
+      setLoading(true);
+      
       try {
         if (isFav) {
           const { error } = await supabase
             .from("user_favorites")
             .delete()
-            .eq("user_id", user.id)
-            .eq("game_slug", slug);
+            .match({ user_id: user.id, game_slug: slug });
+            
           if (error) throw error;
           setFavorites((f) => f.filter((s) => s !== slug));
           return false;
         } else {
-          const { error } = await supabase.from("user_favorites").insert({ user_id: user.id, game_slug: slug });
+          const { error } = await supabase
+            .from("user_favorites")
+            .insert({ user_id: user.id, game_slug: slug });
+            
           if (error) throw error;
           setFavorites((f) => [...f, slug]);
           return true;
         }
-      } catch (error) {
+      } catch (error: any) {
         console.error("Error toggling favorite:", error);
-        throw error;
+        toast.error(error.message || "Failed to update favorites");
+        return isFav; // Return original state on failure
+      } finally {
+        setLoading(false);
       }
     },
     [user, favorites],
