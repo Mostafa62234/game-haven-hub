@@ -8,7 +8,11 @@ export function SiteFooter() {
         <div>
           <Link to="/" className="flex items-center gap-2 group">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-muted overflow-hidden">
-              <img src="/logo.png" className="h-full w-full object-contain p-0.5" />
+              <img
+                src={`${import.meta.env.BASE_URL}logo.png`}
+                alt="PlayVerse logo"
+                className="h-full w-full object-contain p-0.5"
+              />
             </div>
             <span className="font-bold">PlayVerse</span>
           </Link>

@@ -53,7 +53,7 @@ export const Route = createRootRoute({
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/logo.png", type: "image/png" },
+      { rel: "icon", href: `${import.meta.env.BASE_URL}logo.png`, type: "image/png" },
       { rel: "preconnect", href: "https://archive.org" },
       { rel: "preconnect", href: "https://unpkg.com" },
       { rel: "dns-prefetch", href: "https://archive.org" },

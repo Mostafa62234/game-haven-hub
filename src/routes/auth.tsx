@@ -37,7 +37,7 @@ function AuthPage() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `${window.location.origin}/`,
+          redirectTo: `${window.location.origin}${import.meta.env.BASE_URL}`,
         },
       });
       if (error) throw error;
@@ -51,7 +51,7 @@ function AuthPage() {
     setLoading(true);
     try {
       if (mode === "signup") {
-        const redirectUrl = `${window.location.origin}/`;
+        const redirectUrl = `${window.location.origin}${import.meta.env.BASE_URL}`;
         const { error } = await supabase.auth.signUp({
           email,
           password,

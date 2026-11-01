@@ -58,7 +58,11 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4">
         <Link to="/" className="flex items-center gap-2 group">
           <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-muted overflow-hidden shadow-glow transition-transform group-hover:scale-110">
-            <img src="/logo.png" className="h-full w-full object-contain p-1" />
+            <img
+              src={`${import.meta.env.BASE_URL}logo.png`}
+              alt="PlayVerse logo"
+              className="h-full w-full object-contain p-1"
+            />
           </div>
           <span className="text-lg font-bold tracking-tight">
             Play<span className="text-gradient">Verse</span>
