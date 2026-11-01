@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Cover coming soon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#150f2b"/>
+      <stop offset="1" stop-color="#2d1f5c"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#a78bfa" stroke-opacity="0.10" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#grid)"/>
+  <g transform="translate(400 268)" fill="none" stroke="#a78bfa" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.75">
+    <rect x="-92" y="-46" width="184" height="92" rx="30"/>
+    <path d="M-46 -14v28M-60 0h28"/>
+    <circle cx="42" cy="-14" r="9" fill="#a78bfa" stroke="none"/>
+    <circle cx="66" cy="12" r="9" fill="#a78bfa" stroke="none"/>
+  </g>
+  <text x="400" y="392" text-anchor="middle" font-family="Inter, Segoe UI, system-ui, sans-serif" font-size="26" font-weight="700" fill="#e9e4ff">Cover coming soon</text>
+  <text x="400" y="426" text-anchor="middle" font-family="Inter, Segoe UI, system-ui, sans-serif" font-size="17" fill="#a99ed6">PlayVerse</text>
+</svg>

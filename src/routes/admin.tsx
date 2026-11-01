@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "@/components/auth-provider";
 import { supabase } from "@/integrations/supabase/client";
 import { GAMES, CATEGORIES } from "@/lib/games";
+import { coverUrl } from "@/lib/cover";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -287,7 +288,7 @@ function AdminDashboard() {
                     {displayGames.map(({ slug, game, dbEntry, isCustom, isHidden }) => (
                       <div key={slug} className={`group relative flex flex-col overflow-hidden rounded-2xl border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-glow ${isHidden ? 'opacity-70' : ''}`}>
                         <div className="relative aspect-[4/3] overflow-hidden bg-muted">
-                          <img src={game.thumbnail} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                          <img src={coverUrl(game.thumbnail)} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                           <div className="absolute top-2 left-2 flex flex-col gap-1">
                             <span className={`rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest backdrop-blur w-fit ${isHidden ? "bg-destructive/80 text-white" : "bg-primary/80 text-white"}`}>
@@ -342,7 +343,10 @@ function AdminDashboard() {
                           <tr key={slug} className={`hover:bg-muted/30 transition-colors ${isHidden ? 'opacity-70' : ''}`}>
                             <td className="px-6 py-4">
                               <div className="flex items-center gap-3">
-                                <img src={game.thumbnail} className="h-10 w-10 rounded-lg object-cover bg-muted" />
+                                <img
+                                  src={coverUrl(game.thumbnail)}
+                                  className="h-10 w-10 rounded-lg object-cover bg-muted"
+                                />
                                 <div>
                                   <div className="font-bold flex items-center gap-2">
                                     {game.title}

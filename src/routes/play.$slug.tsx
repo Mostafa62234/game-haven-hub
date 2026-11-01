@@ -7,6 +7,7 @@ import { GameFrame } from "@/components/games/game-frame";
 import { GameCard } from "@/components/game-card";
 import { AdSlot } from "@/components/ad-slot";
 import { getGame, getRelatedGames, type Game } from "@/lib/games";
+import { coverUrl } from "@/lib/cover";
 import { useAuth } from "@/components/auth-provider";
 import { useFavorites, recordPlay } from "@/hooks/use-favorites";
 import { toast } from "sonner";
@@ -115,7 +116,12 @@ function PlayPage() {
 
       <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
         <div>
-          <GameFrame key={game.slug} embed={game.embed} title={game.title} thumbnail={game.thumbnail} />
+          <GameFrame
+            key={game.slug}
+            embed={game.embed}
+            title={game.title}
+            thumbnail={coverUrl(game.thumbnail)}
+          />
 
           {game.embed.startsWith("jsdos:") && (
             <div className="mt-4 flex items-start gap-3 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-amber-200/90">

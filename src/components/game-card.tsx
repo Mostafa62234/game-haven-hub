@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { useSettings } from "./settings-provider";
 import { FavoriteButton } from "./favorite-button";
 import { preloadGame, isGameCached } from "@/lib/preloader";
+import { coverUrl } from "@/lib/cover";
 import { Check } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -29,13 +30,16 @@ export function GameCard({ game }: { game: Game }) {
       >
         <div className="relative aspect-[4/3] overflow-hidden bg-muted">
           <img
-            src={(() => {
-              if (!game.thumbnail.includes('archive.org')) return game.thumbnail;
-              return `${game.thumbnail}?width=${dataSaver ? 200 : 400}`;
-            })()}
+            src={coverUrl(game.thumbnail)}
             alt={game.title}
             loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+            className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-110"
+            onError={(event) => {
+              const img = event.currentTarget;
+              if (img.dataset.fallback === "1") return;
+              img.dataset.fallback = "1";
+              img.src = coverUrl();
+            }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           
