@@ -51,32 +51,33 @@ export function TicTacToeGame() {
   };
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-6 bg-gradient-hero p-6">
-      <div className="flex w-full max-w-sm items-center justify-between text-sm">
-        <div className="rounded-xl bg-card px-3 py-2 shadow-card">
-          <div className="text-xs text-muted-foreground">Player X</div>
-          <div className="text-xl font-bold">{scores.X}</div>
+    <div className="flex w-full flex-1 flex-col items-center justify-center gap-5 bg-gradient-hero p-5 md:p-8">
+      <div className="flex w-full max-w-xl items-center justify-between gap-3">
+        <div className="flex-1 rounded-xl bg-card px-3 py-2 text-center shadow-card">
+          <div className="text-[11px] font-medium text-muted-foreground">Player X</div>
+          <div className="text-lg font-bold">{scores.X}</div>
         </div>
-        <div className="rounded-xl bg-card px-3 py-2 shadow-card">
-          <div className="text-xs text-muted-foreground">Draws</div>
-          <div className="text-xl font-bold">{scores.draws}</div>
+        <div className="flex-1 rounded-xl bg-card px-3 py-2 text-center shadow-card">
+          <div className="text-[11px] font-medium text-muted-foreground">Draws</div>
+          <div className="text-lg font-bold">{scores.draws}</div>
         </div>
-        <div className="rounded-xl bg-card px-3 py-2 shadow-card">
-          <div className="text-xs text-muted-foreground">Player O</div>
-          <div className="text-xl font-bold">{scores.O}</div>
+        <div className="flex-1 rounded-xl bg-card px-3 py-2 text-center shadow-card">
+          <div className="text-[11px] font-medium text-muted-foreground">Player O</div>
+          <div className="text-lg font-bold">{scores.O}</div>
         </div>
       </div>
 
-      <div className="text-lg font-semibold">{status}</div>
+      <div className="text-lg font-semibold" aria-live="polite">{status}</div>
 
-      <div className="grid w-full max-w-sm grid-cols-3 gap-3">
+      <div className="grid w-full max-w-md grid-cols-3 gap-3 md:max-w-lg">
         {cells.map((c, i) => {
           const winning = result?.line.includes(i);
           return (
             <button
               key={i}
               onClick={() => click(i)}
-              className={`flex aspect-square items-center justify-center rounded-2xl text-5xl font-bold shadow-card transition-all ${
+              aria-label={`Cell ${i + 1}${c ? `, ${c}` : ", empty"}`}
+              className={`flex aspect-square items-center justify-center rounded-2xl text-5xl font-bold shadow-card transition-[background-color,scale] duration-200 ease-out-expo active:scale-[0.96] md:text-6xl ${
                 winning
                   ? "bg-gradient-primary text-primary-foreground"
                   : "bg-card hover:bg-secondary"

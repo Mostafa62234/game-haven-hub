@@ -43,7 +43,13 @@ export function GameFrame({ embed, title, thumbnail }: GameFrameProps) {
   return (
     <div
       ref={containerRef}
-      className="group relative aspect-video w-full overflow-hidden rounded-2xl border border-border bg-card shadow-card"
+      className={
+        isInternal
+          ? // Internal games size their own box; a fixed 16:9 frame would clip
+            // their content and leave a large empty field around the board.
+            "group relative flex w-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-card"
+          : "group relative aspect-video w-full overflow-hidden rounded-2xl border border-border bg-card shadow-card"
+      }
     >
       {isInternal ? (
         internalKey === "tic-tac-toe" ? (
@@ -51,7 +57,7 @@ export function GameFrame({ embed, title, thumbnail }: GameFrameProps) {
         ) : internalKey === "memory-match" ? (
           <MemoryMatchGame />
         ) : (
-          <div className="flex h-full items-center justify-center text-muted-foreground">
+          <div className="flex min-h-64 items-center justify-center text-muted-foreground">
             Game not available.
           </div>
         )

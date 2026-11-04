@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo } from "react";
-import { Search, Heart } from "lucide-react";
+import { Search, SearchX, Heart } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { GameCard } from "@/components/game-card";
 import { AdSlot } from "@/components/ad-slot";
 import { CATEGORIES, type GameCategory } from "@/lib/games";
@@ -78,6 +79,7 @@ function GamesPage() {
         <div className="relative md:max-w-sm md:flex-1">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
+            type="search"
             value={q ?? ""}
             onChange={(e) =>
               navigate({
@@ -86,7 +88,7 @@ function GamesPage() {
               })
             }
             placeholder="Search games, tags..."
-            className="rounded-full pl-9 bg-muted/30 border-none"
+            className="rounded-full bg-muted/30 border-none pl-9 focus-visible:ring-primary/30"
           />
         </div>
         <div className="flex flex-wrap gap-2">
@@ -127,17 +129,21 @@ function GamesPage() {
       <AdSlot format="leaderboard" slot="games-top" className="mb-6" />
 
       {filtered.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-border p-10 text-center text-muted-foreground bg-muted/10">
-          {favorites && favoriteSlugsList.length === 0 
-            ? "You haven't saved any games yet! Heart some games to see them here."
-            : "No games match your search."}{" "}
-          <Link
-            to="/games"
-            search={{ q: undefined, category: undefined, favorites: undefined }}
-            className="text-primary hover:underline font-bold"
-          >
-            Clear filters
-          </Link>
+        <div className="flex flex-col items-center gap-3 rounded-2xl border border-dashed border-border bg-muted/10 px-6 py-14 text-center">
+          <SearchX className="h-8 w-8 text-muted-foreground/60" aria-hidden />
+          <p className="max-w-sm text-muted-foreground">
+            {favorites && favoriteSlugsList.length === 0 
+              ? "You haven't saved any games yet. Heart a game to see it here."
+              : `No games match ${q ? `"${q}"` : "your filters"}.`}
+          </p>
+          <Button asChild variant="secondary" size="sm" className="rounded-full">
+            <Link
+              to="/games"
+              search={{ q: undefined, category: undefined, favorites: undefined }}
+            >
+              Clear filters
+            </Link>
+          </Button>
         </div>
       ) : (
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
@@ -164,9 +170,9 @@ function FilterPill({
   return (
     <button
       onClick={onClick}
-      className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+      className={`rounded-full px-4 py-1.5 text-sm font-medium transition-[background-color,color,border-color,scale,box-shadow] duration-200 ease-out-expo active:scale-[0.96] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 ${
         active
-          ? "bg-gradient-primary text-primary-foreground shadow-glow"
+          ? "bg-primary text-primary-foreground"
           : "border border-border bg-card text-muted-foreground hover:text-foreground"
       }`}
     >

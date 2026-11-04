@@ -68,7 +68,7 @@ export function MemoryMatchGame() {
   };
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-5 bg-gradient-hero p-6">
+    <div className="flex w-full flex-1 flex-col items-center justify-center gap-5 bg-gradient-hero p-5 md:p-8">
       <div className="flex items-center gap-6 text-sm">
         <div className="rounded-xl bg-card px-3 py-2 shadow-card">
           <span className="text-xs text-muted-foreground">Moves</span>
@@ -76,7 +76,7 @@ export function MemoryMatchGame() {
         </div>
         {won && (
           <div className="rounded-xl bg-gradient-primary px-4 py-2 font-semibold text-primary-foreground shadow-glow">
-            🎉 You won in {moves} moves!
+            You won in {moves} moves!
           </div>
         )}
       </div>
@@ -88,7 +88,7 @@ export function MemoryMatchGame() {
             <button
               key={c.id}
               onClick={() => flip(c.id)}
-              className={`flex aspect-square items-center justify-center rounded-xl text-3xl shadow-card transition-all sm:text-4xl ${
+              className={`flex aspect-square items-center justify-center rounded-xl text-3xl shadow-card transition-[background-color,scale] duration-200 ease-out-expo active:scale-[0.96] sm:text-4xl ${
                 show ? "bg-card" : "bg-gradient-primary"
               } ${c.matched ? "opacity-60" : ""}`}
             >

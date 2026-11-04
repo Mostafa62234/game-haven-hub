@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -40,6 +40,8 @@ async function loadPlacements(): Promise<Record<string, boolean>> {
 export function AdSlot({ slot, format = "banner", className, label = "Advertisement" }: AdSlotProps) {
   const hasAdsense = Boolean(ADSENSE_CLIENT);
   const [enabled, setEnabled] = useState(true);
+  const [collapsed, setCollapsed] = useState(false);
+  const wrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!slot) return;
@@ -56,7 +58,7 @@ export function AdSlot({ slot, format = "banner", className, label = "Advertisem
 
   useEffect(() => {
     if (!hasAdsense || !enabled) return;
-    
+
     // Lazy load the AdSense script only once
     if (!document.getElementById("adsense-script")) {
       const script = document.createElement("script");
@@ -73,14 +75,27 @@ export function AdSlot({ slot, format = "banner", className, label = "Advertisem
     } catch {
       /* ignore */
     }
+
+    // The slot keeps its reserved height while loading to avoid layout shift,
+    // but if the ad can't fill (blocked or no inventory) the empty box would
+    // just read as a hole in the page — collapse it instead.
+    const timer = setTimeout(() => {
+      const ins = wrapRef.current?.querySelector("ins.adsbygoogle");
+      if (!ins) return;
+      const filled = ins.querySelector("iframe") !== null;
+      if (ins.getAttribute("data-ad-status") === "unfilled" || !filled) {
+        setCollapsed(true);
+      }
+    }, 5000);
+    return () => clearTimeout(timer);
   }, [hasAdsense, enabled]);
 
 
-  if (!enabled) return null;
+  if (!enabled || collapsed) return null;
 
   if (hasAdsense && slot) {
     return (
-      <div className={cn("w-full overflow-hidden rounded-xl", FORMAT_CLASSES[format], className)}>
+      <div ref={wrapRef} className={cn("w-full overflow-hidden rounded-xl", FORMAT_CLASSES[format], className)}>
         <ins
           className="adsbygoogle block h-full w-full"
           style={{ display: "block" }}

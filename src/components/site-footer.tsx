@@ -41,6 +41,16 @@ export function SiteFooter() {
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} PlayVerse. All trademarks are property of their respective owners.
           </p>
+          <p className="mt-3 text-xs leading-relaxed text-muted-foreground/80">
+            Cover art credits are listed in{" "}
+            <a
+              href={`${import.meta.env.BASE_URL}images/games/SOURCES.md`}
+              className="underline decoration-border underline-offset-2 hover:text-foreground"
+            >
+              image sources
+            </a>
+            . Checker board photo by Jud McCranie, CC BY 3.0.
+          </p>
         </div>
       </div>
     </footer>

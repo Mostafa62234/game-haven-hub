@@ -4,7 +4,7 @@ import { Star, ArrowLeft, Heart, Share2, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { GameFrame } from "@/components/games/game-frame";
-import { GameCard } from "@/components/game-card";
+import { GameCardCompact } from "@/components/game-card-compact";
 import { AdSlot } from "@/components/ad-slot";
 import { getGame, getRelatedGames, type Game } from "@/lib/games";
 import { coverUrl } from "@/lib/cover";
@@ -190,12 +190,10 @@ function PlayPage() {
         <aside className="space-y-6">
           <AdSlot format="rectangle" slot="play-sidebar" />
           <div>
-            <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-              You might also like
-            </h3>
-            <div className="grid grid-cols-2 gap-3 lg:grid-cols-1">
+            <h3 className="mb-3 text-base font-semibold tracking-tight">You might also like</h3>
+            <div className="space-y-2">
               {related.map((g) => (
-                <GameCard key={g.slug} game={g} />
+                <GameCardCompact key={g.slug} game={g} />
               ))}
             </div>
           </div>

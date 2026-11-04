@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Star } from "lucide-react";
 import type { Game } from "@/lib/games";
-import { Badge } from "@/components/ui/badge";
 
 import { useSettings } from "./settings-provider";
 import { FavoriteButton } from "./favorite-button";
@@ -17,23 +16,29 @@ export function GameCard({ game }: { game: Game }) {
   useEffect(() => {
     isGameCached(game.embed).then(setCached);
   }, [game.embed]);
-  
+
   return (
-    <div 
+    <div
       onMouseEnter={() => !dataSaver && preloadGame(game.embed).then(() => setCached(true))}
-      className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-glow"
+      className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-card transition-[translate,scale,box-shadow] duration-[250ms] ease-out-expo hover:-translate-y-1 hover:shadow-glow active:scale-[0.98]"
     >
       <Link
         to="/play/$slug"
         params={{ slug: game.slug }}
-        className="block"
+        className="block rounded-t-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 focus-visible:ring-inset"
       >
         <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+          {/* Blurred self-backdrop so letterboxed covers blend into the card */}
+          <div
+            aria-hidden
+            className="absolute inset-0 scale-125 bg-cover bg-center opacity-50 blur-lg"
+            style={{ backgroundImage: `url("${coverUrl(game.thumbnail)}")` }}
+          />
           <img
             src={coverUrl(game.thumbnail)}
             alt={game.title}
             loading="lazy"
-            className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-110"
+            className="relative h-full w-full object-contain transition-[scale] duration-[250ms] ease-out-expo group-hover:scale-[1.04]"
             onError={(event) => {
               const img = event.currentTarget;
               if (img.dataset.fallback === "1") return;
@@ -41,33 +46,30 @@ export function GameCard({ game }: { game: Game }) {
               img.src = coverUrl();
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-          
-          <FavoriteButton 
-            gameSlug={game.slug} 
-            className="absolute right-3 top-3 z-10 scale-0 transition-transform duration-300 group-hover:scale-100" 
+          <FavoriteButton
+            gameSlug={game.slug}
+            className="absolute right-2.5 top-2.5 z-10 scale-95 opacity-0 transition-[scale,opacity] duration-200 ease-out-expo group-hover:scale-100 group-hover:opacity-100 [@media(hover:none)]:scale-100 [@media(hover:none)]:opacity-100"
           />
-          <Badge className="absolute left-3 top-3 rounded-full border-0 bg-background/80 text-foreground backdrop-blur">
-            {game.category}
-          </Badge>
-          <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-foreground">
-            <span className="flex items-center gap-1 text-amber-400">
-              <Star className="h-3 w-3 fill-current" />
-              {game.rating.toFixed(1)}
+          {cached && (
+            <span className="absolute bottom-2.5 right-2.5 z-10 flex items-center gap-1 rounded-full bg-foreground/85 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-background">
+              <Check className="h-3 w-3" /> Ready
             </span>
-            {cached && (
-              <span className="flex items-center gap-1 text-emerald-400 font-bold uppercase tracking-tighter text-[9px]">
-                <Check className="h-3 w-3" /> Ready
-              </span>
-            )}
-          </div>
+          )}
         </div>
       </Link>
 
-
-      <div className="flex flex-1 flex-col gap-1 p-4">
-        <h3 className="font-semibold leading-tight tracking-tight">{game.title}</h3>
-        <p className="line-clamp-2 text-sm text-muted-foreground">{game.description}</p>
+      <div className="flex flex-1 flex-col gap-1.5 p-4 pt-3">
+        <h3 className="line-clamp-2 text-[15px] font-semibold leading-snug tracking-tight">{game.title}</h3>
+        <p className="line-clamp-2 text-sm leading-relaxed text-muted-foreground">{game.description}</p>
+        <div className="mt-auto flex items-center justify-between gap-2 pt-1.5">
+          <span className="rounded-full bg-muted px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
+            {game.category}
+          </span>
+          <span className="flex items-center gap-1 text-xs font-semibold">
+            <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+            {game.rating.toFixed(1)}
+          </span>
+        </div>
       </div>
     </div>
   );

@@ -37,10 +37,10 @@ export function SiteHeader() {
     return (
       <Link
         to={to}
-        className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
+        className={`rounded-full px-3 py-1.5 text-sm transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 ${
           active
-            ? "bg-secondary text-secondary-foreground"
-            : "text-muted-foreground hover:text-foreground"
+            ? "bg-secondary font-semibold text-secondary-foreground"
+            : "font-medium text-muted-foreground hover:text-foreground"
         }`}
       >
         {label}
@@ -57,7 +57,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4">
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-muted overflow-hidden shadow-glow transition-transform group-hover:scale-110">
+          <div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl bg-muted transition-[scale] duration-200 ease-out-expo group-hover:scale-105 group-active:scale-95">
             <img
               src={`${import.meta.env.BASE_URL}logo.png`}
               alt="PlayVerse logo"
