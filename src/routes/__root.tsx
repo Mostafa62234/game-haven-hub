@@ -73,7 +73,7 @@ export const Route = createRootRoute({
 
 // Applies the stored (or OS-preferred) theme before first paint, so dark-mode
 // users don't get a flash of light content while React hydrates.
-const themeInitScript = `try{var t=localStorage.getItem("theme");var d=t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.classList.toggle("dark",d);}catch(e){}`;
+const themeInitScript = `try{var t=localStorage.getItem("theme");var d=t==="dark"?true:t==="light"?false:window.matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.classList.toggle("dark",d);}catch(e){}`;
 
 function RootShell({ children }: { children: React.ReactNode }) {
   // suppressHydrationWarning: the pre-paint theme script sets class on <html>

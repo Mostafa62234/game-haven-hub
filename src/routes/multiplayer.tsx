@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GameCard } from "@/components/game-card";
 import { AdSlot } from "@/components/ad-slot";
-import { GAMES } from "@/lib/games";
+import { useGames } from "@/components/games-provider";
 import { Users, Wifi, Sparkles } from "lucide-react";
 import { OnlineTicTacToe } from "@/components/games/online-tic-tac-toe";
 
@@ -20,7 +20,10 @@ export const Route = createFileRoute("/multiplayer")({
 });
 
 function MultiplayerPage() {
-  const games = GAMES.filter((g) => g.category === "Multiplayer" || g.category === "Strategy");
+  // Provider list = static library + admin additions, minus admin-hidden
+  // games — so a multiplayer card can't point at a game that was hidden.
+  const { games } = useGames();
+  const filtered = games.filter((g) => g.category === "Multiplayer" || g.category === "Strategy");
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8">
@@ -47,7 +50,7 @@ function MultiplayerPage() {
       <AdSlot format="leaderboard" slot="multi-top" className="my-8" />
 
       <section className="mb-12">
-        <h2 className="mb-4 text-2xl font-bold">🎮 Online Tic Tac Toe</h2>
+        <h2 className="mb-4 text-2xl font-bold">Online Tic Tac Toe</h2>
         <p className="mb-6 text-sm text-muted-foreground">
           Create a room and share the code, or join with a friend's code. Moves sync in real time.
         </p>
@@ -56,7 +59,7 @@ function MultiplayerPage() {
 
       <h2 className="mb-4 text-2xl font-bold">More multiplayer games</h2>
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-        {games.map((g) => (
+        {filtered.map((g) => (
           <GameCard key={g.slug} game={g} />
         ))}
       </div>

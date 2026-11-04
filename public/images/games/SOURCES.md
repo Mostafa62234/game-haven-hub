@@ -122,7 +122,6 @@ node scripts/generate-branded-covers.mjs
 | `papas-freezeria.svg` | Papa's Freezeria | Flash |
 | `papas-hot-doggeria.svg` | Papa's Hot Doggeria | Flash |
 | `papas-pastaria.svg` | Papa's Pastaria | Flash |
-| `papas-pizzeria.svg` | Papa's Pizzeria | Flash |
 | `papas-sushiria.svg` | Papa's Sushiria | Flash |
 | `pong.svg` | Pong (HTML5) | Retro |
 | `riddle-school.svg` | Riddle School | Flash |
@@ -178,7 +177,7 @@ state a redistribution licence**.
 | `donald-the-beanstalk.jpg` | Donald & the Beanstalk | [`beanstalk_swf`](https://archive.org/details/beanstalk_swf) |
 | `drag-racer-v3-flash-game.jpg` | Drag Racer V3 - Flash Game | [`dragracerv3_202012`](https://archive.org/details/dragracerv3_202012) |
 | `escaping-the-prison.jpg` | Escaping the Prison | [`etp_20200826`](https://archive.org/details/etp_20200826) |
-| `fiash.jpg` | Fiash! | [`flash_fishy`](https://archive.org/details/flash_fishy) |
+| `fishy.jpg` | Fishy! | [`flash_fishy`](https://archive.org/details/flash_fishy) |
 | `fire-escape.jpg` | Fire Escape | [`htf_fireescape`](https://archive.org/details/htf_fireescape) |
 | `firey-s-candy-bar-adventure.jpg` | Firey's Candy Bar Adventure | [`candy-bar-adventure-1`](https://archive.org/details/candy-bar-adventure-1) |
 | `get-to-the-top-althrough-there-is-no-top-bfdi.jpg` | Get to the Top Althrough There is No Top BFDI | [`bfdi_swf`](https://archive.org/details/bfdi_swf) |

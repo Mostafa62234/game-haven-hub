@@ -4,7 +4,6 @@ export type GameCategory =
   | "Multiplayer"
   | "Strategy"
   | "Casual"
-  | "Casual"
   | "Retro"
   | "Flash";
 
@@ -1252,11 +1251,11 @@ export const GAMES: Game[] = [
     source: "Internet Archive"
   },
   {
-    slug: "fiash",
-    title: "Fiash!",
+    slug: "fishy",
+    title: "Fishy!",
     description: "A simple arcade game guiding a fish away from being eaten by other fish.",
     category: "Flash",
-    thumbnail: "/images/games/fiash.jpg",
+    thumbnail: "/images/games/fishy.jpg",
     embed: "ruffle:https://archive.org/cors/flash_fishy/flash_fishy.swf",
     rating: 4.5,
     plays: 34806,
@@ -2261,23 +2260,6 @@ export const GAMES: Game[] = [
     source: "Internet Archive"
   },
   {
-    slug: "papas-pizzeria",
-    title: "Papa's Pizzeria",
-    description: "Manage your own restaurant in Papa's Pizzeria. Cook, serve, and keep your customers happy!",
-    category: "Flash",
-    thumbnail: "/images/games/papas-pizzeria.svg",
-    embed: "ruffle:https://archive.org/cors/papas-pizzeria_flash/papas-pizzeria_flash.swf",
-    rating: 4.7,
-    plays: 5000000,
-    tags: [
-      "flash",
-      "cooking",
-      "management",
-      "classic"
-    ],
-    source: "Internet Archive"
-  },
-  {
     slug: "papas-burgeria",
     title: "Papa's Burgeria",
     description: "Manage your own restaurant in Papa's Burgeria. Cook, serve, and keep your customers happy!",
@@ -2475,42 +2457,6 @@ export const GAMES: Game[] = [
     plays: 8000000,
     tags: ["flash", "strategy", "classic", "war"],
     source: "Internet Archive"
-  },
-  {
-    slug: "wheely-1",
-    title: "Wheely 1",
-    description: "Help the little red car Wheely on his first big adventure!",
-    category: "Flash",
-    thumbnail: "/images/games/wheely-1.svg",
-    embed: "ruffle:https://archive.org/cors/wheely-flash-game-series/wheely1.swf",
-    rating: 4.5,
-    plays: 1200000,
-    tags: ["flash", "puzzle", "casual", "wheely"],
-    source: "Internet Archive"
-  },
-  {
-    slug: "wheely-2",
-    title: "Wheely 2",
-    description: "Help Wheely find his love in this sequel!",
-    category: "Flash",
-    thumbnail: "/images/games/wheely-2.svg",
-    embed: "ruffle:https://archive.org/cors/wheely-flash-game-series/wheely2.swf",
-    rating: 4.5,
-    plays: 1100000,
-    tags: ["flash", "puzzle", "casual", "wheely"],
-    source: "Internet Archive"
-  },
-  {
-    slug: "snail-bob-1",
-    title: "Snail Bob 1",
-    description: "Help Snail Bob find a new home in this physics-based puzzle adventure!",
-    category: "Flash",
-    thumbnail: "/images/games/snail-bob-1.jpg",
-    embed: "ruffle:https://archive.org/cors/snail-bob-flash-game-series/snailbob1.swf",
-    rating: 4.6,
-    plays: 2000000,
-    tags: ["flash", "puzzle", "physics", "snail-bob"],
-    source: "Internet Archive"
   }
 
 ];
@@ -2530,10 +2476,10 @@ export function getGame(slug: string): Game | undefined {
   return GAMES.find((g) => g.slug.toLowerCase() === lowerSlug);
 }
 
-export function getRelatedGames(game: Game, count = 4): Game[] {
-  return GAMES.filter((g) => g.slug !== game.slug && g.category === game.category)
+export function getRelatedGames(game: Game, count = 4, source: Game[] = GAMES): Game[] {
+  return source.filter((g) => g.slug !== game.slug && g.category === game.category)
     .slice(0, count)
-    .concat(GAMES.filter((g) => g.slug !== game.slug && g.category !== game.category))
+    .concat(source.filter((g) => g.slug !== game.slug && g.category !== game.category))
     .slice(0, count);
 }
 

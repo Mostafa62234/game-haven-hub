@@ -8,6 +8,7 @@ import { GameCardCompact } from "@/components/game-card-compact";
 import { AdSlot } from "@/components/ad-slot";
 import { getGame, getRelatedGames, type Game } from "@/lib/games";
 import { coverUrl } from "@/lib/cover";
+import { useGames } from "@/components/games-provider";
 import { useAuth } from "@/components/auth-provider";
 import { useFavorites, recordPlay } from "@/hooks/use-favorites";
 import { toast } from "sonner";
@@ -26,13 +27,16 @@ export const Route = createFileRoute("/play/$slug")({
 
     let game: Game | undefined;
 
-    if (dbGame) {
+    if (dbGame && !dbGame.hidden) {
       game = {
         ...dbGame,
         rating: 4.5,
         plays: 0,
         tags: [],
       } as Game;
+    } else if (dbGame?.hidden) {
+      // Admin hid this game — hide it from direct deep links too.
+      throw notFound();
     } else {
       // 2. Fallback to static library
       game = getGame(slug);
@@ -44,14 +48,20 @@ export const Route = createFileRoute("/play/$slug")({
   head: ({ loaderData }) => {
     const g = loaderData?.game;
     if (!g) return {};
+    // og:image must be a fully-qualified URL; root-relative paths break under
+    // a sub-path deployment (/game-haven-hub/).
+    const ogImage =
+      typeof window !== "undefined"
+        ? new URL(coverUrl(g.thumbnail), window.location.origin).href
+        : coverUrl(g.thumbnail);
     return {
       meta: [
         { title: `${g.title} — Play free on PlayVerse` },
         { name: "description", content: g.description?.slice(0, 155) || "" },
         { property: "og:title", content: `${g.title} — PlayVerse` },
         { property: "og:description", content: g.description?.slice(0, 155) || "" },
-        { property: "og:image", content: g.thumbnail },
-        { name: "twitter:image", content: g.thumbnail },
+        { property: "og:image", content: ogImage },
+        { name: "twitter:image", content: ogImage },
       ],
     };
   },
@@ -68,7 +78,8 @@ export const Route = createFileRoute("/play/$slug")({
 
 function PlayPage() {
   const { game } = Route.useLoaderData();
-  const related = getRelatedGames(game, 4);
+  const { games } = useGames();
+  const related = getRelatedGames(game, 4, games);
   const { user } = useAuth();
   const { isFavorite, toggle } = useFavorites();
   const fav = isFavorite(game.slug);

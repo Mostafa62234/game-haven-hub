@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Play, Loader2, AlertCircle, Download } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
+import { GAME_CACHE_NAME } from "@/lib/preloader";
 
 interface RufflePlayerProps {
   swfUrl: string;
@@ -37,11 +38,9 @@ export function RufflePlayer({ swfUrl, thumbnail, title }: RufflePlayerProps) {
   };
 
   const fetchSwfWithProgress = async (url: string): Promise<string> => {
-    const cacheName = "playverse-game-cache-v1";
-    
     // 1. Try Cache API for instant load
     try {
-      const cache = await caches.open(cacheName);
+      const cache = await caches.open(GAME_CACHE_NAME);
       const cachedResponse = await cache.match(url);
       if (cachedResponse) {
         setDownloadProgress(100);
@@ -88,7 +87,7 @@ export function RufflePlayer({ swfUrl, thumbnail, title }: RufflePlayerProps) {
     
     // Save to permanent cache
     try {
-      const cache = await caches.open(cacheName);
+      const cache = await caches.open(GAME_CACHE_NAME);
       await cache.put(url, new Response(blob));
     } catch (e) {
       console.warn("Failed to save to cache:", e);

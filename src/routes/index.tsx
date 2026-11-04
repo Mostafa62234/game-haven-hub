@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GameCard } from "@/components/game-card";
 import { AdSlot } from "@/components/ad-slot";
-import { CATEGORIES, GAMES } from "@/lib/games";
+import { CATEGORIES } from "@/lib/games";
 
 export const Route = createFileRoute("/")({
   head: () => ({

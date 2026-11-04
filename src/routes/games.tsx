@@ -23,7 +23,10 @@ export const Route = createFileRoute("/games")({
       typeof s.category === "string" && (CATEGORIES as string[]).includes(s.category)
         ? (s.category as GameCategory)
         : undefined,
-    favorites: s.favorites === true,
+    // TanStack serializes search params to strings in links/deep links, and
+    // returning a literal `false` here would serialize as ?favorites=false —
+    // so anything but a true-ish value means "no favorites filter".
+    favorites: s.favorites === true || s.favorites === "true" ? true : undefined,
   }),
   head: () => ({
     meta: [
@@ -41,7 +44,7 @@ export const Route = createFileRoute("/games")({
 function GamesPage() {
   const { q, category, favorites } = Route.useSearch();
   const navigate = Route.useNavigate();
-  const { games } = useGames();
+  const { games, error, refresh } = useGames();
   const { user } = useAuth();
   const { isFavorite, favorites: favoriteSlugsList } = useFavorites();
 
@@ -127,6 +130,17 @@ function GamesPage() {
       </div>
 
       <AdSlot format="leaderboard" slot="games-top" className="mb-6" />
+
+      {error && (
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-500">
+          <span>
+            Couldn&apos;t load the live game library — showing the built-in list.
+          </span>
+          <Button variant="secondary" size="sm" className="rounded-full" onClick={() => refresh()}>
+            Retry
+          </Button>
+        </div>
+      )}
 
       {filtered.length === 0 ? (
         <div className="flex flex-col items-center gap-3 rounded-2xl border border-dashed border-border bg-muted/10 px-6 py-14 text-center">

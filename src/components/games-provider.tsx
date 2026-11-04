@@ -5,18 +5,25 @@ import { supabase } from "@/integrations/supabase/client";
 interface GamesContextValue {
   games: Game[];
   loading: boolean;
+  /** True when the Supabase fetch failed and only the built-in list is shown. */
+  error: boolean;
   refresh: () => Promise<void>;
 }
 
 const GamesContext = createContext<GamesContextValue>({
   games: GAMES,
   loading: true,
+  error: false,
   refresh: async () => {},
 });
 
 export function GamesProvider({ children }: { children: ReactNode }) {
-  const [dynamicGames, setDynamicGames] = useState<Game[]>([]);
+  // Seed with the built-in library so the local list is already on screen
+  // while (and in case) the Supabase request resolves — a failed or pending
+  // request must never render as "0 games".
+  const [dynamicGames, setDynamicGames] = useState<Game[]>(GAMES);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   const fetchGames = async () => {
     try {
@@ -51,9 +58,11 @@ export function GamesProvider({ children }: { children: ReactNode }) {
       const filteredStatic = GAMES.filter(g => !hiddenSlugs.has(g.slug));
 
       setDynamicGames([...filteredStatic, ...newGames]);
+      setError(false);
     } catch (err) {
       console.error("Failed to fetch dynamic games:", err);
       setDynamicGames(GAMES);
+      setError(true);
     } finally {
       setLoading(false);
     }
@@ -64,7 +73,7 @@ export function GamesProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <GamesContext.Provider value={{ games: dynamicGames, loading, refresh: fetchGames }}>
+    <GamesContext.Provider value={{ games: dynamicGames, loading, error, refresh: fetchGames }}>
       {children}
     </GamesContext.Provider>
   );

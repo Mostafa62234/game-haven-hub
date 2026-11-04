@@ -20,11 +20,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   );
 
   useEffect(() => {
-    const stored = (typeof window !== "undefined" && localStorage.getItem("theme")) as Theme | null;
+    const stored =
+      (typeof window !== "undefined" && localStorage.getItem("theme")) as Theme | null;
+    // Ignore anything that isn't a valid theme (corrupt/legacy values).
+    const valid = stored === "dark" || stored === "light" ? stored : null;
     const prefersDark =
       typeof window !== "undefined" &&
       window.matchMedia?.("(prefers-color-scheme: dark)").matches;
-    const initial: Theme = stored ?? (prefersDark ? "dark" : "light");
+    const initial: Theme = valid ?? (prefersDark ? "dark" : "light");
     setThemeState(initial);
   }, []);
 

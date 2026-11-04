@@ -1,10 +1,12 @@
 /**
  * Game Preloader Utility
- * 
+ *
  * Manages background caching of game assets to make loading instant.
  */
 
-const CACHE_NAME = 'playverse-games-v1';
+// Shared with ruffle-player so a game cached here is the same copy the
+// player later loads from ("READY" badge tells the truth).
+export const GAME_CACHE_NAME = "playverse-games-v1";
 
 export async function preloadGame(url: string) {
   if (!url || !url.startsWith('ruffle:')) return;
@@ -12,7 +14,7 @@ export async function preloadGame(url: string) {
   const swfUrl = url.replace('ruffle:', '');
   
   try {
-    const cache = await caches.open(CACHE_NAME);
+    const cache = await caches.open(GAME_CACHE_NAME);
     const cachedResponse = await cache.match(swfUrl);
     
     if (!cachedResponse) {
@@ -43,7 +45,7 @@ export async function isGameCached(url: string): Promise<boolean> {
   if (!url || !url.startsWith('ruffle:')) return false;
   const swfUrl = url.replace('ruffle:', '');
   try {
-    const cache = await caches.open(CACHE_NAME);
+    const cache = await caches.open(GAME_CACHE_NAME);
     const response = await cache.match(swfUrl);
     return !!response;
   } catch {
